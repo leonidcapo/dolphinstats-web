@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DolphinStats — Análisis de Datos en Salud</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{--ocean:#0a1628;--aqua:#00d4ff;--white:#f0f8ff;--muted:#8899bb;--accent:#00ffcc}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ocean);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,180,216,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
+  body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(10,22,40,.8)}
+  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+  .logo span{color:var(--aqua)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--aqua)}
+  .nav-cta{background:var(--aqua);color:var(--ocean)!important;padding:.5rem 1.2rem;border-radius:100px;font-weight:600!important}
+  section{position:relative;z-index:1}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 4rem;max-width:1100px;margin:0 auto}
+  .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--aqua);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
+  .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
+  .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--aqua);opacity:.4;border-radius:2px}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp .8s ease .2s both}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
+  .btn-primary{background:var(--aqua);color:var(--ocean);padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,212,255,.3)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,212,255,.5)}
+  .btn-secondary{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:border-color .2s,color .2s}
+  .btn-secondary:hover{border-color:var(--aqua);color:var(--aqua)}
+  .stats-bar{border-top:1px solid rgba(0,212,255,.1);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(0,212,255,.03);padding:2rem}
+  .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
+  .stat-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--aqua);line-height:1}
+  .stat-label{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+  .diferencial{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+  .section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua);margin-bottom:1rem}
+  .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;line-height:1.15}
+  .section-sub{color:var(--muted);font-size:1.05rem;max-width:500px;line-height:1.7;margin-bottom:3rem}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .card{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.12);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),transparent);opacity:0;transition:opacity .3s}
+  .card:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.05);transform:translateY(-4px)}
+  .card:hover::before{opacity:1}
+  .card-icon{font-size:2rem;margin-bottom:1rem}
+  .card h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+  .card p{color:var(--muted);font-size:.9rem;line-height:1.6}
+  .precios{padding:6rem 2rem;background:rgba(0,212,255,.02);border-top:1px solid rgba(0,212,255,.08)}
+  .precios-inner{max-width:1100px;margin:0 auto}
+  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+  .precio-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.12);border-radius:20px;padding:2.5rem;position:relative;transition:transform .3s}
+  .precio-card:hover{transform:translateY(-6px)}
+  .precio-card.featured{border-color:var(--aqua);background:rgba(0,212,255,.07)}
+  .precio-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--aqua);color:var(--ocean);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap}
+  .precio-icon{font-size:2rem;margin-bottom:1rem}
+  .precio-name{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+  .precio-tag{font-size:.8rem;color:var(--aqua);font-style:italic;margin-bottom:1.5rem}
+  .precio-amount{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1;margin-bottom:.3rem}
+  .precio-amount span{font-size:1rem;color:var(--muted);font-weight:400}
+  .precio-divider{border:none;border-top:1px solid rgba(0,212,255,.1);margin:1.5rem 0}
+  .precio-features{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+  .precio-features li{font-size:.875rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+  .precio-features li .check{color:var(--aqua);flex-shrink:0}
+  .precio-features li .no{color:rgba(255,255,255,.2);flex-shrink:0}
+  .precio-cta{display:block;text-align:center;margin-top:2rem;padding:.75rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;border:1px solid rgba(0,212,255,.3);color:var(--aqua);transition:all .2s}
+  .precio-card.featured .precio-cta{background:var(--aqua);color:var(--ocean);border-color:var(--aqua)}
+  .precio-cta:hover{background:var(--aqua);color:var(--ocean)}
+  .privacy{padding:6rem 2rem;max-width:800px;margin:0 auto}
+  .privacy h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:2rem}
+  .privacy-block{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
+  .privacy-block h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--aqua);margin-bottom:.75rem}
+  .privacy-block p{color:var(--muted);font-size:.9rem;line-height:1.7}
+  footer{border-top:1px solid rgba(0,212,255,.1);padding:3rem 2rem;text-align:center}
+  .footer-logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+  .footer-logo span{color:var(--aqua)}
+  footer p{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+  footer a{color:var(--aqua);text-decoration:none}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:768px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🐬 Dolphin<span>Stats</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#privacidad">Privacidad</a></li>
+    <li><a href="https://wa.me/51904106544" class="nav-cta">Contactar</a></li>
+  </ul>
+</nav>
+
+<section>
+  <div class="hero">
+    <div class="hero-tag">🔬 Análisis de datos en ciencias de la salud · Lima, Perú</div>
+    <h1>Datos que <em>hablan</em><br>el idioma clínico</h1>
+    <p>Asesoría estadística para médicos, odontólogos e investigadores. Interpretamos tus resultados como clínicos, no solo como estadísticos.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/51904106544" class="btn-primary">💬 Escribir al WhatsApp</a>
+      <a href="#precios" class="btn-secondary">Ver paquetes →</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div><div class="stat-num">15+</div><div class="stat-label">Años de experiencia clínica</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Softwares estadísticos</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-label">Bot de consultas activo</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Interpretación clínica</div></div>
+  </div>
+</div>
+
+<section class="diferencial" id="servicios">
+  <div class="section-label">Por qué DolphinStats</div>
+  <h2 class="section-title">El estadístico que<br>también es clínico</h2>
+  <p class="section-sub">No somos matemáticos que procesan números. Somos especialistas en salud que entienden qué significa cada resultado para el paciente.</p>
+  <div class="cards-grid">
+    <div class="card"><div class="card-icon">🩺</div><h3>Visión clínica</h3><p>Más de 15 años de experiencia clínica. Sabemos qué significa un OR de 2.3 en el contexto real de un paciente.</p></div>
+    <div class="card"><div class="card-icon">📊</div><h3>Multi-software</h3><p>Stata, SPSS, Power BI y Python. Nos adaptamos a tu metodología, no al revés.</p></div>
+    <div class="card"><div class="card-icon">🏥</div><h3>Experiencia hospitalaria</h3><p>12 años de estadística en el Hospital PNP. Conocemos el sistema de salud peruano desde adentro.</p></div>
+    <div class="card"><div class="card-icon">📝</div><h3>Resultados publicables</h3><p>Entregables listos para revistas Scopus y SciELO. Redacción de sección de resultados incluida.</p></div>
+    <div class="card"><div class="card-icon">⚡</div><h3>Respuesta rápida</h3><p>Bot inteligente disponible 24/7. El Dr. Leonid responde en horas, no días.</p></div>
+    <div class="card"><div class="card-icon">🤝</div><h3>Colaboración científica</h3><p>Posibilidad de co-autoría en investigaciones según acuerdo. Tu publicación, nuestro respaldo.</p></div>
+  </div>
+</section>
+
+<section class="precios" id="precios">
+  <div class="precios-inner">
+    <div class="section-label">Paquetes de servicio</div>
+    <h2 class="section-title">Elige tu nivel<br>de investigación</h2>
+    <p class="section-sub">Precios transparentes. Sin sorpresas. Resultados garantizados.</p>
+    <div class="pricing-grid">
+      <div class="precio-card">
+        <div class="precio-icon">🔬</div>
+        <div class="precio-name">Análisis Claro</div>
+        <div class="precio-tag">"Entiendo mis resultados"</div>
+        <div class="precio-amount">S/ 500 <span>/ proyecto</span></div>
+        <hr class="precio-divider">
+        <ul class="precio-features">
+          <li><span class="check">✓</span> Estadística descriptiva completa</li>
+          <li><span class="check">✓</span> Tablas y gráficos para Word</li>
+          <li><span class="check">✓</span> Interpretación en lenguaje clínico</li>
+          <li><span class="check">✓</span> 1 ronda de ajustes</li>
+          <li><span class="no">✕</span> Pruebas de hipótesis avanzadas</li>
+          <li><span class="no">✕</span> Asesoría para publicación</li>
+        </ul>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20An%C3%A1lisis%20Claro" class="precio-cta">Consultar →</a>
+      </div>
+      <div class="precio-card featured">
+        <div class="precio-badge">⭐ Más elegido</div>
+        <div class="precio-icon">📊</div>
+        <div class="precio-name">Análisis Profundizado</div>
+        <div class="precio-tag">"Mi paper listo para enviar"</div>
+        <div class="precio-amount">S/ 950 <span>/ proyecto</span></div>
+        <hr class="precio-divider">
+        <ul class="precio-features">
+          <li><span class="check">✓</span> Todo lo del paquete básico</li>
+          <li><span class="check">✓</span> Pruebas inferenciales completas</li>
+          <li><span class="check">✓</span> Sección de resultados redactada</li>
+          <li><span class="check">✓</span> Revisión de coherencia metodológica</li>
+          <li><span class="check">✓</span> 2 rondas de ajustes</li>
+          <li><span class="no">✕</span> Acompañamiento en revisión por pares</li>
+        </ul>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20An%C3%A1lisis%20Profundizado" class="precio-cta">Consultar →</a>
+      </div>
+      <div class="precio-card">
+        <div class="precio-icon">🏆</div>
+        <div class="precio-name">Partner Científico</div>
+        <div class="precio-tag">"Publicamos juntos"</div>
+        <div class="precio-amount">S/ 1,500 <span>/ proyecto</span></div>
+        <hr class="precio-divider">
+        <ul class="precio-features">
+          <li><span class="check">✓</span> Todo lo anterior</li>
+          <li><span class="check">✓</span> Diseño metodológico desde el inicio</li>
+          <li><span class="check">✓</span> Selección de revista Scopus/SciELO</li>
+          <li><span class="check">✓</span> Respuesta a observaciones del editor</li>
+          <li><span class="check">✓</span> Ajustes ilimitados hasta aceptación</li>
+          <li><span class="check">✓</span> Co-autoría según acuerdo</li>
+        </ul>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20Partner%20Cient%C3%ADfico" class="precio-cta">Consultar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy" id="privacidad">
+  <div class="section-label">Legal</div>
+  <h2>Política de Privacidad</h2>
+  <p style="color:var(--muted);font-size:.85rem;margin-bottom:2rem;">Última actualización: Mayo 2026 · DolphinStats, Lima, Perú</p>
+  <div class="privacy-block"><h3>1. Información que recopilamos</h3><p>A través de nuestro servicio de WhatsApp Business y formularios de contacto, recopilamos únicamente el número de teléfono, nombre (si lo proporcionas voluntariamente) y el contenido de los mensajes que nos envías para prestarte el servicio de asesoría estadística.</p></div>
+  <div class="privacy-block"><h3>2. Uso de la información</h3><p>La información recopilada se utiliza exclusivamente para responder consultas sobre nuestros servicios, brindar asesoría estadística contratada, y mejorar la calidad de nuestras respuestas automatizadas. No compartimos tu información con terceros ni la usamos con fines publicitarios.</p></div>
+  <div class="privacy-block"><h3>3. Almacenamiento y seguridad</h3><p>Los datos de conversación se almacenan temporalmente en memoria durante la sesión activa y no se persisten en bases de datos externas. Tu número de teléfono puede guardarse para seguimiento de consultas activas y se elimina a tu solicitud.</p></div>
+  <div class="privacy-block"><h3>4. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
+  <div class="privacy-block"><h3>5. Contacto</h3><p>Para consultas sobre esta política, contáctanos vía WhatsApp al <a href="https://wa.me/51904106544">+51 904 106 544</a>.</p></div>
+</section>
+
+<footer>
+  <div class="footer-logo">🐬 Dolphin<span>Stats</span></div>
+  <p>Análisis de datos en ciencias de la salud · Lima, Perú</p>
+  <p style="margin-top:1rem;"><a href="https://wa.me/51904106544">WhatsApp</a> · <a href="#privacidad">Política de Privacidad</a> · <a href="https://github.com/leonidcapo/DolphinStatsBot">GitHub</a></p>
+  <p style="margin-top:1rem;font-size:.75rem;color:rgba(136,153,187,.5);">© 2026 DolphinStats. Dr. Leonid Capo.</p>
+</footer>
+
+</body>
+</html>
