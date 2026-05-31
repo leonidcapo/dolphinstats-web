@@ -3,61 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DolphinStats — Análisis de Datos en Salud</title>
+<title>DolphinStats — Consultoría en Investigación Clínica y Bioestadística</title>
+<meta name="description" content="Consultoría académica especializada en investigación clínica, bioestadística avanzada, epidemiología y publicación científica. Asesoramos a tesistas, investigadores y docentes universitarios de ciencias de la salud. Lima, Perú.">
+<meta name="keywords" content="bioestadística, investigación clínica, asesoría tesis ciencias de la salud, análisis estadístico SPSS STATA R Python, consultoría investigación biomédica, epidemiología clínica, publicación Scopus SciELO, IA investigación médica, Lima Perú">
+<link rel="canonical" href="https://leonidcapo.github.io/dolphinstats-web/">
+<!-- Open Graph -->
+<meta property="og:title" content="DolphinStats — Consultoría en Investigación Clínica y Bioestadística">
+<meta property="og:description" content="De la pregunta de investigación al artículo listo para enviar. Especialistas en bioestadística, epidemiología clínica y publicación científica.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leonidcapo.github.io/dolphinstats-web/">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root{--ocean:#0a1628;--aqua:#00d4ff;--white:#f0f8ff;--muted:#8899bb;--accent:#00ffcc}
+  :root{
+    --ocean:#0a1628;
+    --aqua:#00d4ff;
+    --white:#f0f8ff;
+    --muted:#8899bb;
+    --accent:#00ffcc;
+    --surface:rgba(255,255,255,.03);
+    --border:rgba(0,212,255,.12);
+  }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{background:var(--ocean);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
   body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,180,216,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
   body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(10,22,40,.8)}
-  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(10,22,40,.85)}
+  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:.5rem;text-decoration:none}
   .logo span{color:var(--aqua)}
-  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
   .nav-links a:hover{color:var(--aqua)}
-  .nav-cta{background:var(--aqua);color:var(--ocean)!important;padding:.5rem 1.2rem;border-radius:100px;font-weight:600!important}
+  .nav-cta{background:var(--aqua);color:var(--ocean)!important;padding:.5rem 1.2rem;border-radius:100px;font-weight:600!important;transition:box-shadow .2s!important}
+  .nav-cta:hover{box-shadow:0 0 20px rgba(0,212,255,.4)}
   section{position:relative;z-index:1}
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 4rem;max-width:1100px;margin:0 auto}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 2rem 5rem;max-width:1100px;margin:0 auto}
   .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--aqua);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
-  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--aqua);opacity:.4;border-radius:2px}
-  .hero p{font-size:1.15rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp .8s ease .2s both}
+  .hero-sub{font-size:1.1rem;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:1.5rem;animation:fadeUp .8s ease .2s both}
+  .hero-specs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;animation:fadeUp .8s ease .25s both}
+  .hero-spec{background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);color:var(--aqua);font-size:.8rem;font-weight:500;padding:.3rem .85rem;border-radius:100px}
   .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
   .btn-primary{background:var(--aqua);color:var(--ocean);padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,212,255,.3)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,212,255,.5)}
   .btn-secondary{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:border-color .2s,color .2s}
   .btn-secondary:hover{border-color:var(--aqua);color:var(--aqua)}
+
+  /* STATS BAR */
   .stats-bar{border-top:1px solid rgba(0,212,255,.1);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(0,212,255,.03);padding:2rem}
   .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
-  .stat-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--aqua);line-height:1}
-  .stat-label{font-size:.85rem;color:var(--muted);margin-top:.3rem}
-  .diferencial{padding:6rem 2rem;max-width:1100px;margin:0 auto}
-  .section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua);margin-bottom:1rem}
-  .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;line-height:1.15}
-  .section-sub{color:var(--muted);font-size:1.05rem;max-width:500px;line-height:1.7;margin-bottom:3rem}
-  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-  .card{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.12);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden}
-  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),transparent);opacity:0;transition:opacity .3s}
-  .card:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.05);transform:translateY(-4px)}
-  .card:hover::before{opacity:1}
-  .card-icon{font-size:2rem;margin-bottom:1rem}
-  .card h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
-  .card p{color:var(--muted);font-size:.9rem;line-height:1.6}
-  .precios{padding:6rem 2rem;background:rgba(0,212,255,.02);border-top:1px solid rgba(0,212,255,.08)}
+  .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--aqua);line-height:1}
+  .stat-label{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.4}
+
+  /* STANDARDS */
+  .standards{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem}
+  .standards-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:.5rem}
+  .std-badge{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(240,248,255,.6);font-size:.75rem;font-weight:600;letter-spacing:.05em;padding:.3rem .8rem;border-radius:6px}
+
+  /* SERVICIOS */
+  .servicios{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+  .svc-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden}
+  .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),transparent);opacity:0;transition:opacity .3s}
+  .svc-card:hover{border-color:rgba(0,212,255,.35);background:rgba(0,212,255,.05);transform:translateY(-4px)}
+  .svc-card:hover::before{opacity:1}
+  .svc-icon{font-size:2rem;margin-bottom:1rem}
+  .svc-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.75rem;color:var(--white)}
+  .svc-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+  .svc-list li{font-size:.85rem;color:var(--muted);display:flex;gap:.5rem;align-items:flex-start;line-height:1.5}
+  .svc-list li::before{content:'→';color:var(--aqua);flex-shrink:0;font-size:.75rem;margin-top:2px}
+
+  /* DIFERENCIAL */
+  .diferencial{padding:6rem 2rem;background:rgba(0,212,255,.02);border-top:1px solid rgba(0,212,255,.08);border-bottom:1px solid rgba(0,212,255,.08)}
+  .diferencial-inner{max-width:1100px;margin:0 auto}
+  .dif-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .dif-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden}
+  .dif-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
+  .dif-card:hover{border-color:rgba(0,255,204,.3);background:rgba(0,255,204,.04);transform:translateY(-4px)}
+  .dif-card:hover::before{opacity:1}
+  .dif-icon{font-size:2rem;margin-bottom:1rem}
+  .dif-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+  .dif-card p{color:var(--muted);font-size:.875rem;line-height:1.65}
+
+  /* PRECIOS */
+  .precios{padding:6rem 2rem}
   .precios-inner{max-width:1100px;margin:0 auto}
   .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
-  .precio-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.12);border-radius:20px;padding:2.5rem;position:relative;transition:transform .3s}
+  .precio-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;transition:transform .3s}
   .precio-card:hover{transform:translateY(-6px)}
   .precio-card.featured{border-color:var(--aqua);background:rgba(0,212,255,.07)}
   .precio-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--aqua);color:var(--ocean);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap}
   .precio-icon{font-size:2rem;margin-bottom:1rem}
-  .precio-name{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+  .precio-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
   .precio-tag{font-size:.8rem;color:var(--aqua);font-style:italic;margin-bottom:1.5rem}
-  .precio-amount{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1;margin-bottom:.3rem}
-  .precio-amount span{font-size:1rem;color:var(--muted);font-weight:400}
+  .precio-amount{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;color:var(--white);line-height:1;margin-bottom:.3rem}
+  .precio-amount span{font-size:.95rem;color:var(--muted);font-weight:400}
   .precio-divider{border:none;border-top:1px solid rgba(0,212,255,.1);margin:1.5rem 0}
   .precio-features{list-style:none;display:flex;flex-direction:column;gap:.7rem}
   .precio-features li{font-size:.875rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
@@ -66,126 +112,383 @@
   .precio-cta{display:block;text-align:center;margin-top:2rem;padding:.75rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;border:1px solid rgba(0,212,255,.3);color:var(--aqua);transition:all .2s}
   .precio-card.featured .precio-cta{background:var(--aqua);color:var(--ocean);border-color:var(--aqua)}
   .precio-cta:hover{background:var(--aqua);color:var(--ocean)}
+  .pricing-note{margin-top:2rem;text-align:center;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:600px;margin-left:auto;margin-right:auto}
+  .pricing-note a{color:var(--aqua);text-decoration:none}
+
+  /* FAQ */
+  .faq{padding:6rem 2rem;max-width:800px;margin:0 auto}
+  .faq-list{display:flex;flex-direction:column;gap:1rem;margin-top:3rem}
+  .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--white);font-family:'Syne',sans-serif;font-size:.95rem;font-weight:600;padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .2s}
+  .faq-q:hover{color:var(--aqua)}
+  .faq-q .arrow{color:var(--aqua);font-size:1rem;transition:transform .3s;flex-shrink:0}
+  .faq-q[aria-expanded="true"] .arrow{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+  .faq-a.open{max-height:300px}
+  .faq-a p{color:var(--muted);font-size:.9rem;line-height:1.7;padding:0 1.5rem 1.25rem}
+
+  /* AREAS SEO */
+  .areas{padding:4rem 2rem;max-width:1100px;margin:0 auto}
+  .areas-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+  .area-tag{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);color:rgba(240,248,255,.55);font-size:.8rem;padding:.35rem .85rem;border-radius:8px}
+
+  /* PRIVACY */
   .privacy{padding:6rem 2rem;max-width:800px;margin:0 auto}
   .privacy h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:2rem}
-  .privacy-block{background:rgba(255,255,255,.03);border:1px solid rgba(0,212,255,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
+  .privacy-block{background:var(--surface);border:1px solid rgba(0,212,255,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
   .privacy-block h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--aqua);margin-bottom:.75rem}
   .privacy-block p{color:var(--muted);font-size:.9rem;line-height:1.7}
-  footer{border-top:1px solid rgba(0,212,255,.1);padding:3rem 2rem;text-align:center}
-  .footer-logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
-  .footer-logo span{color:var(--aqua)}
-  footer p{color:var(--muted);font-size:.85rem;margin-top:.5rem}
-  footer a{color:var(--aqua);text-decoration:none}
+
+  /* FOOTER */
+  footer{border-top:1px solid rgba(0,212,255,.1);padding:4rem 2rem 3rem;max-width:1100px;margin:0 auto}
+  .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+  .footer-brand .footer-logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.75rem}
+  .footer-brand .footer-logo span{color:var(--aqua)}
+  .footer-brand p{color:var(--muted);font-size:.85rem;line-height:1.7;max-width:280px}
+  .footer-col h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,248,255,.5);margin-bottom:1rem}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .footer-col ul li a{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s}
+  .footer-col ul li a:hover{color:var(--aqua)}
+  .footer-bottom{border-top:1px solid rgba(0,212,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-bottom p{color:rgba(136,153,187,.5);font-size:.75rem}
+
+  /* ANIMATIONS */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-  @media(max-width:768px){.nav-links{display:none}}
+
+  /* MOBILE */
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .founder-card{grid-template-columns:1fr;text-align:center}
+    .footer-inner{grid-template-columns:1fr}
+    .footer-bottom{flex-direction:column;text-align:center}
+  }
+  @media(max-width:480px){
+    .hero{padding:7rem 1.5rem 4rem}
+    .stats-inner{grid-template-columns:1fr 1fr}
+  }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">🐬 Dolphin<span>Stats</span></div>
+  <a href="#" class="logo">🐬 Dolphin<span>Stats</span></a>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#precios">Precios</a></li>
+    <li><a href="#diferencial">Nosotros</a></li>
+    <li><a href="#precios">Modalidades</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#privacidad">Privacidad</a></li>
-    <li><a href="https://wa.me/51904106544" class="nav-cta">Contactar</a></li>
+    <li><a href="https://wa.me/51904106544" class="nav-cta">Solicitar asesoría</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section>
   <div class="hero">
-    <div class="hero-tag">🔬 Análisis de datos en ciencias de la salud · Lima, Perú</div>
-    <h1>Datos que <em>hablan</em><br>el idioma clínico</h1>
-    <p>Asesoría estadística para médicos, odontólogos e investigadores. Interpretamos tus resultados como clínicos, no solo como estadísticos.</p>
+    <div class="hero-tag">🔬 Consultoría científica especializada · Lima, Perú</div>
+    <h1>Donde la metodología rigurosa<br>se convierte en <em>evidencia publicable</em></h1>
+    <p class="hero-sub">Asesoramos a <strong>tesistas, investigadores y docentes universitarios</strong> de ciencias de la salud en diseño metodológico, bioestadística avanzada, epidemiología clínica y publicación científica internacional.</p>
+    <div class="hero-specs">
+      <span class="hero-spec">Bioestadística avanzada</span>
+      <span class="hero-spec">Epidemiología clínica</span>
+      <span class="hero-spec">Tesis ciencias de la salud</span>
+      <span class="hero-spec">Publicación Scopus / SciELO</span>
+      <span class="hero-spec">IA aplicada a investigación</span>
+    </div>
     <div class="hero-ctas">
-      <a href="https://wa.me/51904106544" class="btn-primary">💬 Escribir al WhatsApp</a>
-      <a href="#precios" class="btn-secondary">Ver paquetes →</a>
+      <a href="https://wa.me/51904106544?text=Hola,%20quiero%20solicitar%20asesor%C3%ADa%20en%20investigaci%C3%B3n" class="btn-primary">Solicitar asesoría →</a>
+      <a href="#servicios" class="btn-secondary">Explorar servicios</a>
     </div>
   </div>
 </section>
 
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div><div class="stat-num">15+</div><div class="stat-label">Años de experiencia clínica</div></div>
-    <div><div class="stat-num">4</div><div class="stat-label">Softwares estadísticos</div></div>
-    <div><div class="stat-num">24/7</div><div class="stat-label">Bot de consultas activo</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-label">Interpretación clínica</div></div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Años de experiencia clínica e investigación</div>
+    </div>
+    <div>
+      <div class="stat-num">STATA<br style="font-size:.5rem"> R · Python</div>
+      <div class="stat-label" style="margin-top:.6rem">Análisis reproducibles</div>
+    </div>
+    <div>
+      <div class="stat-num">STROBE<br style="font-size:.5rem">CONSORT · GRADE</div>
+      <div class="stat-label" style="margin-top:.6rem">Estándares internacionales</div>
+    </div>
+    <div>
+      <div class="stat-num">Scopus<br style="font-size:.5rem">SciELO</div>
+      <div class="stat-label" style="margin-top:.6rem">Soporte metodológico para publicación</div>
+    </div>
   </div>
 </div>
 
-<section class="diferencial" id="servicios">
-  <div class="section-label">Por qué DolphinStats</div>
-  <h2 class="section-title">El estadístico que<br>también es clínico</h2>
-  <p class="section-sub">No somos matemáticos que procesan números. Somos especialistas en salud que entienden qué significa cada resultado para el paciente.</p>
-  <div class="cards-grid">
-    <div class="card"><div class="card-icon">🩺</div><h3>Visión clínica</h3><p>Más de 15 años de experiencia clínica. Sabemos qué significa un OR de 2.3 en el contexto real de un paciente.</p></div>
-    <div class="card"><div class="card-icon">📊</div><h3>Multi-software</h3><p>Stata, SPSS, Power BI y Python. Nos adaptamos a tu metodología, no al revés.</p></div>
-    <div class="card"><div class="card-icon">🏥</div><h3>Experiencia hospitalaria</h3><p>12 años de estadística en el Hospital PNP. Conocemos el sistema de salud peruano desde adentro.</p></div>
-    <div class="card"><div class="card-icon">📝</div><h3>Resultados publicables</h3><p>Entregables listos para revistas Scopus y SciELO. Redacción de sección de resultados incluida.</p></div>
-    <div class="card"><div class="card-icon">⚡</div><h3>Respuesta rápida</h3><p>Bot inteligente disponible 24/7. El Dr. Leonid responde en horas, no días.</p></div>
-    <div class="card"><div class="card-icon">🤝</div><h3>Colaboración científica</h3><p>Posibilidad de co-autoría en investigaciones según acuerdo. Tu publicación, nuestro respaldo.</p></div>
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="section-label">Servicios especializados</div>
+  <h2 class="section-title">No hacemos solo estadística.<br>Construimos investigación sólida.</h2>
+  <p class="section-sub">Acompañamiento integral desde el diseño del protocolo hasta el manuscrito listo para enviar. Cada etapa con rigor metodológico y criterio clínico real.</p>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🧭</div>
+      <h3>Diseño Metodológico</h3>
+      <ul class="svc-list">
+        <li>Formulación de pregunta PICO</li>
+        <li>Hipótesis y objetivos</li>
+        <li>Operacionalización de variables</li>
+        <li>Cálculo muestral</li>
+        <li>Selección de diseño de estudio</li>
+        <li>Validación de instrumentos</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📊</div>
+      <h3>Bioestadística Aplicada</h3>
+      <ul class="svc-list">
+        <li>Estadística descriptiva e inferencial</li>
+        <li>Modelos de regresión (lineal, logística, Cox)</li>
+        <li>Análisis de supervivencia</li>
+        <li>Modelos multivariados</li>
+        <li>Análisis longitudinal</li>
+        <li>Resultados reproducibles y auditables</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🌍</div>
+      <h3>Epidemiología Clínica</h3>
+      <ul class="svc-list">
+        <li>Diseños observacionales y analíticos</li>
+        <li>Medidas de asociación y riesgo</li>
+        <li>Control de sesgo y confusión</li>
+        <li>Validez interna y externa</li>
+        <li>Interpretación epidemiológica avanzada</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📝</div>
+      <h3>Publicación Científica</h3>
+      <ul class="svc-list">
+        <li>Redacción científica formato IMRyD</li>
+        <li>Tablas y figuras para journal</li>
+        <li>Selección estratégica de revista</li>
+        <li>Respuesta a observaciones de revisores</li>
+        <li>Soporte hasta la aceptación</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🤖</div>
+      <h3>IA aplicada a Investigación</h3>
+      <ul class="svc-list">
+        <li>Automatización de análisis repetitivos</li>
+        <li>NLP para texto clínico y registros EHR</li>
+        <li>Modelos predictivos supervisados</li>
+        <li>Revisión asistida de literatura</li>
+        <li>Pipelines reproducibles con Python/R</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🎓</div>
+      <h3>Asesoría de Tesis</h3>
+      <ul class="svc-list">
+        <li>Acompañamiento desde el protocolo</li>
+        <li>Análisis estadístico completo</li>
+        <li>Revisión metodológica de borradores</li>
+        <li>Preparación para sustentación</li>
+        <li>Orientación para publicación posterior</li>
+      </ul>
+    </div>
   </div>
 </section>
 
+<!-- DIFERENCIAL -->
+<section class="diferencial" id="diferencial">
+  <div class="diferencial-inner">
+    <div class="section-label">¿Por qué DolphinStats?</div>
+    <h2 class="section-title">Autoridad metodológica<br>con criterio clínico real</h2>
+    <p class="section-sub">Muchos sitios comunican "hacemos estadística". Nosotros construimos investigación metodológicamente sólida y publicable, desde el diseño hasta el manuscrito.</p>
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="dif-icon">🩺</div>
+        <h3>Visión clínica real</h3>
+        <p>Más de 10 años de experiencia en investigación. Sabemos qué significa un OR de 2.3 en el contexto real de un paciente, no solo en un output de software.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">🔬</div>
+        <h3>Estándares internacionales</h3>
+        <p>Tu investigación cumple los criterios de las revistas más exigentes del mundo, desde el inicio.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">📤</div>
+        <h3>Orientado a publicación</h3>
+        <p>No entregamos solo tablas. Entregamos investigación publicable: redacción IMRyD, selección de journal y soporte metodológico hasta la aceptación.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">🤝</div>
+        <h3>Colaboración científica</h3>
+        <p>Posibilidad de co-autoría evaluada bajo criterios ICMJE. Tu investigación con respaldo metodológico experto y transparencia científica total.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">⚡</div>
+        <h3>Respuesta experta en &lt;24h</h3>
+        <p>Bot inteligente disponible 24/7. Nuestros expertos responden directamente en horas, no días. Acompañamiento real, no soporte externalizado.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">🛠</div>
+        <h3>Multi-software, tú decides</h3>
+        <p>SPSS, STATA, R y Python. Nos adaptamos a tu entorno, a tu metodología y a los requisitos de tu institución. No al revés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
 <section class="precios" id="precios">
   <div class="precios-inner">
-    <div class="section-label">Paquetes de servicio</div>
-    <h2 class="section-title">Elige tu nivel<br>de investigación</h2>
-    <p class="section-sub">Precios transparentes. Sin sorpresas. Resultados garantizados.</p>
+    <div class="section-label">Modalidades de acompañamiento</div>
+    <h2 class="section-title">Transparencia en cada etapa.<br>Resultados garantizados.</h2>
+    <p class="section-sub">Tres modalidades diseñadas según el alcance de tu proyecto. Sin sorpresas. Sin letra pequeña.</p>
     <div class="pricing-grid">
+
       <div class="precio-card">
         <div class="precio-icon">🔬</div>
-        <div class="precio-name">Análisis Claro</div>
-        <div class="precio-tag">"Entiendo mis resultados"</div>
-        <div class="precio-amount">S/ 500 <span>/ proyecto</span></div>
+        <div class="precio-name">Consultoría Puntual</div>
+        <div class="precio-tag">Análisis estadístico y revisión metodológica</div>
+        <div class="precio-amount">Desde S/ 550 <span>/ proyecto</span></div>
         <hr class="precio-divider">
         <ul class="precio-features">
-          <li><span class="check">✓</span> Estadística descriptiva completa</li>
-          <li><span class="check">✓</span> Tablas y gráficos para Word</li>
-          <li><span class="check">✓</span> Interpretación en lenguaje clínico</li>
-          <li><span class="check">✓</span> 1 ronda de ajustes</li>
-          <li><span class="no">✕</span> Pruebas de hipótesis avanzadas</li>
-          <li><span class="no">✕</span> Asesoría para publicación</li>
+          <li><span class="check">✓</span> Estadística descriptiva e inferencial completa</li>
+          <li><span class="check">✓</span> Tablas y gráficos para Word / journal</li>
+          <li><span class="check">✓</span> Interpretación metodológica y clínica</li>
+          <li><span class="check">✓</span> 1 ronda de ajustes incluida</li>
+          <li><span class="no">✕</span> Redacción de sección de resultados</li>
+          <li><span class="no">✕</span> Soporte para publicación</li>
         </ul>
-        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20An%C3%A1lisis%20Claro" class="precio-cta">Consultar →</a>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20la%20Consultor%C3%ADa%20Puntual" class="precio-cta">Consultar disponibilidad →</a>
       </div>
+
       <div class="precio-card featured">
         <div class="precio-badge">⭐ Más elegido</div>
         <div class="precio-icon">📊</div>
-        <div class="precio-name">Análisis Profundizado</div>
-        <div class="precio-tag">"Mi paper listo para enviar"</div>
-        <div class="precio-amount">S/ 950 <span>/ proyecto</span></div>
+        <div class="precio-name">Acompañamiento de Investigación</div>
+        <div class="precio-tag">Diseño, análisis y soporte de manuscrito</div>
+        <div class="precio-amount">Desde S/ 950 <span>/ proyecto</span></div>
         <hr class="precio-divider">
         <ul class="precio-features">
-          <li><span class="check">✓</span> Todo lo del paquete básico</li>
+          <li><span class="check">✓</span> Todo lo de la consultoría puntual</li>
           <li><span class="check">✓</span> Pruebas inferenciales completas</li>
           <li><span class="check">✓</span> Sección de resultados redactada</li>
           <li><span class="check">✓</span> Revisión de coherencia metodológica</li>
           <li><span class="check">✓</span> 2 rondas de ajustes</li>
-          <li><span class="no">✕</span> Acompañamiento en revisión por pares</li>
+          <li><span class="no">✕</span> Soporte en revisión por pares</li>
         </ul>
-        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20An%C3%A1lisis%20Profundizado" class="precio-cta">Consultar →</a>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20Acompa%C3%B1amiento%20de%20Investigaci%C3%B3n" class="precio-cta">Consultar disponibilidad →</a>
       </div>
+
       <div class="precio-card">
         <div class="precio-icon">🏆</div>
-        <div class="precio-name">Partner Científico</div>
-        <div class="precio-tag">"Publicamos juntos"</div>
-        <div class="precio-amount">S/ 1,500 <span>/ proyecto</span></div>
+        <div class="precio-name">Colaboración Científica Avanzada</div>
+        <div class="precio-tag">Proyectos complejos y publicación internacional</div>
+        <div class="precio-amount">Cotización <span>personalizada</span></div>
         <hr class="precio-divider">
         <ul class="precio-features">
-          <li><span class="check">✓</span> Todo lo anterior</li>
           <li><span class="check">✓</span> Diseño metodológico desde el inicio</li>
-          <li><span class="check">✓</span> Selección de revista Scopus/SciELO</li>
+          <li><span class="check">✓</span> Análisis estadístico avanzado</li>
+          <li><span class="check">✓</span> Selección estratégica de revista Scopus/SciELO</li>
           <li><span class="check">✓</span> Respuesta a observaciones del editor</li>
           <li><span class="check">✓</span> Ajustes ilimitados hasta aceptación</li>
-          <li><span class="check">✓</span> Co-autoría según acuerdo</li>
+          <li><span class="check">✓</span> Co-autoría evaluada bajo criterios ICMJE</li>
         </ul>
-        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20el%20paquete%20Partner%20Cient%C3%ADfico" class="precio-cta">Consultar →</a>
+        <a href="https://wa.me/51904106544?text=Hola,%20me%20interesa%20la%20Colaboraci%C3%B3n%20Cient%C3%ADfica%20Avanzada" class="precio-cta">Solicitar cotización →</a>
+      </div>
+    </div>
+    <p class="pricing-note">La co-autoría se evalúa exclusivamente bajo criterios internacionales de autoría científica (<a href="https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html" target="_blank" rel="noopener">ICMJE</a>). La participación en publicaciones implica contribución intelectual real y trazable al proceso de investigación.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-label">Preguntas frecuentes</div>
+  <h2 class="section-title">Lo que necesitas saber<br>antes de empezar</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Qué necesito tener listo para comenzar la asesoría?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>No necesitas tener todo resuelto. Puedes acudir con tu base de datos lista, con solo un protocolo preliminar, o incluso solo con tu pregunta de investigación. La primera consulta sirve precisamente para identificar en qué etapa estás y qué tipo de acompañamiento necesitas.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Trabajas con estudiantes de pregrado o solo con investigadores avanzados?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>Trabajamos con todos los niveles: estudiantes de pregrado elaborando su tesis, residentes, docentes universitarios y profesionales con proyectos de investigación independiente. El enfoque y la modalidad se adaptan al nivel y al objetivo de cada proyecto.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Qué softwares utilizas para el análisis estadístico?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>Trabajamos con SPSS, STATA, R y Python. Nos adaptamos al software que tu institución requiera o al que tú prefieras. Los scripts y resultados son completamente reproducibles y auditables.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cómo funciona la co-autoría?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>La co-autoría se evalúa únicamente bajo los criterios ICMJE: concepción o diseño del estudio, análisis e interpretación de datos, redacción o revisión crítica del manuscrito, y aprobación final. Si la contribución cumple esos criterios, se acuerda explícitamente. No existe co-autoría simbólica ni automática.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cuánto tiempo toma un análisis estadístico completo?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>Depende del tamaño y complejidad de tu base de datos. Un análisis descriptivo e inferencial estándar toma entre 3 y 7 días hábiles. Proyectos con modelos multivariados o análisis de supervivencia pueden tomar entre 7 y 14 días. Se acuerda el plazo antes de comenzar.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cuál es la confidencialidad de mis datos?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>Toda información compartida (bases de datos, protocolos, borradores) es estrictamente confidencial. No compartimos ni publicamos datos de clientes sin autorización explícita. Al finalizar el proyecto, los archivos son devueltos y eliminados de nuestros sistemas.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- AREAS SEO -->
+<section class="areas" aria-label="Áreas de especialización">
+  <div class="section-label">Áreas de especialización</div>
+  <div class="areas-grid">
+    <span class="area-tag">Medicina</span>
+    <span class="area-tag">Enfermería</span>
+    <span class="area-tag">Odontología</span>
+    <span class="area-tag">Salud pública</span>
+    <span class="area-tag">Nutrición clínica</span>
+    <span class="area-tag">Psicología clínica</span>
+    <span class="area-tag">Farmacia</span>
+    <span class="area-tag">Obstetricia</span>
+    <span class="area-tag">Epidemiología</span>
+    <span class="area-tag">Oncología</span>
+    <span class="area-tag">Infectología</span>
+    <span class="area-tag">Salud mental</span>
+  </div>
+</section>
+
+<!-- PRIVACY -->
 <section class="privacy" id="privacidad">
   <div class="section-label">Legal</div>
   <h2>Política de Privacidad</h2>
@@ -193,16 +496,62 @@
   <div class="privacy-block"><h3>1. Información que recopilamos</h3><p>A través de nuestro servicio de WhatsApp Business y formularios de contacto, recopilamos únicamente el número de teléfono, nombre (si lo proporcionas voluntariamente) y el contenido de los mensajes que nos envías para prestarte el servicio de asesoría estadística.</p></div>
   <div class="privacy-block"><h3>2. Uso de la información</h3><p>La información recopilada se utiliza exclusivamente para responder consultas sobre nuestros servicios, brindar asesoría estadística contratada, y mejorar la calidad de nuestras respuestas automatizadas. No compartimos tu información con terceros ni la usamos con fines publicitarios.</p></div>
   <div class="privacy-block"><h3>3. Almacenamiento y seguridad</h3><p>Los datos de conversación se almacenan temporalmente en memoria durante la sesión activa y no se persisten en bases de datos externas. Tu número de teléfono puede guardarse para seguimiento de consultas activas y se elimina a tu solicitud.</p></div>
-  <div class="privacy-block"><h3>4. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
-  <div class="privacy-block"><h3>5. Contacto</h3><p>Para consultas sobre esta política, contáctanos vía WhatsApp al <a href="https://wa.me/51904106544">+51 904 106 544</a>.</p></div>
+  <div class="privacy-block"><h3>4. Confidencialidad de proyectos</h3><p>Toda base de datos, protocolo o borrador compartido durante la asesoría es tratado con estricta confidencialidad. No publicamos ni compartimos información de proyectos de clientes sin autorización explícita y por escrito.</p></div>
+  <div class="privacy-block"><h3>5. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
+  <div class="privacy-block"><h3>6. Contacto</h3><p>Para consultas sobre esta política, contáctanos vía WhatsApp al <a href="https://wa.me/51904106544" style="color:var(--aqua);text-decoration:none">+51 904 106 544</a>.</p></div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">🐬 Dolphin<span>Stats</span></div>
-  <p>Análisis de datos en ciencias de la salud · Lima, Perú</p>
-  <p style="margin-top:1rem;"><a href="https://wa.me/51904106544">WhatsApp</a> · <a href="#privacidad">Política de Privacidad</a> · <a href="https://github.com/leonidcapo/DolphinStatsBot">GitHub</a></p>
-  <p style="margin-top:1rem;font-size:.75rem;color:rgba(136,153,187,.5);">© 2026 DolphinStats.</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">🐬 Dolphin<span>Stats</span></div>
+      <p>Consultoría académica especializada en investigación clínica, bioestadística y publicación científica para ciencias de la salud.</p>
+      <p style="margin-top:.75rem;font-size:.8rem;color:rgba(136,153,187,.5)">Lima, Perú · Atención Latinoamérica</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Diseño metodológico</a></li>
+        <li><a href="#servicios">Bioestadística</a></li>
+        <li><a href="#servicios">Epidemiología clínica</a></li>
+        <li><a href="#servicios">Publicación científica</a></li>
+        <li><a href="#servicios">IA en investigación</a></li>
+        <li><a href="#servicios">Asesoría de tesis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/51904106544">WhatsApp</a></li>
+        <li><a href="https://github.com/leonidcapo/DolphinStatsBot" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#privacidad">Política de Privacidad</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DolphinStats. Consultoría científica especializada.</p>
+    <p><a href="https://wa.me/51904106544" style="color:var(--aqua);text-decoration:none">+51 904 106 544</a></p>
+  </div>
 </footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
