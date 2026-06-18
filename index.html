@@ -523,7 +523,6 @@
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="https://dolphinstats-bot.onrender.com" target="_blank">Chat con el Bot</a></li>
         <li><a href="https://www.instagram.com/dsmillennium/?hl=es">Instagram</a></li>
         <li><a href="https://github.com/leonidcapo" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="#privacidad">Política de Privacidad</a></li>
@@ -556,41 +555,63 @@
 
 <!-- ── DolphinStats Chat Widget ─────────────────────────────────────── -->
 <style>
+  @keyframes ds-pulse {
+    0%   { box-shadow: 0 4px 20px rgba(0,212,255,.5), 0 0 0 0 rgba(0,212,255,.4); }
+    70%  { box-shadow: 0 4px 20px rgba(0,212,255,.5), 0 0 0 14px rgba(0,212,255,0); }
+    100% { box-shadow: 0 4px 20px rgba(0,212,255,.5), 0 0 0 0 rgba(0,212,255,0); }
+  }
+  @keyframes ds-bounce {
+    0%,100% { transform: translateY(0); }
+    40%     { transform: translateY(-7px); }
+    60%     { transform: translateY(-3px); }
+  }
+  @keyframes ds-slidein {
+    from { opacity:0; transform: translateY(20px) scale(.96); }
+    to   { opacity:1; transform: translateY(0) scale(1); }
+  }
+
   #ds-chat-btn {
     position: fixed;
     bottom: 28px;
     right: 28px;
     z-index: 9999;
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: linear-gradient(135deg, #00d4ff, #00ffcc);
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0,212,255,.5);
-    font-size: 28px;
+    font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: ds-pulse 2.4s ease-in-out infinite, ds-bounce 3.5s ease-in-out infinite;
     transition: transform .2s, box-shadow .2s;
   }
-  #ds-chat-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,212,255,.7); }
+  #ds-chat-btn:hover {
+    transform: scale(1.12);
+    animation: none;
+    box-shadow: 0 6px 32px rgba(0,212,255,.8);
+  }
 
   #ds-chat-overlay {
     position: fixed;
-    bottom: 100px;
+    bottom: 108px;
     right: 28px;
     z-index: 9998;
-    width: 400px;
-    height: 600px;
-    border-radius: 16px;
+    width: 460px;
+    height: 660px;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0,0,0,.5);
+    box-shadow: 0 12px 50px rgba(0,0,0,.6);
     display: none;
     flex-direction: column;
-    border: 1px solid rgba(0,212,255,.25);
+    border: 1px solid rgba(0,212,255,.3);
   }
-  #ds-chat-overlay.open { display: flex; }
+  #ds-chat-overlay.open {
+    display: flex;
+    animation: ds-slidein .25s ease;
+  }
 
   #ds-chat-header {
     background: #0a1628;
