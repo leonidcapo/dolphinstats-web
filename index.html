@@ -8,7 +8,7 @@
 <meta name="keywords" content="bioestadística, investigación clínica, asesoría tesis ciencias de la salud, análisis estadístico SPSS STATA R Python, consultoría investigación biomédica, epidemiología clínica, publicación Scopus SciELO, IA investigación médica, Lima Perú">
 <link rel="canonical" href="https://leonidcapo.github.io/dolphinstats-web/">
 <!-- Security headers via meta tags -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://dolphinstats-bot.onrender.com; img-src 'self' data:; connect-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://dolphinstats-bot.onrender.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
@@ -46,7 +46,8 @@
   section{position:relative;z-index:1}
 
   /* HERO */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 2rem 5rem;max-width:1100px;margin:0 auto}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;padding:9rem 2rem 5rem;max-width:1100px;margin:0 auto}
+  .hero-text{display:flex;flex-direction:column;justify-content:center}
   .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--aqua);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
   .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
@@ -59,6 +60,34 @@
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,212,255,.5)}
   .btn-secondary{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:border-color .2s,color .2s}
   .btn-secondary:hover{border-color:var(--aqua);color:var(--aqua)}
+
+  /* HERO MEDIA */
+  .hero-media{position:relative;animation:fadeUp .8s ease .35s both}
+  .hero-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .hero-media img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+  .hero-media .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,212,255,.10),rgba(10,22,40,.55))}
+  .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+  .hero-media .chip b{color:var(--accent);font-weight:600}
+
+  /* PROCESO BAND */
+  .proceso{max-width:1100px;margin:1rem auto;padding:3rem 2rem}
+  .proceso-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  .pcard{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(0,212,255,.16);min-height:200px}
+  .pcard img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+  .pcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.15),rgba(10,22,40,.85))}
+  .pcard .txt{position:absolute;bottom:0;left:0;right:0;padding:1.1rem 1.2rem}
+  .pcard .txt .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+  .pcard .txt .t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
+
+  /* CTA BAND */
+  .ctaband{max-width:1100px;margin:1rem auto 3rem;padding:0 2rem}
+  .ctaband-inner{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,212,255,.2);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
+  .ctaband-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ctaband-inner .ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.92),rgba(10,22,40,.78))}
+  .ctaband-content{position:relative;padding:2.8rem 2rem}
+  .ctaband-content .k{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+  .ctaband-content h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.12;margin:0 auto .9rem;max-width:640px}
+  .ctaband-content p{color:var(--muted);font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1.6rem}
 
   /* STATS BAR */
   .stats-bar{border-top:1px solid rgba(0,212,255,.1);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(0,212,255,.03);padding:2rem}
@@ -163,6 +192,9 @@
   /* MOBILE */
   @media(max-width:768px){
     .nav-links{display:none}
+    .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto}
+    .hero-media{max-width:420px}
+    .proceso-grid{grid-template-columns:1fr}
     .founder-card{grid-template-columns:1fr;text-align:center}
     .footer-inner{grid-template-columns:1fr}
     .footer-bottom{flex-direction:column;text-align:center}
@@ -191,19 +223,44 @@
 <!-- HERO -->
 <section>
   <div class="hero">
-    <div class="hero-tag">🔬 Consultoría científica especializada · Lima, Perú</div>
-    <h1>Del dato <br style="font-size:.5rem"> <em>al artículo</em></h1>
-    <p class="hero-sub">Asesoramos a <strong>tesistas, investigadores y docentes universitarios</strong> de ciencias de la salud en diseño metodológico, bioestadística avanzada, epidemiología clínica y publicación científica internacional.</p>
-    <div class="hero-specs">
-      <span class="hero-spec">Bioestadística avanzada</span>
-      <span class="hero-spec">Epidemiología clínica</span>
-      <span class="hero-spec">Tesis ciencias de la salud</span>
-      <span class="hero-spec">Publicación Scopus / SciELO</span>
-      <span class="hero-spec">IA aplicada a investigación</span>
+    <div class="hero-text">
+      <div class="hero-tag">🔬 Consultoría científica especializada · Lima, Perú</div>
+      <h1>Del dato <br style="font-size:.5rem"> <em>al artículo</em></h1>
+      <p class="hero-sub">Asesoramos a <strong>tesistas, investigadores y docentes universitarios</strong> de ciencias de la salud en diseño metodológico, bioestadística avanzada, epidemiología clínica y publicación científica internacional.</p>
+      <div class="hero-specs">
+        <span class="hero-spec">Bioestadística avanzada</span>
+        <span class="hero-spec">Epidemiología clínica</span>
+        <span class="hero-spec">Tesis ciencias de la salud</span>
+        <span class="hero-spec">Publicación Scopus / SciELO</span>
+        <span class="hero-spec">IA aplicada a investigación</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="https://dolphinstats-bot.onrender.com" target="_blank" class="btn-primary">Solicitar asesoría →</a>
+        <a href="#servicios" class="btn-secondary">Explorar servicios</a>
+      </div>
     </div>
-    <div class="hero-ctas">
-      <a href="https://dolphinstats-bot.onrender.com" target="_blank" class="btn-primary">Solicitar asesoría →</a>
-      <a href="#servicios" class="btn-secondary">Explorar servicios</a>
+    <div class="hero-media">
+      <div class="frame">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80" alt="Análisis de datos en ciencias de la salud" loading="lazy">
+        <div class="tint"></div>
+        <div class="chip">🩺 <span>Del <b>dato clínico</b> al resultado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso">
+  <div class="proceso-grid">
+    <div class="pcard">
+      <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=700&q=80" alt="Profesional de salud" loading="lazy" style="object-position:center 18%">
+      <div class="ov"></div>
+      <div class="txt"><div class="k">Para profesionales de salud</div><div class="t">Pensamos como clínicos</div></div>
+    </div>
+    <div class="pcard">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="Equipo de investigación" loading="lazy">
+      <div class="ov"></div>
+      <div class="txt"><div class="k">Acompañamiento real</div><div class="t">Contigo en cada etapa</div></div>
     </div>
   </div>
 </section>
@@ -504,6 +561,20 @@
   <div class="privacy-block"><h3>4. Confidencialidad de proyectos</h3><p>Toda base de datos, protocolo o borrador compartido durante la asesoría es tratado con estricta confidencialidad. No publicamos ni compartimos información de proyectos de clientes sin autorización explícita y por escrito.</p></div>
   <div class="privacy-block"><h3>5. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
   <div class="privacy-block"><h3>6. Contacto</h3><p>Para consultas sobre esta política, contáctanos a través de nuestro <a href="https://dolphinstats-bot.onrender.com" target="_blank" style="color:var(--aqua);text-decoration:none">Bot en línea 24/7</a>.</p></div>
+</section>
+
+<!-- CTA BAND -->
+<section class="ctaband">
+  <div class="ctaband-inner">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1100&q=80" alt="Colaboración en investigación científica" loading="lazy">
+    <div class="ov"></div>
+    <div class="ctaband-content">
+      <div class="k">Empieza hoy</div>
+      <h2>¿Listo para llevar tu investigación al siguiente nivel?</h2>
+      <p>Cuéntanos sobre tu proyecto y un especialista te responderá en menos de 24 horas.</p>
+      <a href="https://dolphinstats-bot.onrender.com" target="_blank" class="btn-primary">Solicitar asesoría →</a>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
