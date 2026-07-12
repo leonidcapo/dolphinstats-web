@@ -42,6 +42,19 @@
   .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
   .nav-links a:hover{color:var(--aqua)}
+
+  /* MEGA MENU — Explorar */
+  .nav-drop{position:relative}
+  .nav-drop>a .caret{display:inline-block;margin-left:.3rem;font-size:.6rem;transition:transform .25s}
+  .nav-drop:hover>a .caret,.nav-drop:focus-within>a .caret{transform:rotate(180deg)}
+  .mega{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(10px);width:600px;background:rgba(10,22,40,.97);backdrop-filter:blur(20px);border:1px solid rgba(0,212,255,.2);border-radius:18px;padding:1rem;display:grid;grid-template-columns:1fr 1fr;gap:.3rem;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s;box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(0,255,204,.05) inset;z-index:200}
+  .mega::before{content:'';position:absolute;top:-16px;left:0;right:0;height:16px}
+  .nav-drop:hover .mega,.nav-drop:focus-within .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .mega a{display:flex;gap:.75rem;align-items:flex-start;padding:.7rem .85rem;border-radius:12px;transition:background .2s}
+  .mega a:hover{background:rgba(0,212,255,.08)}
+  .mega .num{font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:var(--aqua);margin-top:.2rem;opacity:.85}
+  .mega b{display:block;color:var(--white);font-size:.85rem;font-weight:600;margin-bottom:.1rem}
+  .mega .d{font-size:.72rem;color:var(--muted);line-height:1.4}
   .nav-cta{background:var(--aqua);color:var(--ocean)!important;padding:.5rem 1.2rem;border-radius:100px;font-weight:600!important;transition:box-shadow .2s!important}
   .nav-cta:hover{box-shadow:0 0 20px rgba(0,212,255,.4)}
   section{position:relative;z-index:1}
@@ -54,7 +67,16 @@
   .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--aqua);opacity:.4;border-radius:2px}
   .hero-sub{font-size:1.1rem;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:1.5rem;animation:fadeUp .8s ease .2s both}
-  .section-sub{line-height:1.75}
+
+  /* SECTION EYEBROWS — numerados automáticamente */
+  body{counter-reset:sec}
+  .section-label{counter-increment:sec;display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.25);color:var(--aqua);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:100px;margin-bottom:1.4rem;width:fit-content}
+  .section-label::before{content:counter(sec,decimal-leading-zero);font-family:'Syne',sans-serif;font-weight:800;color:var(--accent);letter-spacing:0}
+  .section-label::after{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--aqua),transparent)}
+  .areas .section-label{counter-increment:sec 0}
+  .areas .section-label::before{content:'✦'}
+  .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem}
+  .section-sub{line-height:1.75;color:var(--muted);max-width:680px;font-size:1rem;margin-bottom:2rem}
   .hero-specs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;animation:fadeUp .8s ease .25s both}
   .hero-spec{background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);color:var(--aqua);font-size:.8rem;font-weight:500;padding:.3rem .85rem;border-radius:100px}
   .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
@@ -244,11 +266,22 @@
 <nav>
   <a href="#" class="logo">🐬 Dolphin<span>Stats</span></a>
   <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
+    <li class="nav-drop">
+      <a href="#servicios">Explorar<span class="caret">▼</span></a>
+      <div class="mega">
+        <a href="#servicios"><span class="num">01</span><span><b>Servicios especializados</b><span class="d">Seis áreas, del diseño a la publicación</span></span></a>
+        <a href="#diferencial"><span class="num">02</span><span><b>¿Por qué DolphinStats?</b><span class="d">Autoridad metodológica con criterio clínico</span></span></a>
+        <a href="#razon"><span class="num">03</span><span><b>Nuestra razón de ser</b><span class="d">El propósito detrás de cada análisis</span></span></a>
+        <a href="#metodo"><span class="num">04</span><span><b>Cómo trabajamos</b><span class="d">Un proceso, cinco etapas</span></span></a>
+        <a href="#principios"><span class="num">05</span><span><b>Nuestros principios</b><span class="d">Lo que guía cada decisión</span></span></a>
+        <a href="#precios"><span class="num">06</span><span><b>Modalidades</b><span class="d">Tres planes, precios transparentes</span></span></a>
+        <a href="#faq"><span class="num">07</span><span><b>Preguntas frecuentes</b><span class="d">Lo esencial antes de empezar</span></span></a>
+        <a href="#privacidad"><span class="num">08</span><span><b>Legal</b><span class="d">Política de privacidad</span></span></a>
+      </div>
+    </li>
     <li><a href="#diferencial">Nosotros</a></li>
     <li><a href="#precios">Modalidades</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#privacidad">Privacidad</a></li>
     <li><a href="https://dolphinstats-bot.onrender.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Solicitar asesoría</a></li>
   </ul>
 </nav>
