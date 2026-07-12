@@ -135,8 +135,14 @@
   .principio-chip p{color:var(--muted);font-size:.8rem;line-height:1.5;margin:0}
 
   /* RAZON DE SER */
-  .razon{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+  .razon{padding:6rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
   .razon-quote{border-left:3px solid var(--aqua);padding:.4rem 0 .4rem 1.4rem;margin-top:2.5rem;font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;line-height:1.45;max-width:640px;color:var(--white)}
+  .razon-media{position:relative}
+  .razon-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .razon-media img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+  .razon-media .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,212,255,.10),rgba(10,22,40,.55))}
+  .razon-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+  .razon-media .chip b{color:var(--accent);font-weight:600}
 
   /* METODO / COMO TRABAJAMOS */
   .metodo{padding:6rem 2rem;max-width:1100px;margin:0 auto}
@@ -217,6 +223,8 @@
     .nav-links{display:none}
     .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto}
     .hero-media{max-width:420px}
+    .razon{grid-template-columns:1fr;gap:2rem;padding:4rem 1.5rem}
+    .razon-media{max-width:420px}
     .proceso-grid{grid-template-columns:1fr}
     .founder-card{grid-template-columns:1fr;text-align:center}
     .footer-inner{grid-template-columns:1fr}
@@ -431,10 +439,19 @@
 
 <!-- RAZON DE SER -->
 <section class="razon" id="razon">
-  <div class="section-label">Nuestra razón de ser</div>
-  <h2 class="section-title">La investigación puede transformar la salud.</h2>
-  <p class="section-sub">DolphinStats nació con un propósito claro: acelerar la generación de evidencia científica de calidad mediante metodología rigurosa, análisis avanzado e innovación tecnológica. No medimos nuestro éxito por la cantidad de análisis realizados, sino por el conocimiento que ayudamos a construir — y por las decisiones en salud que ese conocimiento puede mejorar.</p>
-  <div class="razon-quote">"Una mejor investigación produce mejor evidencia. Y una mejor evidencia contribuye a construir una mejor salud para todos."</div>
+  <div class="razon-text">
+    <div class="section-label">Nuestra razón de ser</div>
+    <h2 class="section-title">La investigación puede transformar la salud.</h2>
+    <p class="section-sub">DolphinStats nació con un propósito claro: acelerar la generación de evidencia científica de calidad mediante metodología rigurosa, análisis avanzado e innovación tecnológica. No medimos nuestro éxito por la cantidad de análisis realizados, sino por el conocimiento que ayudamos a construir — y por las decisiones en salud que ese conocimiento puede mejorar.</p>
+    <div class="razon-quote">"Una mejor investigación produce mejor evidencia. Y una mejor evidencia contribuye a construir una mejor salud para todos."</div>
+  </div>
+  <div class="razon-media">
+    <div class="frame">
+      <img src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=900&q=80&auto=format&fit=crop" alt="Microscopios en un laboratorio de investigación científica" loading="lazy" decoding="async">
+      <div class="tint"></div>
+      <div class="chip">🔬 <span>Ciencia <b>rigurosa</b>, resultados reales</span></div>
+    </div>
+  </div>
 </section>
 
 <!-- COMO TRABAJAMOS -->
