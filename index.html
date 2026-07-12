@@ -25,6 +25,7 @@
     --white:#f0f8ff;
     --muted:#8899bb;
     --accent:#00ffcc;
+    --lavender:#7b7fc4;
     --surface:rgba(255,255,255,.03);
     --border:rgba(0,212,255,.12);
   }
@@ -124,6 +125,14 @@
   .dif-icon{font-size:2rem;margin-bottom:1rem}
   .dif-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
   .dif-card p{color:var(--muted);font-size:.875rem;line-height:1.65}
+
+  /* PRINCIPIOS — franja compacta, distinta de las tarjetas de Diferencial */
+  .principios-strip{display:flex;flex-wrap:wrap;gap:1rem;max-width:1100px;margin:0 auto}
+  .principio-chip{flex:1 1 260px;background:rgba(123,127,196,.05);border:1px solid rgba(123,127,196,.22);border-radius:12px;padding:1.1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;transition:border-color .3s,background .3s}
+  .principio-chip:hover{border-color:rgba(123,127,196,.45);background:rgba(123,127,196,.09)}
+  .principio-chip .p-icon{font-size:1.1rem;flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:rgba(123,127,196,.15);display:flex;align-items:center;justify-content:center}
+  .principio-chip h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--lavender);margin-bottom:.25rem}
+  .principio-chip p{color:var(--muted);font-size:.8rem;line-height:1.5;margin:0}
 
   /* RAZON DE SER */
   .razon{padding:6rem 2rem;max-width:1100px;margin:0 auto}
@@ -447,14 +456,13 @@
   <div class="diferencial-inner">
     <div class="section-label">Nuestros principios</div>
     <h2 class="section-title">Lo que guía cada<br>decisión metodológica</h2>
-    <p class="section-sub">Nuestra forma de trabajar está guiada por principios que orientan cada decisión técnica y metodológica.</p>
-    <div class="dif-grid">
-      <div class="dif-card"><div class="dif-icon">🔬</div><h3>Rigor científico</h3><p>Cada recomendación se fundamenta en evidencia, estándares metodológicos internacionales y buenas prácticas de investigación.</p></div>
-      <div class="dif-card"><div class="dif-icon">⚖️</div><h3>Integridad</h3><p>Promovemos una investigación ética, transparente y reproducible, respetando la autoría, la confidencialidad y la integridad científica.</p></div>
-      <div class="dif-card"><div class="dif-icon">⚡</div><h3>Innovación</h3><p>Incorporamos inteligencia artificial y nuevas tecnologías para potenciar la productividad científica, siempre bajo criterio experto.</p></div>
-      <div class="dif-card"><div class="dif-icon">🤝</div><h3>Colaboración</h3><p>Entendemos la consultoría como un trabajo conjunto. Escuchamos, orientamos y construimos soluciones junto a nuestros clientes.</p></div>
-      <div class="dif-card"><div class="dif-icon">📚</div><h3>Aprendizaje continuo</h3><p>La ciencia evoluciona permanentemente. Nos mantenemos en constante actualización acorde al estado del arte.</p></div>
-      <div class="dif-card"><div class="dif-icon">🎯</div><h3>Impacto</h3><p>Buscamos contribuir al desarrollo de evidencia que fortalezca la práctica clínica, la educación y la toma de decisiones en salud.</p></div>
+    <div class="principios-strip">
+      <div class="principio-chip"><div class="p-icon">🔬</div><div><h3>Rigor científico</h3><p>Evidencia y buenas prácticas de investigación.</p></div></div>
+      <div class="principio-chip"><div class="p-icon">⚖️</div><div><h3>Integridad</h3><p>Investigación ética, transparente y reproducible.</p></div></div>
+      <div class="principio-chip"><div class="p-icon">⚡</div><div><h3>Innovación</h3><p>IA y nuevas tecnologías bajo criterio experto.</p></div></div>
+      <div class="principio-chip"><div class="p-icon">🤝</div><div><h3>Colaboración</h3><p>Escuchamos, orientamos y construimos juntos.</p></div></div>
+      <div class="principio-chip"><div class="p-icon">📚</div><div><h3>Aprendizaje continuo</h3><p>Actualización constante al estado del arte.</p></div></div>
+      <div class="principio-chip"><div class="p-icon">🎯</div><div><h3>Impacto</h3><p>Evidencia que fortalece decisiones en salud.</p></div></div>
     </div>
   </div>
 </section>
@@ -463,7 +471,7 @@
 <section class="precios" id="precios">
   <div class="precios-inner">
     <div class="section-label">Modalidades de acompañamiento</div>
-    <h2 class="section-title">Transparencia en cada etapa.<br>Resultados garantizados.</h2>
+    <h2 class="section-title">Transparencia en cada etapa.<br>Compromiso en cada entrega.</h2>
     <p class="section-sub">Tres modalidades diseñadas según el alcance de tu proyecto. Sin sorpresas. Sin letra pequeña.</p>
     <div class="pricing-grid">
 
@@ -585,6 +593,20 @@
   </div>
 </section>
 
+<!-- CTA BAND -->
+<section class="ctaband">
+  <div class="ctaband-inner">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1100&q=80&auto=format&fit=crop" alt="Investigadores analizando datos y anotaciones durante una asesoría estadística" loading="lazy" decoding="async">
+    <div class="ov"></div>
+    <div class="ctaband-content">
+      <div class="k">Empieza hoy</div>
+      <h2>¿Listo para llevar tu investigación al siguiente nivel?</h2>
+      <p>Cuéntanos sobre tu proyecto y un especialista te responderá en menos de 24 horas.</p>
+      <a href="https://dolphinstats-bot.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Solicitar asesoría →</a>
+    </div>
+  </div>
+</section>
+
 <!-- AREAS SEO -->
 <section class="areas" aria-label="Áreas de especialización">
   <div class="section-label">Áreas de especialización</div>
@@ -615,20 +637,6 @@
   <div class="privacy-block"><h3>4. Confidencialidad de proyectos</h3><p>Toda base de datos, protocolo o borrador compartido durante la asesoría es tratado con estricta confidencialidad. No publicamos ni compartimos información de proyectos de clientes sin autorización explícita y por escrito.</p></div>
   <div class="privacy-block"><h3>5. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
   <div class="privacy-block"><h3>6. Contacto</h3><p>Para consultas sobre esta política, contáctanos a través de nuestro <a href="https://dolphinstats-bot.onrender.com" target="_blank" rel="noopener noreferrer" style="color:var(--aqua);text-decoration:none">Bot en línea 24/7</a>.</p></div>
-</section>
-
-<!-- CTA BAND -->
-<section class="ctaband">
-  <div class="ctaband-inner">
-    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1100&q=80&auto=format&fit=crop" alt="Investigadores analizando datos y anotaciones durante una asesoría estadística" loading="lazy" decoding="async">
-    <div class="ov"></div>
-    <div class="ctaband-content">
-      <div class="k">Empieza hoy</div>
-      <h2>¿Listo para llevar tu investigación al siguiente nivel?</h2>
-      <p>Cuéntanos sobre tu proyecto y un especialista te responderá en menos de 24 horas.</p>
-      <a href="https://dolphinstats-bot.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Solicitar asesoría →</a>
-    </div>
-  </div>
 </section>
 
 <!-- FOOTER -->
