@@ -243,12 +243,17 @@
   /* ANIMATIONS */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
+  /* TABLET */
+  @media(max-width:1024px){
+    .hero-watermark{width:220px;height:220px;top:-10px;left:-40px}
+  }
+
   /* MOBILE */
   @media(max-width:768px){
     .nav-links{display:none}
     .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto}
     .hero-media{max-width:420px}
-    .hero-watermark{width:200px;height:200px;top:0;left:-20px}
+    .hero-watermark{width:160px;height:160px;top:-20px;left:-30px}
     .razon{grid-template-columns:1fr;gap:2rem;padding:4rem 1.5rem}
     .razon-media{max-width:420px}
     .proceso-grid{grid-template-columns:1fr}
@@ -258,6 +263,7 @@
   }
   @media(max-width:480px){
     .hero{padding:7rem 1.5rem 4rem}
+    .hero-watermark{width:120px;height:120px;top:-15px;left:-20px}
     .stats-inner{grid-template-columns:1fr;gap:1.5rem}
     .stat-num{font-size:1.8rem}
   }
