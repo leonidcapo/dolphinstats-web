@@ -57,6 +57,7 @@
     btn.addEventListener('click', function () {
       overlay.classList.toggle('open');
       ensureFrame();
+      btn.classList.add('ds-settled');
     });
   }
   if (closeBtn) {
