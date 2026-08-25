@@ -140,6 +140,11 @@
   .svc-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
   .svc-list li{font-size:.85rem;color:var(--muted);display:flex;gap:.5rem;align-items:flex-start;line-height:1.5}
   .svc-list li::before{content:'→';color:var(--aqua);flex-shrink:0;font-size:.75rem;margin-top:2px}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
 
   /* DIFERENCIAL */
   .diferencial{padding:6rem 2rem;background:rgba(0,212,255,.02);border-top:1px solid rgba(0,212,255,.08);border-bottom:1px solid rgba(0,212,255,.08)}
@@ -374,7 +379,7 @@
   <h2 class="section-title">No hacemos solo estadística.<br>Construimos investigación sólida.</h2>
   <p class="section-sub">Acompañamiento integral desde el diseño del protocolo hasta el manuscrito listo para enviar. Cada etapa con rigor metodológico y criterio clínico real.</p>
   <div class="services-grid">
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">🧭</div>
       <h3>Diseño Metodológico</h3>
       <ul class="svc-list">
@@ -386,7 +391,7 @@
         <li>Validación de instrumentos</li>
       </ul>
     </div>
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">📊</div>
       <h3>Bioestadística Aplicada</h3>
       <ul class="svc-list">
@@ -398,7 +403,7 @@
         <li>Resultados reproducibles y auditables</li>
       </ul>
     </div>
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">🌍</div>
       <h3>Epidemiología Clínica</h3>
       <ul class="svc-list">
@@ -409,7 +414,7 @@
         <li>Interpretación epidemiológica avanzada</li>
       </ul>
     </div>
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">📝</div>
       <h3>Publicación Científica</h3>
       <ul class="svc-list">
@@ -420,7 +425,7 @@
         <li>Soporte hasta la aceptación</li>
       </ul>
     </div>
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">🤖</div>
       <h3>IA aplicada a Investigación</h3>
       <ul class="svc-list">
@@ -431,7 +436,7 @@
         <li>Pipelines reproducibles con Python/R</li>
       </ul>
     </div>
-    <div class="svc-card">
+    <div class="svc-card reveal">
       <div class="svc-icon">🎓</div>
       <h3>Asesoría de Tesis</h3>
       <ul class="svc-list">
@@ -541,7 +546,7 @@
     <p class="section-sub">Tres modalidades diseñadas según el alcance de tu proyecto. Sin sorpresas. Sin letra pequeña.</p>
     <div class="pricing-grid">
 
-      <div class="precio-card">
+      <div class="precio-card reveal">
         <div class="precio-icon">🔬</div>
         <div class="precio-name">Consultoría Puntual</div>
         <div class="precio-tag">Análisis estadístico y revisión metodológica</div>
@@ -558,7 +563,7 @@
         <a href="#" class="precio-cta">Consultar disponibilidad →</a>
       </div>
 
-      <div class="precio-card featured">
+      <div class="precio-card featured reveal">
         <div class="precio-badge">⭐ Más elegido</div>
         <div class="precio-icon">📊</div>
         <div class="precio-name">Acompañamiento de Investigación</div>
@@ -576,7 +581,7 @@
         <a href="#" class="precio-cta">Consultar disponibilidad →</a>
       </div>
 
-      <div class="precio-card">
+      <div class="precio-card reveal">
         <div class="precio-icon">🏆</div>
         <div class="precio-name">Colaboración Científica Avanzada</div>
         <div class="precio-tag">Proyectos complejos y publicación internacional</div>
