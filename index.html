@@ -63,6 +63,7 @@
 
   /* HERO */
   .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;padding:9rem 2rem 5rem;max-width:1100px;margin:0 auto}
+  .hero>picture{position:absolute;top:0;left:0}
   .hero-watermark{position:absolute;top:1rem;left:-60px;width:340px;height:340px;object-fit:contain;opacity:.1;pointer-events:none;z-index:0;filter:brightness(0) invert(1) blur(.3px)}
   .hero-text,.hero-media{position:relative;z-index:1}
   .hero-text{display:flex;flex-direction:column;justify-content:center}
@@ -308,11 +309,11 @@
 
 <!-- HERO -->
 <section>
-  <picture>
-    <source srcset="logo-dolphin.webp" type="image/webp">
-    <img class="hero-watermark" src="logo-dolphin.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-  </picture>
   <div class="hero">
+    <picture>
+      <source srcset="logo-dolphin.webp" type="image/webp">
+      <img class="hero-watermark" src="logo-dolphin.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    </picture>
     <div class="hero-text">
       <div class="hero-tag">Consultoría científica especializada · Lima, Perú</div>
       <h1>Del dato <br style="font-size:.5rem"> <em>al artículo</em></h1>
