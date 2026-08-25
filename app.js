@@ -18,6 +18,13 @@
     });
   }
 
+  // Safety net: force-reveal anything still hidden after 4s (e.g. observer failed)
+  setTimeout(function () {
+    document.querySelectorAll('.reveal:not(.in-view)').forEach(function (el) {
+      el.classList.add('in-view');
+    });
+  }, 4000);
+
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(function (btn) {
     btn.addEventListener('click', function () {

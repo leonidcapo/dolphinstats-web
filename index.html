@@ -131,7 +131,7 @@
   /* SERVICIOS */
   .servicios{padding:6rem 2rem;max-width:1100px;margin:0 auto}
   .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-  .svc-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden}
+  .svc-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:border-color .3s,background .3s,transform .6s,opacity .6s;position:relative;overflow:hidden}
   .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),transparent);opacity:0;transition:opacity .3s}
   .svc-card:hover{border-color:rgba(0,212,255,.35);background:rgba(0,212,255,.05);transform:translateY(-4px)}
   .svc-card:hover::before{opacity:1}
@@ -190,9 +190,12 @@
   .precios{padding:6rem 2rem}
   .precios-inner{max-width:1100px;margin:0 auto}
   .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
-  .precio-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;transition:transform .3s}
+  .precio-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;transition:transform .6s,opacity .6s ease}
   .precio-card:hover{transform:translateY(-6px)}
+  .precio-card.featured:hover{transform:translateY(-6px) scale(1.02)}
   .precio-card.featured{border-color:var(--aqua);background:rgba(0,212,255,.07);box-shadow:0 0 40px rgba(0,212,255,.15);transform:scale(1.02)}
+  .precio-card.featured.reveal{transform:scale(1.02) translateY(24px)}
+  .precio-card.featured.reveal.in-view{transform:scale(1.02)}
   .precio-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--aqua);color:var(--ocean);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap}
   .precio-icon{font-size:2rem;margin-bottom:1rem}
   .precio-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
@@ -275,6 +278,7 @@
     .stat-num{font-size:1.8rem}
   }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
