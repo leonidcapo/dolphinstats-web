@@ -109,6 +109,25 @@
   .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,117,198,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:#f0f8ff;display:flex;align-items:center;gap:.5rem}
   .hero-media .chip b{color:#f0f8ff;font-weight:600}
 
+  /* NOVEDADES */
+  .novedades{max-width:1100px;margin:1rem auto;padding:0 2rem}
+  .novedades-track-wrap{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,117,198,.16);background:var(--surface)}
+  .novedades-track{display:flex;transition:transform .6s ease}
+  @media(prefers-reduced-motion:reduce){.novedades-track{transition:none}}
+  .novedad-slide{flex:0 0 100%;display:flex;align-items:center;gap:1.5rem;padding:2rem 2.2rem;text-decoration:none;color:inherit}
+  .novedad-slide .tag{display:inline-flex;align-items:center;background:rgba(0,117,198,.08);color:var(--aqua);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px;margin-bottom:.6rem;width:fit-content}
+  .novedad-slide h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:.4rem;color:var(--white)}
+  .novedad-slide p{color:var(--muted);font-size:.88rem;line-height:1.5;margin:0}
+  .novedad-slide .arrow{margin-left:auto;flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--aqua);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .2s}
+  .novedad-slide:hover .arrow{transform:translateX(4px)}
+  .novedades-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+  .novedad-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,48,96,.2);border:none;cursor:pointer;padding:0;transition:background .2s,width .2s}
+  .novedad-dot.active{background:var(--aqua);width:22px;border-radius:4px}
+  @media(max-width:640px){
+    .novedad-slide{flex-direction:column;align-items:flex-start;gap:.8rem;padding:1.6rem 1.4rem}
+    .novedad-slide .arrow{margin-left:0}
+  }
+
   /* PROCESO BAND */
   .proceso{max-width:1100px;margin:1rem auto;padding:3rem 2rem}
   .proceso-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -338,6 +357,39 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- NOVEDADES -->
+<section class="novedades" aria-label="Novedades">
+  <div class="novedades-track-wrap">
+    <div class="novedades-track" id="novedades-track">
+      <a class="novedad-slide" href="https://registro-dolphinstats.netlify.app" target="_blank" rel="noopener noreferrer">
+        <div>
+          <span class="tag">Campaña</span>
+          <h3>Tu tesis no tiene por qué empezar en cero</h3>
+          <p>Encuentra una línea de investigación con relevancia clínica y respaldo metodológico. Regístrate gratis.</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="novedad-slide" href="https://www.instagram.com/dsmillennium/?hl=es" target="_blank" rel="noopener noreferrer">
+        <div>
+          <span class="tag">Reel</span>
+          <h3>¿Cómo responder a tu jurado de tesis?</h3>
+          <p>Estrategias para brillar en tu sustentación. Mira el reel en nuestro Instagram.</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="novedad-slide" href="https://www.linkedin.com/in/dolphinstats-perú-249579418?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">
+        <div>
+          <span class="tag">Artículo</span>
+          <h3>R lidera la estadística en salud</h3>
+          <p>El 44% de los investigadores ya usa R como herramienta principal. Léelo en nuestro LinkedIn.</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+  <div class="novedades-dots" id="novedades-dots"></div>
 </section>
 
 <!-- PROCESO -->

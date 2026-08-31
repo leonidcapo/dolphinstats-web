@@ -180,3 +180,65 @@
     }
   }
 })();
+
+// Novedades carousel — avanza cada 8s, navegable con puntos, se pausa en hover
+(function () {
+  var track = document.getElementById('novedades-track');
+  var dotsWrap = document.getElementById('novedades-dots');
+  if (!track || !dotsWrap) return;
+
+  var slides = track.children;
+  var count = slides.length;
+  if (count < 2) return;
+
+  var NOVEDADES_INTERVAL_MS = 8000;
+  var index = 0;
+  var timer = null;
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (var i = 0; i < count; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'novedad-dot' + (i === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Ir a la novedad ' + (i + 1));
+    (function (idx) {
+      dot.addEventListener('click', function () {
+        goTo(idx);
+        restart();
+      });
+    })(i);
+    dotsWrap.appendChild(dot);
+  }
+  var dots = dotsWrap.children;
+
+  function goTo(i) {
+    index = i;
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    for (var j = 0; j < dots.length; j++) {
+      dots[j].classList.toggle('active', j === index);
+    }
+  }
+  function next() {
+    goTo((index + 1) % count);
+  }
+  function start() {
+    if (reducedMotion) return;
+    timer = setInterval(next, NOVEDADES_INTERVAL_MS);
+  }
+  function stop() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+  function restart() {
+    stop();
+    start();
+  }
+
+  var wrap = track.parentElement;
+  wrap.addEventListener('mouseenter', stop);
+  wrap.addEventListener('mouseleave', start);
+
+  start();
+})();
