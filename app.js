@@ -119,9 +119,38 @@
     });
   }
 
+  // No mostrar la tarjeta mientras los CTA principales del hero estén visibles
+  // (en mobile la tarjeta se superpone justo a esos botones).
+  function heroCtasInView() {
+    var hc = document.querySelector('.hero-ctas');
+    if (!hc) return false;
+    var r = hc.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    return r.bottom > 0 && r.top < vh;
+  }
+
+  function tryShowInvite() {
+    if (inviteDismissed()) return;
+    if (heroCtasInView()) {
+      var onScroll = function () {
+        if (inviteDismissed()) {
+          window.removeEventListener('scroll', onScroll);
+          return;
+        }
+        if (!heroCtasInView()) {
+          window.removeEventListener('scroll', onScroll);
+          showInvite();
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return;
+    }
+    showInvite();
+  }
+
   if (inviteCard) {
     setTimeout(function () {
-      if (!inviteDismissed()) showInvite();
+      tryShowInvite();
     }, INVITE_DELAY_MS);
 
     if (inviteChatBtn) {
