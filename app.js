@@ -80,4 +80,71 @@
       openChat();
     });
   });
+
+  // Chat invite card — aparece una vez por sesión, por tiempo
+  var inviteCard = document.getElementById('ds-invite-card');
+  var inviteChatBtn = document.getElementById('ds-invite-chat');
+  var inviteDismissBtn = document.getElementById('ds-invite-dismiss');
+  var inviteCloseBtn = document.getElementById('ds-invite-close');
+  var INVITE_DISMISSED_KEY = 'ds_invite_dismissed';
+  var INVITE_DELAY_MS = 9000;
+
+  function inviteDismissed() {
+    try {
+      return sessionStorage.getItem(INVITE_DISMISSED_KEY) === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+  function markInviteDismissed() {
+    try {
+      sessionStorage.setItem(INVITE_DISMISSED_KEY, '1');
+    } catch (e) {}
+  }
+  function hideInvite() {
+    if (!inviteCard) return;
+    inviteCard.classList.remove('ds-visible');
+    setTimeout(function () {
+      inviteCard.classList.remove('ds-open');
+    }, 300);
+  }
+  function showInvite() {
+    if (!inviteCard || inviteDismissed()) return;
+    inviteCard.classList.add('ds-open');
+    requestAnimationFrame(function () {
+      inviteCard.classList.add('ds-visible');
+    });
+  }
+
+  if (inviteCard) {
+    setTimeout(function () {
+      if (!inviteDismissed()) showInvite();
+    }, INVITE_DELAY_MS);
+
+    if (inviteChatBtn) {
+      inviteChatBtn.addEventListener('click', function () {
+        markInviteDismissed();
+        hideInvite();
+        openChat();
+      });
+    }
+    if (inviteDismissBtn) {
+      inviteDismissBtn.addEventListener('click', function () {
+        markInviteDismissed();
+        hideInvite();
+      });
+    }
+    if (inviteCloseBtn) {
+      inviteCloseBtn.addEventListener('click', function () {
+        markInviteDismissed();
+        hideInvite();
+      });
+    }
+    if (btn) {
+      btn.addEventListener('click', function () {
+        markInviteDismissed();
+        hideInvite();
+      });
+    }
+  }
 })();
