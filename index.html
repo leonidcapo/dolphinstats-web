@@ -110,12 +110,12 @@
   /* PROCESO BAND */
   .proceso{max-width:1100px;margin:1rem auto;padding:3rem 2rem}
   .proceso-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-  .pcard{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(0,212,255,.16);min-height:240px}
+  .pcard{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(0,117,198,.16);min-height:240px}
   .pcard img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
   .pcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.15),rgba(10,22,40,.85))}
   .pcard .txt{position:absolute;bottom:0;left:0;right:0;padding:1.1rem 1.2rem}
   .pcard .txt .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
-  .pcard .txt .t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
+  .pcard .txt .t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f8ff}
 
   /* CTA BAND */
   .ctaband{max-width:1100px;margin:1rem auto 3rem;padding:0 2rem}
@@ -128,7 +128,7 @@
   .ctaband-content p{color:var(--muted);font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1.6rem}
 
   /* STATS BAR */
-  .stats-bar{border-top:1px solid rgba(0,212,255,.1);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(0,212,255,.03);padding:2rem}
+  .stats-bar{border-top:1px solid rgba(0,117,198,.1);border-bottom:1px solid rgba(0,117,198,.1);background:rgba(0,117,198,.03);padding:2rem}
   .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
   .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--aqua);line-height:1}
   .stat-label{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.4}
@@ -349,12 +349,18 @@
 <section class="proceso">
   <div class="proceso-grid">
     <div class="pcard">
-      <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=700&q=80&auto=format&fit=crop" alt="Estudiantes universitarios de ciencias de la salud revisando apuntes de su tesis en clase" loading="lazy" decoding="async" style="object-position:center 35%">
+      <picture>
+        <source srcset="proceso-1.webp" type="image/webp">
+        <img src="proceso-1.jpg" alt="Investigadora revisando datos en su laptop en una biblioteca académica" loading="lazy" decoding="async">
+      </picture>
       <div class="ov"></div>
       <div class="txt"><div class="k">Para tesistas e investigadores</div><div class="t">Estadística con criterio clínico</div></div>
     </div>
     <div class="pcard">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80&auto=format&fit=crop" alt="Equipo de investigadores colaborando con laptops en un proyecto científico" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="proceso-2.webp" type="image/webp">
+        <img src="proceso-2.jpg" alt="Dos investigadores colaborando frente a una laptop con libros de metodología" loading="lazy" decoding="async">
+      </picture>
       <div class="ov"></div>
       <div class="txt"><div class="k">Acompañamiento real</div><div class="t">Contigo en cada etapa</div></div>
     </div>
