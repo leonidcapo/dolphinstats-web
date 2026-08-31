@@ -21,20 +21,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ocean:#0a1628;
-    --aqua:#00d4ff;
-    --white:#f0f8ff;
-    --muted:#8899bb;
-    --accent:#00ffcc;
-    --lavender:#7b7fc4;
-    --surface:rgba(255,255,255,.03);
-    --border:rgba(0,212,255,.12);
+    --ocean:#ffffff;
+    --aqua:#0075c6;
+    --white:#003060;
+    --muted:#4a6285;
+    --accent:#ff3131;
+    --lavender:#0075c6;
+    --surface:#f5f7fb;
+    --border:rgba(0,48,96,.10);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--ocean);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,180,216,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
-  body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,117,198,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,117,198,.035) 0%,transparent 60%);pointer-events:none;z-index:0}
+  body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,117,198,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,117,198,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
 
   /* NAV & HERO — Paleta clara definitiva */
   nav, .hero-wrap, .hero{
@@ -95,16 +95,16 @@
   .section-sub{line-height:1.75;color:var(--muted);max-width:680px;font-size:1rem;margin-bottom:2rem}
   .hero-specs{color:var(--lp-muted);font-size:.85rem;letter-spacing:.01em;line-height:1.7;max-width:520px;margin-bottom:2.5rem;animation:fadeUp .8s ease .25s both}
   .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
-  .btn-primary{background:var(--lp-blue);color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,117,198,.25)}
+  .btn-primary{background:var(--aqua);color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,117,198,.25)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,117,198,.4)}
-  .btn-secondary{background:transparent;color:var(--lp-navy);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(0,48,96,.2);transition:border-color .2s,color .2s}
-  .btn-secondary:hover{border-color:var(--lp-blue);color:var(--lp-blue)}
+  .btn-secondary{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(0,48,96,.2);transition:border-color .2s,color .2s}
+  .btn-secondary:hover{border-color:var(--aqua);color:var(--aqua)}
 
   /* HERO MEDIA */
   .hero-media{position:relative;animation:fadeUp .8s ease .35s both}
   .hero-media .frame{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid rgba(0,48,96,.12);box-shadow:0 20px 50px rgba(0,48,96,.18)}
   .hero-media .frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+  .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,117,198,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:#f0f8ff;display:flex;align-items:center;gap:.5rem}
   .hero-media .chip b{color:var(--accent);font-weight:600}
 
   /* PROCESO BAND */
@@ -864,7 +864,7 @@
     z-index: 9997;
     width: 280px;
     background: var(--ocean);
-    border: 1px solid rgba(0,212,255,.3);
+    border: 1px solid rgba(0,117,198,.3);
     border-radius: 16px;
     padding: 18px 18px 16px;
     box-shadow: 0 12px 40px rgba(0,0,0,.5);
@@ -907,11 +907,11 @@
     cursor: pointer;
     transition: box-shadow .2s;
   }
-  .ds-invite-btn-primary:hover { box-shadow: 0 0 20px rgba(0,212,255,.5); }
+  .ds-invite-btn-primary:hover { box-shadow: 0 0 20px rgba(0,117,198,.5); }
   .ds-invite-btn-ghost {
     background: none;
     color: var(--muted);
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(0,48,96,.15);
     border-radius: 10px;
     padding: 9px 14px;
     font-weight: 600;
