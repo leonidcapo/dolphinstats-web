@@ -119,13 +119,13 @@
 
   /* CTA BAND */
   .ctaband{max-width:1100px;margin:1rem auto 3rem;padding:0 2rem}
-  .ctaband-inner{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,212,255,.2);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
+  .ctaband-inner{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,117,198,.2);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
   .ctaband-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .ctaband-inner .ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.92),rgba(10,22,40,.78))}
   .ctaband-content{position:relative;padding:2.8rem 2rem}
   .ctaband-content .k{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
-  .ctaband-content h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.12;margin:0 auto .9rem;max-width:640px}
-  .ctaband-content p{color:var(--muted);font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1.6rem}
+  .ctaband-content h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.12;margin:0 auto .9rem;max-width:640px;color:#f0f8ff}
+  .ctaband-content p{color:rgba(240,248,255,.75);font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1.6rem}
 
   /* STATS BAR */
   .stats-bar{border-top:1px solid rgba(0,117,198,.1);border-bottom:1px solid rgba(0,117,198,.1);background:rgba(0,117,198,.03);padding:2rem}
@@ -238,27 +238,27 @@
   /* AREAS SEO */
   .areas{padding:4rem 2rem;max-width:1100px;margin:0 auto}
   .areas-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
-  .area-tag{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);color:rgba(240,248,255,.55);font-size:.8rem;padding:.35rem .85rem;border-radius:8px}
+  .area-tag{background:rgba(0,48,96,.04);border:1px solid rgba(0,48,96,.10);color:rgba(0,48,96,.6);font-size:.8rem;padding:.35rem .85rem;border-radius:8px}
 
   /* PRIVACY */
   .privacy{padding:6rem 2rem;max-width:800px;margin:0 auto}
   .privacy h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:2rem}
-  .privacy-block{background:var(--surface);border:1px solid rgba(0,212,255,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
+  .privacy-block{background:var(--surface);border:1px solid rgba(0,117,198,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
   .privacy-block h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--aqua);margin-bottom:.75rem}
   .privacy-block p{color:var(--muted);font-size:.9rem;line-height:1.7}
 
   /* FOOTER */
-  footer{border-top:1px solid rgba(0,212,255,.1);padding:4rem 2rem 3rem;max-width:1100px;margin:0 auto}
+  footer{border-top:1px solid rgba(0,117,198,.1);padding:4rem 2rem 3rem;max-width:1100px;margin:0 auto}
   .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
   .footer-brand .footer-logo{font-family:Arial,sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.75rem}
   .footer-brand .footer-logo span{color:var(--aqua)}
   .footer-brand p{color:var(--muted);font-size:.85rem;line-height:1.7;max-width:280px}
-  .footer-col h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,248,255,.5);margin-bottom:1rem}
+  .footer-col h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,48,96,.5);margin-bottom:1rem}
   .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
   .footer-col ul li a{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s}
   .footer-col ul li a:hover{color:var(--aqua)}
-  .footer-bottom{border-top:1px solid rgba(0,212,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-  .footer-bottom p{color:rgba(136,153,187,.5);font-size:.75rem}
+  .footer-bottom{border-top:1px solid rgba(0,117,198,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-bottom p{color:rgba(74,98,133,.75);font-size:.75rem}
 
   /* ANIMATIONS */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
@@ -686,7 +686,10 @@
 <!-- CTA BAND -->
 <section class="ctaband">
   <div class="ctaband-inner">
-    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1100&q=80&auto=format&fit=crop" alt="Investigadores analizando datos y anotaciones durante una asesoría estadística" loading="lazy" decoding="async">
+    <picture>
+      <source srcset="ctaband.webp" type="image/webp">
+      <img src="ctaband.jpg" alt="Investigadora analizando gráficos de datos en su computadora" loading="lazy" decoding="async">
+    </picture>
     <div class="ov"></div>
     <div class="ctaband-content">
       <div class="k">Empieza hoy</div>
@@ -735,7 +738,7 @@
     <div class="footer-brand">
       <div class="footer-logo">Dolphin<span>Stats</span></div>
       <p>Consultoría académica especializada en investigación clínica, bioestadística y publicación científica para ciencias de la salud.</p>
-      <p style="margin-top:.75rem;font-size:.8rem;color:rgba(136,153,187,.5)">Lima, Perú · Atención Latinoamérica</p>
+      <p style="margin-top:.75rem;font-size:.8rem;color:rgba(74,98,133,.75)">Lima, Perú · Atención Latinoamérica</p>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
