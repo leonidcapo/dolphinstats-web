@@ -180,18 +180,18 @@
   .razon{padding:6rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
   .razon-quote{border-left:3px solid var(--aqua);padding:.4rem 0 .4rem 1.4rem;margin-top:2.5rem;font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;line-height:1.45;max-width:640px;color:var(--white)}
   .razon-media{position:relative}
-  .razon-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .razon-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,117,198,.22);box-shadow:0 20px 50px rgba(0,48,96,.18)}
   .razon-media img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
-  .razon-media .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,212,255,.10),rgba(10,22,40,.55))}
-  .razon-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
+  .razon-media .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,117,198,.10),rgba(10,22,40,.55))}
+  .razon-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,117,198,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:#f0f8ff;display:flex;align-items:center;gap:.5rem}
   .razon-media .chip b{color:var(--accent);font-weight:600}
 
   /* METODO / COMO TRABAJAMOS */
   .metodo{padding:6rem 2rem;max-width:1100px;margin:0 auto}
   .metodo-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1rem;margin-top:3rem}
   .metodo-step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;transition:border-color .3s,background .3s,transform .3s}
-  .metodo-step:hover{border-color:rgba(0,212,255,.35);background:rgba(0,212,255,.05);transform:translateY(-4px)}
-  .metodo-num{width:34px;height:34px;border-radius:50%;background:rgba(0,212,255,.15);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1rem}
+  .metodo-step:hover{border-color:rgba(0,117,198,.35);background:rgba(0,117,198,.05);transform:translateY(-4px)}
+  .metodo-num{width:34px;height:34px;border-radius:50%;background:rgba(0,117,198,.15);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1rem}
   .metodo-step:last-child .metodo-num{background:linear-gradient(135deg,var(--aqua),var(--accent));color:var(--ocean)}
   .metodo-step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--white)}
   .metodo-step p{color:var(--muted);font-size:.83rem;line-height:1.55}
@@ -517,7 +517,10 @@
   </div>
   <div class="razon-media">
     <div class="frame">
-      <img src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=900&q=80&auto=format&fit=crop" alt="Microscopios en un laboratorio de investigación científica" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="razon-media.webp" type="image/webp">
+        <img src="razon-media.jpg" alt="Doctora revisando evidencia científica impresa junto a gráficos en pantalla" loading="lazy" decoding="async">
+      </picture>
       <div class="tint"></div>
       <div class="chip">🔬 <span>Ciencia <b>rigurosa</b>, resultados reales</span></div>
     </div>
