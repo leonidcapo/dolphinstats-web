@@ -58,6 +58,8 @@
       overlay.classList.add('open');
       ensureFrame();
     }
+    markInviteDismissed();
+    hideInvite();
   }
 
   if (btn) {
@@ -110,6 +112,7 @@
   }
   function showInvite() {
     if (!inviteCard || inviteDismissed()) return;
+    if (overlay && overlay.classList.contains('open')) return;
     inviteCard.classList.add('ds-open');
     requestAnimationFrame(function () {
       inviteCard.classList.add('ds-visible');
