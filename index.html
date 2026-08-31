@@ -67,7 +67,7 @@
   .hero-text,.hero-media{position:relative;z-index:1}
   .hero-text{display:flex;flex-direction:column;justify-content:center}
   .hero-tag{display:inline-flex;align-items:center;gap:.7rem;color:var(--aqua);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
-  .hero-tag::before{content:'';width:28px;height:1px;background:var(--aqua)}
+  .hero-tag::before{content:'';width:28px;height:1px;background:var(--aqua);flex-shrink:0}
   .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--aqua);opacity:.4;border-radius:2px}
@@ -95,6 +95,10 @@
   .hero-graphic{width:100%;height:100%;display:block}
   .hero-graphic .pt{transform-box:fill-box;transform-origin:center;opacity:0;animation:ds-pt-in .5s ease forwards}
   .hero-graphic .line{stroke-dasharray:520;stroke-dashoffset:520;animation:ds-line-draw 1.4s ease .5s forwards}
+  @media (prefers-reduced-motion: reduce){
+    .hero-graphic .pt{opacity:1;animation:none}
+    .hero-graphic .line{stroke-dashoffset:0;animation:none}
+  }
   @keyframes ds-pt-in{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
   @keyframes ds-line-draw{to{stroke-dashoffset:0}}
   .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
@@ -873,7 +877,7 @@
     right: 28px;
     z-index: 9997;
     width: 280px;
-    background: #0a1628;
+    background: var(--ocean);
     border: 1px solid rgba(0,212,255,.3);
     border-radius: 16px;
     padding: 18px 18px 16px;
@@ -891,15 +895,15 @@
     right: 10px;
     background: none;
     border: none;
-    color: #8899bb;
+    color: var(--muted);
     font-size: 16px;
     cursor: pointer;
     line-height: 1;
     padding: 4px;
   }
-  #ds-invite-close:hover { color: #f0f8ff; }
+  #ds-invite-close:hover { color: var(--white); }
   #ds-invite-text {
-    color: #f0f8ff;
+    color: var(--white);
     font-size: .88rem;
     line-height: 1.5;
     margin: 0 0 14px;
@@ -907,8 +911,8 @@
   }
   #ds-invite-actions { display: flex; flex-direction: column; gap: 8px; }
   .ds-invite-btn-primary {
-    background: #00d4ff;
-    color: #0a1628;
+    background: var(--aqua);
+    color: var(--ocean);
     border: none;
     border-radius: 10px;
     padding: 9px 14px;
@@ -920,7 +924,7 @@
   .ds-invite-btn-primary:hover { box-shadow: 0 0 20px rgba(0,212,255,.5); }
   .ds-invite-btn-ghost {
     background: none;
-    color: #8899bb;
+    color: var(--muted);
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 10px;
     padding: 9px 14px;
@@ -929,7 +933,7 @@
     cursor: pointer;
     transition: border-color .2s, color .2s;
   }
-  .ds-invite-btn-ghost:hover { border-color: #00d4ff; color: #00d4ff; }
+  .ds-invite-btn-ghost:hover { border-color: var(--aqua); color: var(--aqua); }
   @media (max-width: 480px) {
     #ds-invite-card { width: calc(100vw - 24px); right: 12px; bottom: 108px; }
   }
@@ -950,7 +954,7 @@
   ></iframe>
 </div>
 
-<div id="ds-invite-card" role="dialog" aria-label="Invitación a chatear">
+<div id="ds-invite-card" role="region" aria-label="Invitación a chatear">
   <button id="ds-invite-close" aria-label="Cerrar invitación">&times;</button>
   <p id="ds-invite-text">¿Tienes dudas sobre tu proyecto? Te ayudamos a resolverlas ahora mismo.</p>
   <div id="ds-invite-actions">
