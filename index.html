@@ -20,6 +20,8 @@
 <link rel="dns-prefetch" href="https://dolphinstats-bot.onrender.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
+  /* Tema claro. OJO: los nombres son históricos del tema oscuro —
+     --white es NAVY (texto), --ocean es BLANCO (fondo). */
   :root{
     --ocean:#ffffff;
     --aqua:#0075c6;
@@ -133,11 +135,6 @@
   .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--aqua);line-height:1}
   .stat-label{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.4}
 
-  /* STANDARDS */
-  .standards{padding:4rem 2rem;max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem}
-  .standards-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:.5rem}
-  .std-badge{background:rgba(0,48,96,.04);border:1px solid rgba(0,48,96,.10);color:rgba(0,48,96,.75);font-size:.75rem;font-weight:600;letter-spacing:.05em;padding:.3rem .8rem;border-radius:6px}
-
   /* SERVICIOS */
   .servicios{padding:6rem 2rem;max-width:1100px;margin:0 auto}
   .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
@@ -192,7 +189,7 @@
   .metodo-step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;transition:border-color .3s,background .3s,transform .3s}
   .metodo-step:hover{border-color:rgba(0,117,198,.35);background:rgba(0,117,198,.05);transform:translateY(-4px)}
   .metodo-num{width:34px;height:34px;border-radius:50%;background:rgba(0,117,198,.15);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1rem}
-  .metodo-step:last-child .metodo-num{background:linear-gradient(135deg,var(--aqua),var(--accent));color:var(--ocean)}
+  .metodo-step:last-child .metodo-num{background:linear-gradient(135deg,var(--aqua),var(--accent));color:var(--ocean);text-shadow:0 1px 2px rgba(0,0,0,.25)}
   .metodo-step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--white)}
   .metodo-step p{color:var(--muted);font-size:.83rem;line-height:1.55}
 
@@ -216,7 +213,7 @@
   .precio-features{list-style:none;display:flex;flex-direction:column;gap:.7rem}
   .precio-features li{font-size:.875rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
   .precio-features li .check{color:var(--aqua);flex-shrink:0}
-  .precio-features li .no{color:rgba(0,48,96,.2);flex-shrink:0}
+  .precio-features li .no{color:rgba(0,48,96,.35);flex-shrink:0}
   .precio-cta{display:block;text-align:center;margin-top:2rem;padding:.75rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;border:1px solid rgba(0,117,198,.3);color:var(--aqua);transition:all .2s}
   .precio-card.featured .precio-cta{background:var(--aqua);color:var(--ocean);border-color:var(--aqua)}
   .precio-cta:hover{background:var(--aqua);color:var(--ocean)}
@@ -277,7 +274,6 @@
     .razon{grid-template-columns:1fr;gap:2rem;padding:4rem 1.5rem}
     .razon-media{max-width:420px}
     .proceso-grid{grid-template-columns:1fr}
-    .founder-card{grid-template-columns:1fr;text-align:center}
     .footer-inner{grid-template-columns:1fr}
     .footer-bottom{flex-direction:column;text-align:center}
   }
@@ -879,7 +875,7 @@
     border: 1px solid rgba(0,117,198,.3);
     border-radius: 16px;
     padding: 18px 18px 16px;
-    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    box-shadow: 0 12px 40px rgba(0,48,96,.22);
     display: none;
     opacity: 0;
     transform: translateY(12px);
