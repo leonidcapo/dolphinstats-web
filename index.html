@@ -37,7 +37,7 @@
   body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
 
   /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.1);background:rgba(10,22,40,.85)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(10,22,40,.92)}
   .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:.5rem;text-decoration:none}
   .logo span{color:var(--aqua)}
   .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
@@ -66,7 +66,8 @@
   .hero-watermark{position:absolute;top:1rem;left:-60px;width:340px;height:340px;object-fit:contain;opacity:.1;pointer-events:none;z-index:0;filter:brightness(0) invert(1) blur(.3px)}
   .hero-text,.hero-media{position:relative;z-index:1}
   .hero-text{display:flex;flex-direction:column;justify-content:center}
-  .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--aqua);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
+  .hero-tag{display:inline-flex;align-items:center;gap:.7rem;color:var(--aqua);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
+  .hero-tag::before{content:'';width:28px;height:1px;background:var(--aqua)}
   .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--aqua);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--aqua);opacity:.4;border-radius:2px}
