@@ -91,9 +91,12 @@
 
   /* HERO MEDIA */
   .hero-media{position:relative;animation:fadeUp .8s ease .35s both}
-  .hero-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.45)}
-  .hero-media img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
-  .hero-media .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,212,255,.10),rgba(10,22,40,.55))}
+  .hero-media .frame{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.45);background:linear-gradient(160deg,rgba(0,212,255,.07),rgba(10,22,40,.95))}
+  .hero-graphic{width:100%;height:100%;display:block}
+  .hero-graphic .pt{transform-box:fill-box;transform-origin:center;opacity:0;animation:ds-pt-in .5s ease forwards}
+  .hero-graphic .line{stroke-dasharray:520;stroke-dashoffset:520;animation:ds-line-draw 1.4s ease .5s forwards}
+  @keyframes ds-pt-in{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+  @keyframes ds-line-draw{to{stroke-dashoffset:0}}
   .hero-media .chip{position:absolute;bottom:14px;left:14px;background:rgba(10,22,40,.82);border:1px solid rgba(0,212,255,.25);border-radius:12px;padding:.55rem .8rem;font-size:.78rem;color:var(--white);display:flex;align-items:center;gap:.5rem}
   .hero-media .chip b{color:var(--accent);font-weight:600}
 
@@ -325,8 +328,27 @@
     </div>
     <div class="hero-media">
       <div class="frame">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&auto=format&fit=crop" alt="Manos analizando datos clínicos en una laptop junto a un estetoscopio — bioestadística DolphinStats" width="700" height="875" fetchpriority="high" decoding="async">
-        <div class="tint"></div>
+        <svg class="hero-graphic" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Gráfico de dispersión con línea de regresión, representando análisis bioestadístico">
+          <line class="line" x1="20" y1="450" x2="380" y2="140" stroke-width="2" stroke-linecap="round" style="stroke:var(--aqua);opacity:.55"/>
+          <circle class="pt" cx="40" cy="420" r="5" style="fill:var(--aqua);animation-delay:.05s"/>
+          <circle class="pt" cx="65" cy="395" r="4" style="fill:var(--lavender);animation-delay:.10s"/>
+          <circle class="pt" cx="90" cy="430" r="5" style="fill:var(--aqua);animation-delay:.15s"/>
+          <circle class="pt" cx="60" cy="380" r="4" style="fill:var(--accent);animation-delay:.20s"/>
+          <circle class="pt" cx="110" cy="370" r="5" style="fill:var(--aqua);animation-delay:.25s"/>
+          <circle class="pt" cx="95" cy="410" r="4" style="fill:var(--lavender);animation-delay:.30s"/>
+          <circle class="pt" cx="140" cy="350" r="5" style="fill:var(--aqua);animation-delay:.35s"/>
+          <circle class="pt" cx="125" cy="390" r="4" style="fill:var(--accent);animation-delay:.40s"/>
+          <circle class="pt" cx="170" cy="330" r="5" style="fill:var(--aqua);animation-delay:.45s"/>
+          <circle class="pt" cx="155" cy="365" r="4" style="fill:var(--lavender);animation-delay:.50s"/>
+          <circle class="pt" cx="200" cy="300" r="5" style="fill:var(--aqua);animation-delay:.55s"/>
+          <circle class="pt" cx="185" cy="340" r="4" style="fill:var(--accent);animation-delay:.60s"/>
+          <circle class="pt" cx="230" cy="280" r="5" style="fill:var(--aqua);animation-delay:.65s"/>
+          <circle class="pt" cx="270" cy="240" r="5" style="fill:var(--aqua);animation-delay:.70s"/>
+          <circle class="pt" cx="250" cy="270" r="4" style="fill:var(--lavender);animation-delay:.75s"/>
+          <circle class="pt" cx="310" cy="200" r="5" style="fill:var(--aqua);animation-delay:.80s"/>
+          <circle class="pt" cx="330" cy="175" r="4" style="fill:var(--accent);animation-delay:.85s"/>
+          <circle class="pt" cx="360" cy="150" r="5" style="fill:var(--aqua);animation-delay:.90s"/>
+        </svg>
         <div class="chip">🩺 <span>Del <b>dato clínico</b> al resultado</span></div>
       </div>
     </div>
