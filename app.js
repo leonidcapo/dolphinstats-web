@@ -191,7 +191,7 @@
   var count = slides.length;
   if (count < 2) return;
 
-  var NOVEDADES_INTERVAL_MS = 8000;
+  var NOVEDADES_INTERVAL_MS = 5000;
   var index = 0;
   var timer = null;
   var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
