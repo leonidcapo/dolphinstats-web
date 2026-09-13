@@ -75,13 +75,16 @@
     });
   }
 
-  // Pricing CTAs open the chat widget
-  document.querySelectorAll('.precio-cta').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      openChat();
-    });
-  });
+  // Bot temporalmente desactivado (reversible): las .precio-cta ahora son
+  // links directos a WhatsApp (ver index.html), así que ya no deben
+  // interceptar el clic para abrir el chat -- si se reactiva el bot,
+  // descomentar este bloque y revertir los href="#" en index.html.
+  // document.querySelectorAll('.precio-cta').forEach(function (a) {
+  //   a.addEventListener('click', function (e) {
+  //     e.preventDefault();
+  //     openChat();
+  //   });
+  // });
 
   // Chat invite card — aparece una vez por sesión, por tiempo
   var inviteCard = document.getElementById('ds-invite-card');
