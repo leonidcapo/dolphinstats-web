@@ -40,11 +40,12 @@
   /* Fondo: limpio, con manchas de color que se mueven más lento que el contenido (paralaje, ver app.js) */
   body{position:relative}
   .bg-blobs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
-  .bg-blob{position:absolute;border-radius:50%;filter:blur(48px);will-change:transform}
-  .bg-blob.a{width:420px;height:420px;left:-110px;top:1%;background:rgba(0,117,198,.18)}
-  .bg-blob.b{width:360px;height:360px;right:-90px;top:20%;background:rgba(123,63,242,.14)}
-  .bg-blob.c{width:400px;height:400px;left:10%;top:48%;background:rgba(8,153,168,.14)}
-  .bg-blob.d{width:360px;height:360px;right:-70px;top:74%;background:rgba(0,117,198,.14)}
+  /* Degradado radial en vez de filter:blur -> mucho más liviano al hacer scroll en móviles */
+  .bg-blob{position:absolute;width:520px;height:520px;max-width:none;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,transparent 68%);will-change:transform}
+  .bg-blob.a{left:-170px;--c:rgba(0,117,198,.26)}
+  .bg-blob.b{right:-150px;--c:rgba(123,63,242,.20)}
+  .bg-blob.c{left:8%;--c:rgba(8,153,168,.20)}
+  .bg-blob.d{right:-130px;--c:rgba(0,117,198,.20)}
   /* Puntos tenues solo en el hero */
   .hero-wrap::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,117,198,.22) 1.2px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none}
   /* Bandas suaves de ancho completo que alternan secciones */
@@ -133,6 +134,7 @@
   .novedad-slide{flex:0 0 100%;display:flex;align-items:center;gap:2.2rem;padding:2.6rem 3.2rem;text-decoration:none;color:inherit;font-family:var(--font)}
   .novedad-slide .thumb{width:128px;height:168px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:0 10px 24px rgba(0,48,96,.2)}
   .novedad-slide .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .novedad-slide .thumb.wide{width:250px;height:141px}
   .novedad-slide .tag{display:inline-flex;align-items:center;background:rgba(0,117,198,.08);color:var(--aqua);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:.9rem;width:fit-content}
   .novedad-slide h3{font-family:var(--font);font-weight:700;font-size:1.8rem;line-height:1.2;margin-bottom:.6rem;color:var(--white)}
   .novedad-slide p{color:var(--muted);font-size:1.15rem;line-height:1.55;margin:0}
@@ -144,6 +146,7 @@
   @media(max-width:640px){
     .novedad-slide{flex-direction:column;align-items:flex-start;gap:1.2rem;padding:2rem 1.6rem}
     .novedad-slide .thumb{width:96px;height:126px}
+    .novedad-slide .thumb.wide{width:170px;height:96px}
     .novedad-slide h3{font-size:1.4rem}
     .novedad-slide p{font-size:1rem}
     .novedad-slide .arrow{margin-left:0}
@@ -443,7 +446,7 @@
 </head>
 <body>
 
-<div class="bg-blobs" aria-hidden="true"><div class="bg-blob a" data-s="0.30"></div><div class="bg-blob b" data-s="0.45"></div><div class="bg-blob c" data-s="0.35"></div><div class="bg-blob d" data-s="0.40"></div></div>
+<div class="bg-blobs" aria-hidden="true"><div class="bg-blob a"></div><div class="bg-blob b"></div><div class="bg-blob c"></div><div class="bg-blob d"></div></div>
 
 <!-- ICONOS DE LÍNEA (sprite) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -565,7 +568,7 @@
         <span class="arrow" aria-hidden="true">→</span>
       </a>
       <a class="novedad-slide" href="https://www.linkedin.com/in/dolphinstats-perú-249579418?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">
-        <div class="thumb">
+        <div class="thumb wide">
           <picture>
             <source srcset="novedad-articulo.webp" type="image/webp">
             <img src="novedad-articulo.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
