@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://dolphinstats-web.vercel.app/">
 <link rel="preconnect" href="https://dolphinstats-bot.onrender.com">
 <link rel="dns-prefetch" href="https://dolphinstats-bot.onrender.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Tema claro. OJO: los nombres son históricos del tema oscuro —
      --white es NAVY (texto), --ocean es BLANCO (fondo). */
@@ -31,7 +31,7 @@
     --lavender:#0075c6;
     --surface:#f5f7fb;
     --border:rgba(0,48,96,.10);
-    --font:'Syne',sans-serif; /* una sola tipografía para toda la web */
+    --font:'DM Sans',sans-serif; /* una sola tipografía para toda la web */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   button,input,textarea,select{font-family:inherit}
@@ -108,8 +108,11 @@
   .areas .section-label::before{content:'✦'}
   .section-title{font-family:var(--font);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem}
   .section-sub{line-height:1.75;color:var(--muted);max-width:680px;font-size:1rem;margin-bottom:2rem}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin-bottom:2.2rem;animation:fadeUp .8s ease .25s both}
+  .hero-tags li{background:rgba(0,117,198,.07);border:1px solid rgba(0,117,198,.22);color:var(--lp-blue);font-size:.82rem;font-weight:500;padding:.38rem .9rem;border-radius:100px}
   .hero-specs{color:var(--lp-muted);font-size:.85rem;letter-spacing:.01em;line-height:1.7;max-width:520px;margin-bottom:2.5rem;animation:fadeUp .8s ease .25s both}
-  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
+  .hero-ctas .btn-primary,.hero-ctas .btn-secondary{padding:.85rem 1.4rem;font-size:.95rem}
+  .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
   .btn-primary{background:var(--aqua);color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(0,117,198,.25)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,117,198,.4)}
   .btn-secondary{background:transparent;color:var(--white);padding:.9rem 2rem;border-radius:100px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid rgba(0,48,96,.2);transition:border-color .2s,color .2s}
@@ -505,11 +508,15 @@
       <div class="hero-tag">Consultoría científica especializada · Lima, Perú</div>
       <h1>Aceleramos <br style="font-size:.5rem"> <em>tu investigación</em></h1>
       <p class="hero-sub">Tu tesis o manuscrito con <strong>análisis estadístico reproducible</strong> e interpretación clínica, listo para sustentar o enviar a revista. Asesoría para <strong>tesistas, residentes, docentes e investigadores</strong> de ciencias de la salud.</p>
-      <p class="hero-specs">Bioestadística avanzada · Epidemiología clínica · Tesis ciencias de la salud · Publicación Scopus / SciELO · IA aplicada a investigación</p>
+      <ul class="hero-tags" aria-label="Qué incluye">
+        <li>Análisis reproducible</li>
+        <li>Tesis y proyectos</li>
+        <li>Publicación Scopus / SciELO</li>
+      </ul>
       <div class="hero-ctas">
         <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com" -->
         <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary js-perfil">Solicitar asesoría →</a>
-        <a href="#servicios" class="btn-secondary">Explorar servicios</a>
+        <a href="#banco" class="btn-secondary">Pon a prueba tu investigación</a>
       </div>
       <p class="cupos" data-cupos hidden></p>
     </div>
@@ -785,6 +792,25 @@
     </div>
       </div>
     </details>
+    <details class="acc" id="areas">
+      <summary class="acc-q"><span class="acc-t">Áreas de especialización<small>Doce áreas de las ciencias de la salud</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+        <div class="areas-grid">
+          <span class="area-tag">Medicina</span>
+          <span class="area-tag">Enfermería</span>
+          <span class="area-tag">Odontología</span>
+          <span class="area-tag">Salud pública</span>
+          <span class="area-tag">Nutrición clínica</span>
+          <span class="area-tag">Psicología clínica</span>
+          <span class="area-tag">Farmacia</span>
+          <span class="area-tag">Obstetricia</span>
+          <span class="area-tag">Epidemiología</span>
+          <span class="area-tag">Oncología</span>
+          <span class="area-tag">Infectología</span>
+          <span class="area-tag">Salud mental</span>
+        </div>
+      </div>
+    </details>
     </div>
   </div>
 </section>
@@ -951,25 +977,6 @@
       <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary js-perfil">Solicitar asesoría →</a>
       <p class="cupos cupos-dark" data-cupos hidden></p>
     </div>
-  </div>
-</section>
-
-<!-- AREAS SEO -->
-<section class="areas" aria-label="Áreas de especialización">
-  <div class="section-label">Áreas de especialización</div>
-  <div class="areas-grid">
-    <span class="area-tag">Medicina</span>
-    <span class="area-tag">Enfermería</span>
-    <span class="area-tag">Odontología</span>
-    <span class="area-tag">Salud pública</span>
-    <span class="area-tag">Nutrición clínica</span>
-    <span class="area-tag">Psicología clínica</span>
-    <span class="area-tag">Farmacia</span>
-    <span class="area-tag">Obstetricia</span>
-    <span class="area-tag">Epidemiología</span>
-    <span class="area-tag">Oncología</span>
-    <span class="area-tag">Infectología</span>
-    <span class="area-tag">Salud mental</span>
   </div>
 </section>
 
