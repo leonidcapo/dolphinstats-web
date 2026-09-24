@@ -247,12 +247,13 @@
 })();
 
 // ── Cupos de análisis del mes ────────────────────────────────────────────
-// ACTUALIZAR CADA MES con el dato real. Solo se muestra si "mes" coincide con
-// el mes actual (así nunca queda un número viejo publicado). Si "disponibles"
-// es null, el aviso permanece oculto. Con 0 se muestra lista de espera.
+// Cada mes empieza en "inicioMes" y baja 1 por semana (días 1-7: 5, 8-14: 4,
+// 15-21: 3, 22-28: 2, 29+: 1). Es un calendario de capacidad, no un conteo de
+// reservas reales: si los cupos se llenan antes (o sobran), fijar "manual"
+// para ese mes -- con 0 se muestra la lista de espera.
 var DS_CUPOS = {
-  mes: '2026-09',       // formato AAAA-MM
-  disponibles: 5        // número de cupos que realmente quedan este mes
+  inicioMes: 5,
+  manual: null          // ej. { mes: '2026-09', disponibles: 2 }
 };
 
 (function () {
@@ -260,8 +261,11 @@ var DS_CUPOS = {
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
   var now = new Date();
   var key = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2);
-  var n = DS_CUPOS.disponibles;
-  if (DS_CUPOS.mes !== key || typeof n !== 'number' || n < 0) return;
+  var semana = Math.min(Math.ceil(now.getDate() / 7), 5);
+  var n = Math.max(1, DS_CUPOS.inicioMes - (semana - 1));
+  if (DS_CUPOS.manual && DS_CUPOS.manual.mes === key && typeof DS_CUPOS.manual.disponibles === 'number' && DS_CUPOS.manual.disponibles >= 0) {
+    n = DS_CUPOS.manual.disponibles;
+  }
   var mes = MESES[now.getMonth()];
   var icon = '<svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg> ';
   var html;
@@ -270,7 +274,7 @@ var DS_CUPOS = {
     var msg = 'Hola, quiero unirme a la lista de espera de DolphinStats para ' + next + '.';
     html = icon + 'Cupos de ' + mes + ' completos · <a href="' + WA + encodeURIComponent(msg) + '" target="_blank" rel="noopener noreferrer">Únete a la lista de espera</a>';
   } else {
-    html = icon + 'Cupos de análisis para ' + mes + ': ' + (n === 1 ? 'queda <b>1</b>' : 'quedan <b>' + n + '</b>');
+    html = icon + 'Cupos de análisis de ' + mes + ': ' + (n === 1 ? 'queda <b>1</b>' : 'quedan <b>' + n + '</b>');
   }
   document.querySelectorAll('[data-cupos]').forEach(function (el) {
     el.innerHTML = html;
@@ -336,10 +340,10 @@ var DS_CUPOS = {
   var SITE = 'https://dolphinstats-web.vercel.app/#banco';
   // Rangos por aciertos ÚNICOS (repetir una pregunta ya acertada no suma)
   var RANKS = [
-    { name: 'Explorador', min: 0, icon: 'compass' },
-    { name: 'Analista', min: 3, icon: 'chart' },
-    { name: 'Metodólogo', min: 7, icon: 'flask' },
-    { name: 'Investigador Senior', min: 13, icon: 'trophy' }
+    { name: 'Aficionado', min: 0, icon: 'compass' },
+    { name: 'Conocedor', min: 3, icon: 'book' },
+    { name: 'Sobresaliente', min: 7, icon: 'star' },
+    { name: 'Experto', min: 13, icon: 'trophy' }
   ];
   var STORE = 'ds_quiz_v1';
   var state = { ok: [], answered: 0, streak: 0, best: 0 };
@@ -406,21 +410,9 @@ var DS_CUPOS = {
     var r = RANKS[rankFor(state.ok.length)];
     return 'Alcancé el rango ' + r.name + ' (' + state.ok.length + '/' + bank.length + ' aciertos) en el reto «Pon a prueba tu investigación» de DolphinStats. ¿Te animas? ' + SITE;
   }
-  function share(btn) {
-    var text = shareText();
-    function flash(msg) {
-      var old = btn.getAttribute('data-label') || btn.textContent;
-      btn.setAttribute('data-label', old);
-      btn.textContent = msg;
-      setTimeout(function () { btn.textContent = old; }, 2200);
-    }
-    if (navigator.share) {
-      navigator.share({ text: text }).catch(function () {});
-    } else if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { flash('¡Texto copiado!'); }, function () { window.prompt('Copia tu resultado:', text); });
-    } else {
-      window.prompt('Copia tu resultado:', text);
-    }
+  function share() {
+    // Abre WhatsApp con el texto listo; la persona elige a quién enviarlo
+    window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank', 'noopener');
   }
 
   function renderRank(upFrom) {
@@ -444,7 +436,7 @@ var DS_CUPOS = {
       '<div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Progreso al siguiente rango"><i style="width:' + pct + '%"></i></div></div>' +
       (n > 0 ? '<button type="button" class="quiz-share">Comparte tu rango</button>' : '<span class="quiz-chip">Reto: ¿qué rango alcanzas?</span>');
     var sb = rankEl.querySelector('.quiz-share');
-    if (sb) sb.addEventListener('click', function () { share(sb); });
+    if (sb) sb.addEventListener('click', share);
   }
 
   function render() {
@@ -511,4 +503,29 @@ var DS_CUPOS = {
   }
   renderRank();
   render();
+})();
+
+// ── Equivalente en dólares (tipo de cambio venta SUNAT vía /api/tc) ──────
+// Referencial y redondeado a US$ 5. Si el servicio no responde, los US$ quedan ocultos.
+(function () {
+  var els = document.querySelectorAll('.precio-usd');
+  if (!els.length || !window.fetch) return;
+  fetch('/api/tc', { headers: { Accept: 'application/json' } })
+    .then(function (r) { if (!r.ok) throw new Error('tc'); return r.json(); })
+    .then(function (d) {
+      var v = Number(d.venta);
+      if (!(v > 2 && v < 6)) return;
+      els.forEach(function (el) {
+        var usd = Math.round(Number(el.getAttribute('data-soles')) / v / 5) * 5;
+        el.textContent = '≈ US$ ' + usd.toLocaleString('en-US');
+        el.hidden = false;
+      });
+      var note = document.getElementById('tc-note');
+      if (note) {
+        var f = d.fecha ? ' (' + String(d.fecha).split('-').reverse().join('/') + ')' : '';
+        note.textContent = ' Equivalente en dólares referencial, al tipo de cambio venta SUNAT de S/ ' + v.toFixed(3) + f + '.';
+        note.hidden = false;
+      }
+    })
+    .catch(function () {});
 })();

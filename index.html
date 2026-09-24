@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://dolphinstats-web.vercel.app/">
 <link rel="preconnect" href="https://dolphinstats-bot.onrender.com">
 <link rel="dns-prefetch" href="https://dolphinstats-bot.onrender.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Tema claro. OJO: los nombres son históricos del tema oscuro —
      --white es NAVY (texto), --ocean es BLANCO (fondo). */
@@ -31,10 +31,12 @@
     --lavender:#0075c6;
     --surface:#f5f7fb;
     --border:rgba(0,48,96,.10);
+    --font:'Syne',sans-serif; /* una sola tipografía para toda la web */
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  button,input,textarea,select{font-family:inherit}
   html{scroll-behavior:smooth}
-  body{background:var(--ocean);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+  body{background:var(--ocean);color:var(--white);font-family:var(--font);overflow-x:hidden}
   body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,117,198,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,117,198,.035) 0%,transparent 60%);pointer-events:none;z-index:0}
   body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,117,198,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,117,198,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
 
@@ -50,7 +52,7 @@
 
   /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,48,96,.08);background:rgba(255,255,255,.92)}
-  .logo{font-family:Arial,sans-serif;font-weight:800;font-size:1.3rem;color:var(--lp-blue);display:flex;align-items:center;text-decoration:none}
+  .logo{font-family:var(--font);font-weight:700;font-size:1.3rem;color:var(--lp-blue);display:flex;align-items:center;text-decoration:none}
   .logo span{color:var(--lp-cyan)}
   .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
   .nav-links a{color:var(--lp-muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
@@ -65,7 +67,7 @@
   .nav-drop:hover .mega,.nav-drop:focus-within .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
   .mega a{display:flex;gap:.75rem;align-items:flex-start;padding:.7rem .85rem;border-radius:12px;transition:background .2s}
   .mega a:hover{background:rgba(0,117,198,.08)}
-  .mega .num{font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:var(--lp-blue);margin-top:.2rem;opacity:.85}
+  .mega .num{font-family:var(--font);font-weight:700;font-size:.72rem;color:var(--lp-blue);margin-top:.2rem;opacity:.85}
   .mega b{display:block;color:var(--lp-navy);font-size:.85rem;font-weight:600;margin-bottom:.1rem}
   .mega .d{font-size:.72rem;color:var(--lp-muted);line-height:1.4}
   .nav-cta{background:var(--lp-blue);color:#fff!important;padding:.5rem 1.2rem;border-radius:100px;font-weight:600!important;transition:box-shadow .2s!important}
@@ -81,7 +83,7 @@
   .hero-text{display:flex;flex-direction:column;justify-content:center}
   .hero-tag{display:inline-flex;align-items:center;gap:.7rem;color:var(--lp-blue);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
   .hero-tag::before{content:'';width:28px;height:1px;background:var(--lp-blue);flex-shrink:0}
-  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4.2vw,3.7rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--lp-navy);animation:fadeUp .8s ease .1s both}
+  .hero h1{font-family:var(--font);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--lp-navy);animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--lp-coral);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--lp-coral);opacity:.4;border-radius:2px}
   .hero-sub{font-size:1.1rem;color:var(--lp-muted);max-width:580px;line-height:1.8;margin-bottom:1.5rem;animation:fadeUp .8s ease .2s both}
@@ -89,11 +91,11 @@
   /* SECTION EYEBROWS — numerados automáticamente */
   body{counter-reset:sec}
   .section-label{counter-increment:sec;display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,117,198,.07);border:1px solid rgba(0,117,198,.25);color:var(--aqua);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:100px;margin-bottom:1.4rem;width:fit-content}
-  .section-label::before{content:counter(sec,decimal-leading-zero);font-family:'Syne',sans-serif;font-weight:800;color:var(--accent);letter-spacing:0}
+  .section-label::before{content:counter(sec,decimal-leading-zero);font-family:var(--font);font-weight:700;color:var(--accent);letter-spacing:0}
   .section-label::after{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--aqua),transparent)}
   .areas .section-label{counter-increment:sec 0}
   .areas .section-label::before{content:'✦'}
-  .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem}
+  .section-title{font-family:var(--font);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem}
   .section-sub{line-height:1.75;color:var(--muted);max-width:680px;font-size:1rem;margin-bottom:2rem}
   .hero-specs{color:var(--lp-muted);font-size:.85rem;letter-spacing:.01em;line-height:1.7;max-width:520px;margin-bottom:2.5rem;animation:fadeUp .8s ease .25s both}
   .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
@@ -114,11 +116,11 @@
   .novedades-track-wrap{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(0,117,198,.16);background:var(--surface)}
   .novedades-track{display:flex;transition:transform .6s ease}
   @media(prefers-reduced-motion:reduce){.novedades-track{transition:none}}
-  .novedad-slide{flex:0 0 100%;display:flex;align-items:center;gap:2.2rem;padding:2.6rem 3.2rem;text-decoration:none;color:inherit;font-family:Arial,sans-serif}
+  .novedad-slide{flex:0 0 100%;display:flex;align-items:center;gap:2.2rem;padding:2.6rem 3.2rem;text-decoration:none;color:inherit;font-family:var(--font)}
   .novedad-slide .thumb{width:128px;height:168px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:0 10px 24px rgba(0,48,96,.2)}
   .novedad-slide .thumb img{width:100%;height:100%;object-fit:cover;display:block}
   .novedad-slide .tag{display:inline-flex;align-items:center;background:rgba(0,117,198,.08);color:var(--aqua);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:.9rem;width:fit-content}
-  .novedad-slide h3{font-family:Arial,sans-serif;font-weight:800;font-size:1.8rem;line-height:1.2;margin-bottom:.6rem;color:var(--white)}
+  .novedad-slide h3{font-family:var(--font);font-weight:700;font-size:1.8rem;line-height:1.2;margin-bottom:.6rem;color:var(--white)}
   .novedad-slide p{color:var(--muted);font-size:1.15rem;line-height:1.55;margin:0}
   .novedad-slide .arrow{margin-left:auto;flex-shrink:0;width:56px;height:56px;border-radius:50%;background:var(--aqua);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:transform .2s}
   .novedad-slide:hover .arrow{transform:translateX(4px)}
@@ -141,7 +143,7 @@
   .pcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.15),rgba(10,22,40,.85))}
   .pcard .txt{position:absolute;bottom:0;left:0;right:0;padding:1.1rem 1.2rem}
   .pcard .txt .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#f0f8ff;margin-bottom:.25rem}
-  .pcard .txt .t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f8ff}
+  .pcard .txt .t{font-family:var(--font);font-weight:700;font-size:1.1rem;color:#f0f8ff}
 
   /* CTA BAND */
   .ctaband{max-width:1100px;margin:1rem auto 3rem;padding:0 2rem}
@@ -150,14 +152,9 @@
   .ctaband-inner .ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,48,96,.92),rgba(0,117,198,.80))}
   .ctaband-content{position:relative;padding:2.8rem 2rem}
   .ctaband-content .k{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#f0f8ff;margin-bottom:.9rem}
-  .ctaband-content h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.12;margin:0 auto .9rem;max-width:640px;color:#f0f8ff}
+  .ctaband-content h2{font-family:var(--font);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.12;margin:0 auto .9rem;max-width:640px;color:#f0f8ff}
   .ctaband-content p{color:rgba(240,248,255,.75);font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1.6rem}
 
-  /* STATS BAR */
-  .stats-bar{border-top:1px solid rgba(0,117,198,.1);border-bottom:1px solid rgba(0,117,198,.1);background:rgba(0,117,198,.03);padding:2rem}
-  .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
-  .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--aqua);line-height:1}
-  .stat-label{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.4}
 
   /* SERVICIOS */
   .servicios{padding:6rem 2rem;max-width:1100px;margin:0 auto}
@@ -167,7 +164,7 @@
   .svc-card:hover{border-color:rgba(0,117,198,.35);background:rgba(0,117,198,.05);transform:translateY(-4px)}
   .svc-card:hover::before{opacity:1}
   .svc-icon{font-size:2rem;margin-bottom:1rem}
-  .svc-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.75rem;color:var(--white)}
+  .svc-card h3{font-family:var(--font);font-size:1.05rem;font-weight:700;margin-bottom:.75rem;color:var(--white)}
   .svc-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
   .svc-list li{font-size:.85rem;color:var(--muted);display:flex;gap:.5rem;align-items:flex-start;line-height:1.5}
   .svc-list li::before{content:'→';color:var(--aqua);flex-shrink:0;font-size:.75rem;margin-top:2px}
@@ -186,7 +183,7 @@
   .dif-card:hover{border-color:rgba(123,63,242,.3);background:rgba(123,63,242,.04);transform:translateY(-4px)}
   .dif-card:hover::before{opacity:1}
   .dif-icon{font-size:2rem;margin-bottom:1rem}
-  .dif-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+  .dif-card h3{font-family:var(--font);font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
   .dif-card p{color:var(--muted);font-size:.875rem;line-height:1.65}
 
   /* PRINCIPIOS — franja compacta, distinta de las tarjetas de Diferencial */
@@ -194,12 +191,12 @@
   .principio-chip{flex:1 1 260px;background:rgba(0,117,198,.05);border:1px solid rgba(0,117,198,.22);border-radius:12px;padding:1.1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;transition:border-color .3s,background .3s}
   .principio-chip:hover{border-color:rgba(0,117,198,.45);background:rgba(0,117,198,.09)}
   .principio-chip .p-icon{font-size:1.1rem;flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:rgba(0,117,198,.15);display:flex;align-items:center;justify-content:center}
-  .principio-chip h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--lavender);margin-bottom:.25rem}
+  .principio-chip h3{font-family:var(--font);font-size:.9rem;font-weight:700;color:var(--lavender);margin-bottom:.25rem}
   .principio-chip p{color:var(--muted);font-size:.8rem;line-height:1.5;margin:0}
 
   /* RAZON DE SER */
   .razon{padding:6rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
-  .razon-quote{border-left:3px solid var(--aqua);padding:.4rem 0 .4rem 1.4rem;margin-top:2.5rem;font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;line-height:1.45;max-width:640px;color:var(--white)}
+  .razon-quote{border-left:3px solid var(--aqua);padding:.4rem 0 .4rem 1.4rem;margin-top:2.5rem;font-family:var(--font);font-size:1.15rem;font-weight:600;line-height:1.45;max-width:640px;color:var(--white)}
   .razon-media{position:relative}
   .razon-media .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,117,198,.22);box-shadow:0 20px 50px rgba(0,48,96,.18)}
   .razon-media img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
@@ -212,26 +209,29 @@
   .metodo-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1rem;margin-top:3rem}
   .metodo-step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;transition:border-color .3s,background .3s,transform .3s}
   .metodo-step:hover{border-color:rgba(0,117,198,.35);background:rgba(0,117,198,.05);transform:translateY(-4px)}
-  .metodo-num{width:34px;height:34px;border-radius:50%;background:rgba(0,117,198,.15);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;margin-bottom:1rem}
-  .metodo-step h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--white)}
+  .metodo-num{width:34px;height:34px;border-radius:50%;background:rgba(0,117,198,.15);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:.95rem;margin-bottom:1rem}
+  .metodo-step h3{font-family:var(--font);font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--white)}
   .metodo-step p{color:var(--muted);font-size:.83rem;line-height:1.55}
 
   /* PRECIOS */
   .precios{padding:6rem 2rem}
   .precios-inner{max-width:1100px;margin:0 auto}
-  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
-  .precio-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;transition:transform .6s,opacity .6s ease}
+  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-top:3rem}
+  .precio-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem 1.6rem;position:relative;transition:transform .6s,opacity .6s ease}
   .precio-card:hover{transform:translateY(-6px)}
   .precio-card.featured:hover{transform:translateY(-6px) scale(1.02)}
   .precio-card.featured{border-color:var(--aqua);background:rgba(0,117,198,.07);box-shadow:0 0 40px rgba(0,117,198,.15);transform:scale(1.02)}
   .precio-card.featured.reveal{transform:scale(1.02) translateY(24px)}
   .precio-card.featured.reveal.in-view{transform:scale(1.02)}
-  .precio-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--aqua);color:var(--ocean);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap}
+  .precio-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--aqua);color:var(--ocean);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap}
   .precio-icon{font-size:2rem;margin-bottom:1rem}
-  .precio-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+  .precio-name{font-family:var(--font);font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
   .precio-tag{font-size:.8rem;color:var(--aqua);font-style:italic;margin-bottom:1.5rem}
-  .precio-amount{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,7vw,2.6rem);font-weight:800;color:var(--white);line-height:1;margin-bottom:.3rem}
-  .precio-amount span{font-size:.95rem;color:var(--muted);font-weight:400}
+  .precio-usd{font-size:.9rem;font-weight:600;color:var(--aqua);margin-top:.4rem}
+  .precio-usd[hidden]{display:none}
+  .precio-amount small{display:block;font-family:var(--font);font-size:.78rem;font-weight:500;color:var(--muted);margin-bottom:.25rem}
+  .precio-amount{font-family:var(--font);font-size:clamp(1.6rem,5.5vw,2rem);white-space:nowrap;font-weight:700;color:var(--white);line-height:1;margin-bottom:.3rem}
+  .precio-amount span{display:block;margin-top:.3rem;font-size:.85rem;color:var(--muted);font-weight:400}
   .precio-divider{border:none;border-top:1px solid rgba(0,117,198,.1);margin:1.5rem 0}
   .precio-features{list-style:none;display:flex;flex-direction:column;gap:.7rem}
   .precio-features li{font-size:.875rem;color:var(--muted);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
@@ -247,7 +247,7 @@
   .faq{padding:6rem 2rem;max-width:800px;margin:0 auto}
   .faq-list{display:flex;flex-direction:column;gap:1rem;margin-top:3rem}
   .faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-  .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--white);font-family:'Syne',sans-serif;font-size:.95rem;font-weight:600;padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .2s}
+  .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--white);font-family:var(--font);font-size:.95rem;font-weight:600;padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .2s}
   .faq-q:hover{color:var(--aqua)}
   .faq-q .arrow{color:var(--aqua);font-size:1rem;transition:transform .3s;flex-shrink:0}
   .faq-q[aria-expanded="true"] .arrow{transform:rotate(180deg)}
@@ -262,18 +262,18 @@
 
   /* PRIVACY */
   .privacy{padding:6rem 2rem;max-width:800px;margin:0 auto}
-  .privacy h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:2rem}
+  .privacy h2{font-family:var(--font);font-size:2rem;font-weight:700;margin-bottom:2rem}
   .privacy-block{background:var(--surface);border:1px solid rgba(0,117,198,.1);border-radius:16px;padding:2rem;margin-bottom:1rem}
-  .privacy-block h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--aqua);margin-bottom:.75rem}
+  .privacy-block h3{font-family:var(--font);font-size:1rem;font-weight:700;color:var(--aqua);margin-bottom:.75rem}
   .privacy-block p{color:var(--muted);font-size:.9rem;line-height:1.7}
 
   /* FOOTER */
   footer{border-top:1px solid rgba(0,117,198,.1);padding:4rem 2rem 3rem;max-width:1100px;margin:0 auto}
   .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-  .footer-brand .footer-logo{font-family:Arial,sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.75rem;color:#0075c6}
+  .footer-brand .footer-logo{font-family:var(--font);font-size:1.5rem;font-weight:700;margin-bottom:.75rem;color:#0075c6}
   .footer-brand .footer-logo span{color:#0899a8}
   .footer-brand p{color:var(--muted);font-size:.85rem;line-height:1.7;max-width:280px}
-  .footer-col h4{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,48,96,.7);margin-bottom:1rem}
+  .footer-col h4{font-family:var(--font);font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,48,96,.7);margin-bottom:1rem}
   .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
   .footer-col ul li a{color:var(--muted);text-decoration:none;font-size:.875rem;transition:color .2s}
   .footer-col ul li a:hover{color:var(--aqua)}
@@ -292,12 +292,12 @@
   .acc-list{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
   .acc{scroll-margin-top:96px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
   .acc[open]{border-color:rgba(0,117,198,.35)}
-  .acc-q{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem 1.5rem;font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;color:var(--white)}
+  .acc-q{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem 1.5rem;font-family:var(--font);font-weight:600;font-size:1rem;color:var(--white)}
   .acc-q::-webkit-details-marker{display:none}
   .acc-q:hover .acc-t{color:var(--aqua)}
   .acc-q:focus-visible{outline:2px solid var(--aqua);outline-offset:-2px}
   .acc-t{transition:color .2s}
-  .acc-t small{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:.2rem}
+  .acc-t small{display:block;font-family:var(--font);font-weight:400;font-size:.8rem;color:var(--muted);margin-top:.2rem}
   .acc-q .arrow{color:var(--aqua);transition:transform .3s;flex-shrink:0}
   .acc[open] .arrow{transform:rotate(180deg)}
   .acc-body{padding:.5rem 1.5rem 1.75rem}
@@ -309,22 +309,22 @@
   .privacy{padding:0 2rem 4rem;max-width:900px}
 
   /* BANCO DE PREGUNTAS */
-  .banco{max-width:900px;margin:0 auto;padding:4rem 2rem 1rem}
+  .banco{max-width:900px;margin:0 auto;padding:3rem 2rem 1rem}
   .quiz{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem}
   .quiz-meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
   .quiz-chip{background:rgba(0,117,198,.08);color:var(--aqua);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px}
   .quiz-count{margin-left:auto;font-size:.78rem;color:var(--muted)}
-  .quiz-q{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;line-height:1.5;margin-bottom:1.25rem}
+  .quiz-q{font-family:var(--font);font-weight:700;font-size:1.1rem;line-height:1.5;margin-bottom:1.25rem}
   .quiz-opts{display:flex;flex-direction:column;gap:.7rem}
   .quiz-opt{text-align:left;background:var(--ocean);border:1px solid rgba(0,48,96,.18);border-radius:12px;padding:.9rem 1.1rem;font:inherit;font-size:.92rem;line-height:1.5;color:var(--white);cursor:pointer;display:flex;gap:.75rem;transition:border-color .2s,background .2s}
   .quiz-opt:hover:not(:disabled){border-color:var(--aqua);background:rgba(0,117,198,.05)}
   .quiz-opt:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
-  .quiz-opt .k{font-family:'Syne',sans-serif;font-weight:800;color:var(--aqua);flex-shrink:0}
+  .quiz-opt .k{font-family:var(--font);font-weight:700;color:var(--aqua);flex-shrink:0}
   .quiz-opt:disabled{cursor:default}
   .quiz-opt.ok{border-color:#1a9b5b;background:rgba(26,155,91,.09)}
   .quiz-opt.bad{border-color:var(--accent);background:rgba(255,49,49,.07)}
   .quiz-fb{margin-top:1.4rem;border-top:1px solid var(--border);padding-top:1.2rem}
-  .quiz-verdict{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.6rem}
+  .quiz-verdict{font-family:var(--font);font-weight:700;margin-bottom:.6rem}
   .quiz-verdict.ok{color:#1a9b5b}
   .quiz-verdict.bad{color:var(--accent)}
   .quiz-fb p{color:var(--muted);font-size:.9rem;line-height:1.7}
@@ -339,13 +339,13 @@
   .quiz-rank{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
   .quiz-rank-ico{width:2.8rem;height:2.8rem;border-radius:50%;background:rgba(0,117,198,.12);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-size:1.45rem;flex-shrink:0}
   .quiz-rank-info{flex:1;min-width:190px}
-  .quiz-rank-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem}
+  .quiz-rank-name{font-family:var(--font);font-weight:700;font-size:1.05rem}
   .quiz-rank-sub{font-size:.78rem;color:var(--muted);margin-top:.1rem}
   .quiz-bar{height:6px;border-radius:99px;background:rgba(0,48,96,.1);overflow:hidden;margin-top:.5rem}
   .quiz-bar i{display:block;height:100%;background:var(--aqua);border-radius:99px;transition:width .5s ease}
   .quiz-share{font:inherit;font-size:.8rem;font-weight:700;color:var(--aqua);background:transparent;border:1px solid rgba(0,117,198,.35);border-radius:100px;padding:.45rem 1rem;cursor:pointer;transition:background .2s}
   .quiz-share:hover{background:rgba(0,117,198,.08)}
-  .quiz-up{display:flex;align-items:center;gap:.6rem;background:rgba(26,155,91,.1);border:1px solid #1a9b5b;border-radius:12px;padding:.8rem 1rem;margin-bottom:1rem;font-family:'Syne',sans-serif;font-weight:700;color:#137a47;animation:fadeUp .5s ease both}
+  .quiz-up{display:flex;align-items:center;gap:.6rem;background:rgba(26,155,91,.1);border:1px solid #1a9b5b;border-radius:12px;padding:.8rem 1rem;margin-bottom:1rem;font-family:var(--font);font-weight:700;color:#137a47;animation:fadeUp .5s ease both}
   .quiz-up .ico{font-size:1.3rem}
 
   /* SELECTOR DE PERFIL */
@@ -353,25 +353,40 @@
   .perfil-dialog::backdrop{background:rgba(0,48,96,.55);backdrop-filter:blur(3px)}
   .perfil-close{position:absolute;top:.7rem;right:1rem;background:none;border:none;font-size:1.7rem;line-height:1;color:var(--muted);cursor:pointer}
   .perfil-close:hover{color:var(--white)}
-  .perfil-dialog h2{font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:.4rem}
+  .perfil-dialog h2{font-family:var(--font);font-size:1.4rem;margin-bottom:.4rem}
   .perfil-sub{color:var(--muted);font-size:.9rem;margin-bottom:1.4rem}
   .perfil-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
   .perfil-card{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;color:var(--white);transition:border-color .2s,background .2s,transform .2s}
   .perfil-card:hover,.perfil-card:focus-visible{border-color:var(--aqua);background:rgba(0,117,198,.06);transform:translateY(-2px)}
   .perfil-card .ico{font-size:1.7rem;color:var(--aqua);margin-bottom:.3rem}
-  .perfil-card b{font-family:'Syne',sans-serif;font-size:1rem}
+  .perfil-card b{font-family:var(--font);font-size:1rem}
   .perfil-card span{font-size:.78rem;color:var(--muted);line-height:1.4}
 
   /* CUPOS DEL MES (solo se muestra si hay dato vigente en app.js) */
-  .cupos{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;font-size:.85rem;font-weight:600;color:var(--white);background:rgba(0,117,198,.07);border:1px solid rgba(0,117,198,.25);border-radius:100px;padding:.45rem 1.05rem;width:fit-content}
+  .cupos{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;font-size:1.05rem;font-weight:700;line-height:1.3;color:#fff;background:linear-gradient(135deg,#ff3131,#d61f5a);border-radius:22px;padding:.7rem 1.4rem;max-width:100%;width:fit-content;box-shadow:0 8px 24px rgba(255,49,49,.3)}
   .cupos[hidden]{display:none}
-  .cupos a{color:var(--aqua)}
-  .cupos-dark{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#f0f8ff;margin:1.3rem auto 0}
-  .cupos-dark a{color:#fff}
+  .cupos b{font-family:var(--font);font-size:1.6em;line-height:1}
+  .cupos .ico{font-size:1.3em}
+  .cupos a{color:#fff;text-decoration:underline}
+  .cupos-dark{background:#fff;color:#c4123f;box-shadow:0 8px 24px rgba(0,0,0,.25);margin:1.5rem auto 0}
+  .cupos-dark a{color:#c4123f}
+  @media(max-width:480px){.cupos{font-size:.95rem;padding:.6rem 1.1rem}}
+
+  /* HERRAMIENTA GRATUITA (pestaña destacada) */
+  .banco{padding-top:3rem}
+  .acc-tool{border:2px solid #7b3ff2;background:linear-gradient(135deg,rgba(123,63,242,.08),rgba(0,117,198,.07));box-shadow:0 12px 34px rgba(123,63,242,.18)}
+  .acc-tool[open]{border-color:#7b3ff2}
+  .acc-tool .acc-q{padding:1.5rem 1.7rem}
+  .acc-tool .acc-t small{font-size:.9rem;margin-top:.7rem;max-width:52ch}
+  .tool-badge{display:inline-flex;align-items:center;gap:.5rem;background:#7b3ff2;color:#fff;font-family:var(--font);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.45rem 1rem;border-radius:100px;margin-bottom:.9rem}
+  .tool-title{display:block;font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:700;line-height:1.12;letter-spacing:-.02em}
+  .acc-tool .arrow{background:#7b3ff2;color:#fff;width:2.6rem;height:2.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+  .acc-tool .acc-body{padding-top:.3rem}
+  .acc-tool:not([open]) .acc-q:hover .acc-t{color:inherit}
 
   @media(max-width:768px){
     .conoce{padding:4rem 1.25rem 1.5rem}
-    .banco{padding:3rem 1.25rem .5rem}
+    .banco{padding:2.5rem 1.25rem .5rem}
     .acc-body .razon{grid-template-columns:1fr}
     .acc-body .razon-media{max-width:420px}
     .quiz{padding:1.4rem}
@@ -404,8 +419,6 @@
   @media(max-width:480px){
     .hero{padding:7rem 1.5rem 4rem}
     .hero-watermark{width:120px;height:120px;top:-15px;left:-20px}
-    .stats-inner{grid-template-columns:1fr;gap:1.5rem}
-    .stat-num{font-size:1.8rem}
   }
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -451,7 +464,7 @@
         <a href="#razon"><span class="num">03</span><span><b>Nuestra razón de ser</b><span class="d">El propósito detrás de cada análisis</span></span></a>
         <a href="#metodo"><span class="num">04</span><span><b>Cómo trabajamos</b><span class="d">Un proceso, cinco etapas</span></span></a>
         <a href="#principios"><span class="num">05</span><span><b>Nuestros principios</b><span class="d">Lo que guía cada decisión</span></span></a>
-        <a href="#precios"><span class="num">06</span><span><b>Modalidades</b><span class="d">Tres planes, precios transparentes</span></span></a>
+        <a href="#precios"><span class="num">06</span><span><b>Modalidades</b><span class="d">Cuatro servicios, precios desde</span></span></a>
         <a href="#faq"><span class="num">07</span><span><b>Preguntas frecuentes</b><span class="d">Lo esencial antes de empezar</span></span></a>
         <a href="#privacidad"><span class="num">08</span><span><b>Legal</b><span class="d">Política de privacidad</span></span></a>
       </div>
@@ -568,38 +581,23 @@
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div>
-      <div class="stat-num">Expertos<br style="font-size:.5rem"> con 10+</div>
-      <div class="stat-label">Años de experiencia clínica e investigación</div>
+<!-- BANCO DE PREGUNTAS (pestaña destacada) -->
+<section class="banco" aria-label="Pon a prueba tu investigación">
+  <details class="acc acc-tool" id="banco">
+    <summary class="acc-q">
+      <span class="acc-t">
+        <span class="tool-badge"><svg class="ico" aria-hidden="true"><use href="#i-zap"/></svg> Herramienta gratuita n.º 1</span>
+        <span class="tool-title">Pon a prueba<br>tu investigación</span>
+        <small>Responde preguntas reales de tesis y publicación, suma aciertos y sube de rango. Toca para jugar.</small>
+      </span>
+      <span class="arrow" aria-hidden="true">▼</span>
+    </summary>
+    <div class="acc-body">
+      <div class="quiz" id="quiz" aria-live="polite">
+        <noscript><p class="quiz-nojs">Activa JavaScript para usar el reto.</p></noscript>
+      </div>
     </div>
-    <div>
-      <div class="stat-num">STATA<br style="font-size:.5rem"> R · Python</div>
-      <div class="stat-label" style="margin-top:.6rem">Análisis reproducibles</div>
-    </div>
-    <div>
-      <div class="stat-num">STROBE<br style="font-size:.5rem">CONSORT · GRADE</div>
-      <div class="stat-label" style="margin-top:.6rem">Estándares internacionales</div>
-    </div>
-    <div>
-      <div class="stat-num">Scopus<br style="font-size:.5rem">WoS · SciELO</div>
-      <div class="stat-label" style="margin-top:.6rem">Soporte metodológico para publicación</div>
-    </div>
-  </div>
-</div>
-
-<!-- BANCO DE PREGUNTAS -->
-<section class="banco" id="banco" aria-label="Pon a prueba tu investigación">
-  <div class="banco-inner">
-    <div class="section-label">Herramienta gratuita</div>
-    <h2 class="section-title">Pon a prueba<br>tu investigación</h2>
-    <p class="section-sub">Responde preguntas reales de tesis y publicación, suma aciertos y sube de rango: de Explorador a Investigador Senior. Cada respuesta incluye la explicación y su referencia.</p>
-    <div class="quiz" id="quiz" aria-live="polite">
-      <noscript><p class="quiz-nojs">Activa JavaScript para usar el banco de preguntas.</p></noscript>
-    </div>
-  </div>
+  </details>
 </section>
 
 <!-- CONOCE DOLPHINSTATS (pestañas desplegables) -->
@@ -779,64 +777,81 @@
   <div class="precios-inner">
     <div class="section-label">Modalidades de acompañamiento</div>
     <h2 class="section-title">Transparencia en cada etapa.<br>Compromiso en cada entrega.</h2>
-    <p class="section-sub">Tres modalidades diseñadas según el alcance de tu proyecto. Sin sorpresas. Sin letra pequeña.</p>
+    <p class="section-sub">Cuatro servicios, según hasta dónde quieres que te acompañemos. Sin sorpresas. Sin letra pequeña.</p>
     <div class="pricing-grid">
 
       <div class="precio-card reveal">
-        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-flask"/></svg></div>
-        <div class="precio-name">Consultoría Puntual</div>
-        <div class="precio-tag">Análisis estadístico y revisión metodológica</div>
-        <div class="precio-amount">Desde S/ 550 <span>proyecto</span></div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg></div>
+        <div class="precio-name">Asesoría de Tesis</div>
+        <div class="precio-tag">Tú lideras, nosotros acompañamos y revisamos</div>
+        <div class="precio-amount"><small>Desde</small>S/ 950 <span>proyecto</span></div>
+        <div class="precio-usd" data-soles="950" hidden></div>
         <hr class="precio-divider">
         <ul class="precio-features">
-          <li><span class="check">✓</span> Estadística descriptiva e inferencial completa</li>
-          <li><span class="check">✓</span> Tablas y gráficos para Word / journal</li>
-          <li><span class="check">✓</span> Interpretación metodológica y clínica</li>
-          <li><span class="check">✓</span> 1 ronda de ajustes incluida</li>
-          <li><span class="no">✕</span> Redacción de sección de resultados</li>
-          <li><span class="no">✕</span> Soporte para publicación</li>
+          <li><span class="check">✓</span> Paquete de 4 sesiones de acompañamiento</li>
+          <li><span class="check">✓</span> Orientaciones escritas de cada sesión</li>
+          <li><span class="check">✓</span> Observaciones y correcciones sobre tus avances</li>
+          <li><span class="no">✕</span> Ejecución del análisis por DolphinStats</li>
+          <li><span class="no">✕</span> Redacción del documento</li>
         </ul>
-        <!-- Bot temporalmente desactivado (reversible) — original: href="#" class="precio-cta" (abría el chat vía JS) -->
-        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20consultar%20sobre%20el%20plan%20Consultoria%20Puntual." target="_blank" rel="noopener noreferrer" class="precio-cta">Consultar disponibilidad →</a>
-      </div>
-
-      <div class="precio-card featured reveal">
-        <div class="precio-badge"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg> Más elegido</div>
-        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div>
-        <div class="precio-name">Acompañamiento de Investigación</div>
-        <div class="precio-tag">Diseño, análisis y soporte de manuscrito</div>
-        <div class="precio-amount">Desde S/ 950 <span>proyecto</span></div>
-        <hr class="precio-divider">
-        <ul class="precio-features">
-          <li><span class="check">✓</span> Todo lo de la consultoría puntual</li>
-          <li><span class="check">✓</span> Pruebas inferenciales completas</li>
-          <li><span class="check">✓</span> Sección de resultados redactada</li>
-          <li><span class="check">✓</span> Revisión de coherencia metodológica</li>
-          <li><span class="check">✓</span> 2 rondas de ajustes</li>
-          <li><span class="no">✕</span> Soporte en revisión por pares</li>
-        </ul>
-        <!-- Bot temporalmente desactivado (reversible) — original: href="#" class="precio-cta" (abría el chat vía JS) -->
-        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20consultar%20sobre%20el%20plan%20Acompanamiento%20de%20Investigacion." target="_blank" rel="noopener noreferrer" class="precio-cta">Consultar disponibilidad →</a>
+        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20cotizar%20el%20servicio%20Asesoria%20de%20Tesis." target="_blank" rel="noopener noreferrer" class="precio-cta">Cotizar asesoría →</a>
       </div>
 
       <div class="precio-card reveal">
-        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-trophy"/></svg></div>
-        <div class="precio-name">Colaboración Científica Avanzada</div>
-        <div class="precio-tag">Proyectos complejos y publicación internacional</div>
-        <div class="precio-amount">Desde S/ 1750 <span>personalizada</span></div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-zap"/></svg></div>
+        <div class="precio-name">Consultoría exprés</div>
+        <div class="precio-tag">Resolvemos un problema puntual y cerrado</div>
+        <div class="precio-amount"><small>Desde</small>S/ 1,400 <span>proyecto</span></div>
+        <div class="precio-usd" data-soles="1400" hidden></div>
         <hr class="precio-divider">
         <ul class="precio-features">
-          <li><span class="check">✓</span> Diseño metodológico desde el inicio</li>
-          <li><span class="check">✓</span> Análisis estadístico avanzado</li>
-          <li><span class="check">✓</span> Selección estratégica de revista Scopus/SciELO</li>
-          <li><span class="check">✓</span> Respuesta a observaciones del editor</li>
-          <li><span class="check">✓</span> Ajustes ilimitados hasta aceptación</li>
-          <li><span class="check">✓</span> Co-autoría evaluada bajo criterios ICMJE</li>
+          <li><span class="check">✓</span> Respuesta técnica documentada a tu consulta</li>
+          <li><span class="check">✓</span> Archivos de salida o scripts si la consulta lo requiere</li>
+          <li><span class="check">✓</span> Resultados reproducibles y auditables</li>
+          <li><span class="check">✓</span> 1 ronda de ajustes incluida</li>
+          <li><span class="no">✕</span> Otras secciones o etapas de tu trabajo</li>
         </ul>
-        <!-- Bot temporalmente desactivado (reversible) — original: href="#" class="precio-cta" (abría el chat vía JS) -->
-        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20consultar%20sobre%20el%20plan%20Colaboracion%20Cientifica%20Avanzada." target="_blank" rel="noopener noreferrer" class="precio-cta">Solicitar cotización →</a>
+        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20cotizar%20el%20servicio%20Consultoria%20expres." target="_blank" rel="noopener noreferrer" class="precio-cta">Cotizar consultoría →</a>
       </div>
+
+      <div class="precio-card reveal">
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-compass"/></svg></div>
+        <div class="precio-name">Proyecto terminado</div>
+        <div class="precio-tag">Protocolo y plan de análisis</div>
+        <div class="precio-amount"><small>Desde</small>S/ 1,750 <span>proyecto</span></div>
+        <div class="precio-usd" data-soles="1750" hidden></div>
+        <hr class="precio-divider">
+        <ul class="precio-features">
+          <li><span class="check">✓</span> Protocolo de investigación en formato editable</li>
+          <li><span class="check">✓</span> Plan de análisis con pruebas y modelos propuestos</li>
+          <li><span class="check">✓</span> 2 rondas de ajustes incluidas</li>
+          <li><span class="no">✕</span> Ejecución del análisis sobre datos</li>
+          <li><span class="no">✕</span> Redacción de resultados</li>
+        </ul>
+        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20cotizar%20el%20servicio%20Proyecto%20terminado." target="_blank" rel="noopener noreferrer" class="precio-cta">Cotizar proyecto →</a>
+      </div>
+
+      <div class="precio-card featured reveal">
+        <div class="precio-badge"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg> Más completo</div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></div>
+        <div class="precio-name">Informe final terminado</div>
+        <div class="precio-tag">Análisis estadístico y redacción de resultados</div>
+        <div class="precio-amount"><small>Desde</small>S/ 2,950 <span>proyecto</span></div>
+        <div class="precio-usd" data-soles="2950" hidden></div>
+        <hr class="precio-divider">
+        <ul class="precio-features">
+          <li><span class="check">✓</span> Análisis estadístico completo de tus datos</li>
+          <li><span class="check">✓</span> Sección de resultados redactada</li>
+          <li><span class="check">✓</span> Tablas y figuras en formato editable</li>
+          <li><span class="check">✓</span> Scripts reproducibles y auditables</li>
+          <li><span class="check">✓</span> 2 rondas de ajustes y 1 revisión de coherencia metodológica</li>
+          <li><span class="no">✕</span> Introducción, discusión y conclusiones</li>
+        </ul>
+        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20cotizar%20el%20servicio%20Informe%20final%20terminado." target="_blank" rel="noopener noreferrer" class="precio-cta">Cotizar informe →</a>
+      </div>
+
     </div>
+    <p class="pricing-note"><b>Precios en soles, a partir de.</b> El precio final depende del diseño del estudio, la carga analítica, el estado de tus datos, tu nivel académico y el plazo; te lo confirmamos por proforma antes de empezar. Se requiere un adelanto del 50% para iniciar y el saldo se cancela contra la entrega final. Los gastos de publicación en revistas no están incluidos. La <b>publicación científica</b> (selección de revista, envío y respuesta a revisores) es un servicio aparte que se cotiza por separado.<span id="tc-note" hidden></span></p>
     <p class="pricing-note">La co-autoría se evalúa exclusivamente bajo criterios internacionales de autoría científica (<a href="https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html" target="_blank" rel="noopener">ICMJE</a>). La participación en publicaciones implica contribución intelectual real y trazable al proceso de investigación.</p>
   </div>
 </section>
