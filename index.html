@@ -37,8 +37,19 @@
   button,input,textarea,select{font-family:inherit}
   html{scroll-behavior:smooth}
   body{background:var(--ocean);color:var(--white);font-family:var(--font);overflow-x:hidden}
-  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,117,198,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 80%,rgba(0,117,198,.035) 0%,transparent 60%);pointer-events:none;z-index:0}
-  body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,117,198,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,117,198,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+  /* Fondo: limpio, con manchas de color que se mueven más lento que el contenido (paralaje, ver app.js) */
+  body{position:relative}
+  .bg-blobs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+  .bg-blob{position:absolute;border-radius:50%;filter:blur(48px);will-change:transform}
+  .bg-blob.a{width:420px;height:420px;left:-110px;top:1%;background:rgba(0,117,198,.18)}
+  .bg-blob.b{width:360px;height:360px;right:-90px;top:20%;background:rgba(123,63,242,.14)}
+  .bg-blob.c{width:400px;height:400px;left:10%;top:48%;background:rgba(8,153,168,.14)}
+  .bg-blob.d{width:360px;height:360px;right:-70px;top:74%;background:rgba(0,117,198,.14)}
+  /* Puntos tenues solo en el hero */
+  .hero-wrap::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,117,198,.22) 1.2px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none}
+  /* Bandas suaves de ancho completo que alternan secciones */
+  .conoce,.faq{background:rgba(0,117,198,.035);box-shadow:0 0 0 100vmax rgba(0,117,198,.035);clip-path:inset(0 -100vmax)}
+  @media (prefers-reduced-motion: reduce){.bg-blob{transform:none!important}}
 
   /* NAV & HERO — Paleta clara definitiva */
   nav, .hero-wrap, .hero{
@@ -75,7 +86,7 @@
   section{position:relative;z-index:1}
 
   /* HERO */
-  .hero-wrap{background:var(--lp-bg);}
+  .hero-wrap{background:transparent;}
   .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;padding:9rem 2rem 5rem;max-width:1100px;margin:0 auto}
   .hero>picture{position:absolute;top:0;left:0}
   .hero-watermark{position:absolute;top:1rem;left:-60px;width:340px;height:340px;object-fit:contain;opacity:.08;pointer-events:none;z-index:0}
@@ -428,6 +439,8 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+
+<div class="bg-blobs" aria-hidden="true"><div class="bg-blob a" data-s="0.30"></div><div class="bg-blob b" data-s="0.45"></div><div class="bg-blob c" data-s="0.35"></div><div class="bg-blob d" data-s="0.40"></div></div>
 
 <!-- ICONOS DE LÍNEA (sprite) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">

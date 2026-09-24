@@ -529,3 +529,21 @@ var DS_CUPOS = {
     })
     .catch(function () {});
 })();
+
+// ── Fondo con paralaje: las manchas de color se desplazan más lento que el contenido ──
+(function () {
+  var blobs = document.querySelectorAll('.bg-blob');
+  if (!blobs.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ticking = false;
+  function update() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    blobs.forEach(function (b) {
+      b.style.transform = 'translate3d(0,' + Math.round(y * parseFloat(b.getAttribute('data-s'))) + 'px,0)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+})();
