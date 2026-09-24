@@ -81,7 +81,7 @@
   .hero-text{display:flex;flex-direction:column;justify-content:center}
   .hero-tag{display:inline-flex;align-items:center;gap:.7rem;color:var(--lp-blue);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2rem;width:fit-content;animation:fadeUp .8s ease both}
   .hero-tag::before{content:'';width:28px;height:1px;background:var(--lp-blue);flex-shrink:0}
-  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--lp-navy);animation:fadeUp .8s ease .1s both}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,4.2vw,3.7rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--lp-navy);animation:fadeUp .8s ease .1s both}
   .hero h1 em{font-style:normal;color:var(--lp-coral);position:relative}
   .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--lp-coral);opacity:.4;border-radius:2px}
   .hero-sub{font-size:1.1rem;color:var(--lp-muted);max-width:580px;line-height:1.8;margin-bottom:1.5rem;animation:fadeUp .8s ease .2s both}
@@ -280,6 +280,94 @@
   .footer-bottom{border-top:1px solid rgba(0,117,198,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
   .footer-bottom p{color:rgba(74,98,133,.95);font-size:.75rem}
 
+  /* ICONOS DE LÍNEA */
+  .ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em;flex-shrink:0}
+  .svc-icon,.dif-icon,.precio-icon{color:var(--aqua)}
+  .p-icon .ico{color:var(--aqua)}
+  .chip .ico{width:1.15em;height:1.15em;color:#7cc4ff}
+  .precio-badge .ico{width:.9em;height:.9em;fill:currentColor;vertical-align:-.12em}
+
+  /* PESTAÑAS DESPLEGABLES (mismo patrón que FAQ) */
+  .conoce{max-width:900px;margin:0 auto;padding:5rem 2rem 2rem}
+  .acc-list{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+  .acc{scroll-margin-top:96px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+  .acc[open]{border-color:rgba(0,117,198,.35)}
+  .acc-q{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem 1.5rem;font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;color:var(--white)}
+  .acc-q::-webkit-details-marker{display:none}
+  .acc-q:hover .acc-t{color:var(--aqua)}
+  .acc-q:focus-visible{outline:2px solid var(--aqua);outline-offset:-2px}
+  .acc-t{transition:color .2s}
+  .acc-t small{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:.2rem}
+  .acc-q .arrow{color:var(--aqua);transition:transform .3s;flex-shrink:0}
+  .acc[open] .arrow{transform:rotate(180deg)}
+  .acc-body{padding:.5rem 1.5rem 1.75rem}
+  .acc-body .section-sub{margin-bottom:1.5rem}
+  .acc-body .razon{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center;padding:1rem 0 0;margin:0;max-width:none}
+  .acc-body .razon .section-title{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+  .acc-body .razon-quote{margin-top:1.5rem}
+  .acc-body .metodo-steps{margin-top:0}
+  .privacy{padding:0 2rem 4rem;max-width:900px}
+
+  /* BANCO DE PREGUNTAS */
+  .banco{max-width:900px;margin:0 auto;padding:4rem 2rem 1rem}
+  .quiz{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem}
+  .quiz-meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
+  .quiz-chip{background:rgba(0,117,198,.08);color:var(--aqua);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px}
+  .quiz-count{margin-left:auto;font-size:.78rem;color:var(--muted)}
+  .quiz-q{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;line-height:1.5;margin-bottom:1.25rem}
+  .quiz-opts{display:flex;flex-direction:column;gap:.7rem}
+  .quiz-opt{text-align:left;background:var(--ocean);border:1px solid rgba(0,48,96,.18);border-radius:12px;padding:.9rem 1.1rem;font:inherit;font-size:.92rem;line-height:1.5;color:var(--white);cursor:pointer;display:flex;gap:.75rem;transition:border-color .2s,background .2s}
+  .quiz-opt:hover:not(:disabled){border-color:var(--aqua);background:rgba(0,117,198,.05)}
+  .quiz-opt:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+  .quiz-opt .k{font-family:'Syne',sans-serif;font-weight:800;color:var(--aqua);flex-shrink:0}
+  .quiz-opt:disabled{cursor:default}
+  .quiz-opt.ok{border-color:#1a9b5b;background:rgba(26,155,91,.09)}
+  .quiz-opt.bad{border-color:var(--accent);background:rgba(255,49,49,.07)}
+  .quiz-fb{margin-top:1.4rem;border-top:1px solid var(--border);padding-top:1.2rem}
+  .quiz-verdict{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.6rem}
+  .quiz-verdict.ok{color:#1a9b5b}
+  .quiz-verdict.bad{color:var(--accent)}
+  .quiz-fb p{color:var(--muted);font-size:.9rem;line-height:1.7}
+  .quiz-ref{font-size:.78rem!important;margin-top:.8rem}
+  .quiz-ref a{color:var(--aqua)}
+  .quiz-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.4rem;align-items:center}
+  .quiz-actions button{font:inherit;font-weight:700;font-size:.92rem;cursor:pointer;padding:.7rem 1.5rem}
+  .quiz-actions .btn-primary{border:none}
+  .quiz-nojs{color:var(--muted)}
+
+  /* SELECTOR DE PERFIL */
+  .perfil-dialog{border:none;border-radius:20px;padding:2rem;max-width:560px;width:calc(100vw - 2rem);margin:auto;box-shadow:0 30px 80px rgba(0,48,96,.35);color:var(--white);background:var(--ocean)}
+  .perfil-dialog::backdrop{background:rgba(0,48,96,.55);backdrop-filter:blur(3px)}
+  .perfil-close{position:absolute;top:.7rem;right:1rem;background:none;border:none;font-size:1.7rem;line-height:1;color:var(--muted);cursor:pointer}
+  .perfil-close:hover{color:var(--white)}
+  .perfil-dialog h2{font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:.4rem}
+  .perfil-sub{color:var(--muted);font-size:.9rem;margin-bottom:1.4rem}
+  .perfil-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  .perfil-card{display:flex;flex-direction:column;gap:.25rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;color:var(--white);transition:border-color .2s,background .2s,transform .2s}
+  .perfil-card:hover,.perfil-card:focus-visible{border-color:var(--aqua);background:rgba(0,117,198,.06);transform:translateY(-2px)}
+  .perfil-card .ico{font-size:1.7rem;color:var(--aqua);margin-bottom:.3rem}
+  .perfil-card b{font-family:'Syne',sans-serif;font-size:1rem}
+  .perfil-card span{font-size:.78rem;color:var(--muted);line-height:1.4}
+
+  /* CUPOS DEL MES (solo se muestra si hay dato vigente en app.js) */
+  .cupos{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;font-size:.85rem;font-weight:600;color:var(--white);background:rgba(0,117,198,.07);border:1px solid rgba(0,117,198,.25);border-radius:100px;padding:.45rem 1.05rem;width:fit-content}
+  .cupos[hidden]{display:none}
+  .cupos a{color:var(--aqua)}
+  .cupos-dark{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#f0f8ff;margin:1.3rem auto 0}
+  .cupos-dark a{color:#fff}
+
+  @media(max-width:768px){
+    .conoce{padding:4rem 1.25rem 1.5rem}
+    .banco{padding:3rem 1.25rem .5rem}
+    .acc-body .razon{grid-template-columns:1fr}
+    .acc-body .razon-media{max-width:420px}
+    .quiz{padding:1.4rem}
+  }
+  @media(max-width:480px){
+    .perfil-grid{grid-template-columns:1fr}
+    .perfil-dialog{padding:1.5rem}
+  }
+
   /* ANIMATIONS */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
@@ -311,6 +399,33 @@
 </head>
 <body>
 
+<!-- ICONOS DE LÍNEA (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-steth" viewBox="0 0 24 24"><path d="M5 3H4a1 1 0 0 0-1 1v5a6 6 0 0 0 12 0V4a1 1 0 0 0-1-1h-1"/><path d="M9 15v1a5 5 0 0 0 10 0v-3"/><circle cx="19" cy="11" r="2"/></symbol>
+    <symbol id="i-micro" viewBox="0 0 24 24"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M4 7h16"/><path d="M4 7l-3 8a4 4 0 0 0 6 0z"/><path d="M20 7l-3 8a4 4 0 0 0 6 0z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 2v7.5L4.5 19a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 9.5V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+  </defs>
+</svg>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">Dolphin<span>Stats</span></a>
@@ -332,7 +447,7 @@
     <li><a href="#precios">Modalidades</a></li>
     <li><a href="#faq">FAQ</a></li>
     <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com" -->
-    <li><a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="nav-cta">Solicitar asesoría</a></li>
+    <li><a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="nav-cta js-perfil">Solicitar asesoría</a></li>
   </ul>
 </nav>
 
@@ -345,14 +460,15 @@
     </picture>
     <div class="hero-text">
       <div class="hero-tag">Consultoría científica especializada · Lima, Perú</div>
-      <h1>Del dato <br style="font-size:.5rem"> <em>al artículo</em></h1>
-      <p class="hero-sub">Asesoramos a <strong>tesistas, investigadores y docentes universitarios</strong> de ciencias de la salud en diseño metodológico, bioestadística avanzada, epidemiología clínica y publicación científica internacional.</p>
+      <h1>Aceleramos <br style="font-size:.5rem"> <em>tu investigación</em></h1>
+      <p class="hero-sub">Tu tesis o manuscrito con <strong>análisis estadístico reproducible</strong> e interpretación clínica, listo para sustentar o enviar a revista. Asesoría para <strong>tesistas, residentes, docentes e investigadores</strong> de ciencias de la salud.</p>
       <p class="hero-specs">Bioestadística avanzada · Epidemiología clínica · Tesis ciencias de la salud · Publicación Scopus / SciELO · IA aplicada a investigación</p>
       <div class="hero-ctas">
         <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com" -->
-        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary">Solicitar asesoría →</a>
+        <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary js-perfil">Solicitar asesoría →</a>
         <a href="#servicios" class="btn-secondary">Explorar servicios</a>
       </div>
+      <p class="cupos" data-cupos hidden></p>
     </div>
     <div class="hero-media">
       <div class="frame">
@@ -360,7 +476,7 @@
           <source srcset="hero-doctora-v2.webp" type="image/webp">
           <img src="hero-doctora-v2.jpg" alt="Investigadora en bata blanca revisando gráficos de análisis estadístico en su computadora, con papeles y libreta de notas" width="700" height="2962" fetchpriority="high" decoding="async" style="object-position:50% 35%">
         </picture>
-        <div class="chip">🩺 <span>Del <b>dato clínico</b> al resultado</span></div>
+        <div class="chip"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg> <span>Del <b>dato clínico</b> al resultado</span></div>
       </div>
     </div>
   </div>
@@ -461,14 +577,31 @@
   </div>
 </div>
 
-<!-- SERVICIOS -->
-<section class="servicios" id="servicios">
-  <div class="section-label">Servicios especializados</div>
-  <h2 class="section-title">No hacemos solo estadística.<br>Construimos investigación sólida.</h2>
-  <p class="section-sub">Acompañamiento integral desde el diseño del protocolo hasta el manuscrito listo para enviar. Cada etapa con rigor metodológico y criterio clínico real.</p>
-  <div class="services-grid">
-    <div class="svc-card reveal">
-      <div class="svc-icon">🧭</div>
+<!-- BANCO DE PREGUNTAS -->
+<section class="banco" id="banco" aria-label="Banco de preguntas de investigación">
+  <div class="banco-inner">
+    <div class="section-label">Herramienta gratuita</div>
+    <h2 class="section-title">Banco de preguntas<br>de investigación</h2>
+    <p class="section-sub">Pon a prueba tu criterio metodológico con preguntas reales de tesis y publicación. Cada respuesta incluye la explicación y su referencia.</p>
+    <div class="quiz" id="quiz" aria-live="polite">
+      <noscript><p class="quiz-nojs">Activa JavaScript para usar el banco de preguntas.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<!-- CONOCE DOLPHINSTATS (pestañas desplegables) -->
+<section class="conoce" aria-label="Conoce DolphinStats">
+  <div class="conoce-inner">
+    <div class="section-label">Conoce DolphinStats</div>
+    <h2 class="section-title">Todo lo que necesitas saber,<br>a un clic</h2>
+    <div class="acc-list" data-acc-group>
+    <details class="acc" id="servicios">
+      <summary class="acc-q"><span class="acc-t">Servicios especializados<small>Seis áreas, del diseño a la publicación</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+<p class="section-sub">Acompañamiento integral desde el diseño del protocolo hasta el manuscrito listo para enviar. Cada etapa con rigor metodológico y criterio clínico real.</p>
+<div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-compass"/></svg></div>
       <h3>Diseño Metodológico</h3>
       <ul class="svc-list">
         <li>Formulación de pregunta PICO</li>
@@ -479,8 +612,8 @@
         <li>Validación de instrumentos</li>
       </ul>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-icon">📊</div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div>
       <h3>Bioestadística Aplicada</h3>
       <ul class="svc-list">
         <li>Estadística descriptiva e inferencial</li>
@@ -491,8 +624,8 @@
         <li>Resultados reproducibles y auditables</li>
       </ul>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-icon">🌍</div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg></div>
       <h3>Epidemiología Clínica</h3>
       <ul class="svc-list">
         <li>Diseños observacionales y analíticos</li>
@@ -502,8 +635,8 @@
         <li>Interpretación epidemiológica avanzada</li>
       </ul>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-icon">📝</div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></div>
       <h3>Publicación Científica</h3>
       <ul class="svc-list">
         <li>Redacción científica formato IMRyD</li>
@@ -513,8 +646,8 @@
         <li>Soporte hasta la aceptación</li>
       </ul>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-icon">🤖</div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-cpu"/></svg></div>
       <h3>IA aplicada a Investigación</h3>
       <ul class="svc-list">
         <li>Automatización de análisis repetitivos</li>
@@ -524,8 +657,8 @@
         <li>Pipelines reproducibles con Python/R</li>
       </ul>
     </div>
-    <div class="svc-card reveal">
-      <div class="svc-icon">🎓</div>
+    <div class="svc-card">
+      <div class="svc-icon"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg></div>
       <h3>Asesoría de Tesis</h3>
       <ul class="svc-list">
         <li>Acompañamiento desde el protocolo</li>
@@ -536,53 +669,51 @@
       </ul>
     </div>
   </div>
-</section>
-
-<!-- DIFERENCIAL -->
-<section class="diferencial" id="diferencial">
-  <div class="diferencial-inner">
-    <div class="section-label">¿Por qué DolphinStats?</div>
-    <h2 class="section-title">Autoridad metodológica<br>con criterio clínico real</h2>
-    <p class="section-sub">Muchos sitios comunican "hacemos estadística". Nosotros construimos investigación metodológicamente sólida y publicable, desde el diseño hasta el manuscrito.</p>
-    <div class="dif-grid">
+      </div>
+    </details>
+    <details class="acc" id="diferencial">
+      <summary class="acc-q"><span class="acc-t">¿Por qué DolphinStats?<small>Autoridad metodológica con criterio clínico real</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+<p class="section-sub">Muchos sitios comunican "hacemos estadística". Nosotros construimos investigación metodológicamente sólida y publicable, desde el diseño hasta el manuscrito.</p>
+<div class="dif-grid">
       <div class="dif-card">
-        <div class="dif-icon">🩺</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg></div>
         <h3>Visión clínica real</h3>
         <p>Más de 10 años de experiencia en investigación. Sabemos qué significa un OR de 2.3 en el contexto real de un paciente, no solo en un output de software.</p>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">🔬</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-micro"/></svg></div>
         <h3>Estándares internacionales</h3>
         <p>Tu investigación cumple los criterios de las revistas más exigentes del mundo, desde el inicio.</p>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">📤</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-upload"/></svg></div>
         <h3>Orientado a publicación</h3>
         <p>No entregamos solo tablas. Entregamos investigación publicable: redacción IMRyD, selección de journal y soporte metodológico hasta la aceptación.</p>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">🤝</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div>
         <h3>Colaboración científica</h3>
         <p>Posibilidad de co-autoría evaluada bajo criterios ICMJE. Tu investigación con respaldo metodológico experto y transparencia científica total.</p>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">🐬</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div>
         <h3>Respuesta experta en &lt;24h</h3>
         <p>Escríbenos directo por WhatsApp. Nuestros expertos responden personalmente en horas, no días. Acompañamiento real, no soporte externalizado.</p>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">🛠</div>
+        <div class="dif-icon"><svg class="ico" aria-hidden="true"><use href="#i-wrench"/></svg></div>
         <h3>Multi-software, tú decides</h3>
         <p>SPSS, STATA, R y Python. Nos adaptamos a tu entorno, a tu metodología y a los requisitos de tu institución. No al revés.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- RAZON DE SER -->
-<section class="razon" id="razon">
-  <div class="razon-text">
-    <div class="section-label">Nuestra razón de ser</div>
+      </div>
+    </details>
+    <details class="acc" id="razon">
+      <summary class="acc-q"><span class="acc-t">Nuestra razón de ser<small>El propósito detrás de cada análisis</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+        <div class="razon">
+    <div class="razon-text">
     <h2 class="section-title">La investigación puede transformar la salud.</h2>
     <p class="section-sub">DolphinStats nació con un propósito claro: <strong style="color:var(--aqua);font-weight:700;">acelerar la generación de evidencia científica de calidad</strong> mediante metodología rigurosa, análisis avanzado e innovación tecnológica. No medimos nuestro éxito por la cantidad de análisis realizados, sino por el conocimiento que ayudamos a construir — y por las decisiones en salud que ese conocimiento puede mejorar.</p>
     <div class="razon-quote">"Una mejor investigación produce mejor evidencia. Y una mejor evidencia contribuye a construir una mejor salud para todos."</div>
@@ -594,16 +725,16 @@
         <img src="razon-media.jpg" alt="Doctora revisando evidencia científica impresa junto a gráficos en pantalla" loading="lazy" decoding="async" style="object-position:50% 32%">
       </picture>
       <div class="tint"></div>
-      <div class="chip">🔬 <span>Ciencia <b>rigurosa</b>, resultados reales</span></div>
+      <div class="chip"><svg class="ico" aria-hidden="true"><use href="#i-micro"/></svg> <span>Ciencia <b>rigurosa</b>, resultados reales</span></div>
     </div>
   </div>
-</section>
-
-<!-- COMO TRABAJAMOS -->
-<section class="metodo" id="metodo">
-  <div class="section-label">Cómo trabajamos</div>
-  <h2 class="section-title">Un proceso, cinco etapas.</h2>
-  <p class="section-sub">Cada proyecto representa una pregunta científica diferente. Por eso seguimos un proceso estructurado que combina rigurosidad metodológica, colaboración permanente y transparencia.</p>
+        </div>
+      </div>
+    </details>
+    <details class="acc" id="metodo">
+      <summary class="acc-q"><span class="acc-t">Cómo trabajamos<small>Un proceso, cinco etapas</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+<p class="section-sub">Cada proyecto representa una pregunta científica diferente. Por eso seguimos un proceso estructurado que combina rigurosidad metodológica, colaboración permanente y transparencia.</p>
   <div class="metodo-steps">
     <div class="metodo-step"><div class="metodo-num">1</div><h3>Comprender</h3><p>Analizamos el contexto, los objetivos y las necesidades específicas de cada proyecto.</p></div>
     <div class="metodo-step"><div class="metodo-num">2</div><h3>Diseñar</h3><p>Definimos el enfoque metodológico, las variables y el plan analítico más adecuado.</p></div>
@@ -611,20 +742,21 @@
     <div class="metodo-step"><div class="metodo-num">4</div><h3>Validar</h3><p>Revisamos cada resultado para asegurar su correcta interpretación clínica y metodológica.</p></div>
     <div class="metodo-step"><div class="metodo-num">5</div><h3>Comunicar</h3><p>Acompañamos informes, manuscritos y productos académicos con claridad y rigor.</p></div>
   </div>
-</section>
-
-<!-- PRINCIPIOS -->
-<section class="diferencial" id="principios">
-  <div class="diferencial-inner">
-    <div class="section-label">Nuestros principios</div>
-    <h2 class="section-title">Lo que guía cada<br>decisión metodológica</h2>
-    <div class="principios-strip">
-      <div class="principio-chip"><div class="p-icon">🔬</div><div><h3>Rigor científico</h3><p>Evidencia y buenas prácticas de investigación.</p></div></div>
-      <div class="principio-chip"><div class="p-icon">⚖️</div><div><h3>Integridad</h3><p>Investigación ética, transparente y reproducible.</p></div></div>
-      <div class="principio-chip"><div class="p-icon">⚡</div><div><h3>Innovación</h3><p>IA y nuevas tecnologías bajo criterio experto.</p></div></div>
-      <div class="principio-chip"><div class="p-icon">🤝</div><div><h3>Colaboración</h3><p>Escuchamos, orientamos y construimos juntos.</p></div></div>
-      <div class="principio-chip"><div class="p-icon">📚</div><div><h3>Aprendizaje continuo</h3><p>Actualización constante al estado del arte.</p></div></div>
-      <div class="principio-chip"><div class="p-icon">🎯</div><div><h3>Impacto</h3><p>Evidencia que fortalece decisiones en salud.</p></div></div>
+      </div>
+    </details>
+    <details class="acc" id="principios">
+      <summary class="acc-q"><span class="acc-t">Nuestros principios<small>Lo que guía cada decisión metodológica</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+        <div class="principios-strip">
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-micro"/></svg></div><div><h3>Rigor científico</h3><p>Evidencia y buenas prácticas de investigación.</p></div></div>
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></div><div><h3>Integridad</h3><p>Investigación ética, transparente y reproducible.</p></div></div>
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-zap"/></svg></div><div><h3>Innovación</h3><p>IA y nuevas tecnologías bajo criterio experto.</p></div></div>
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></div><div><h3>Colaboración</h3><p>Escuchamos, orientamos y construimos juntos.</p></div></div>
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></div><div><h3>Aprendizaje continuo</h3><p>Actualización constante al estado del arte.</p></div></div>
+      <div class="principio-chip"><div class="p-icon"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><div><h3>Impacto</h3><p>Evidencia que fortalece decisiones en salud.</p></div></div>
+    </div>
+      </div>
+    </details>
     </div>
   </div>
 </section>
@@ -638,7 +770,7 @@
     <div class="pricing-grid">
 
       <div class="precio-card reveal">
-        <div class="precio-icon">🔬</div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-flask"/></svg></div>
         <div class="precio-name">Consultoría Puntual</div>
         <div class="precio-tag">Análisis estadístico y revisión metodológica</div>
         <div class="precio-amount">Desde S/ 550 <span>proyecto</span></div>
@@ -656,8 +788,8 @@
       </div>
 
       <div class="precio-card featured reveal">
-        <div class="precio-badge">⭐ Más elegido</div>
-        <div class="precio-icon">📊</div>
+        <div class="precio-badge"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg> Más elegido</div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></div>
         <div class="precio-name">Acompañamiento de Investigación</div>
         <div class="precio-tag">Diseño, análisis y soporte de manuscrito</div>
         <div class="precio-amount">Desde S/ 950 <span>proyecto</span></div>
@@ -675,7 +807,7 @@
       </div>
 
       <div class="precio-card reveal">
-        <div class="precio-icon">🏆</div>
+        <div class="precio-icon"><svg class="ico" aria-hidden="true"><use href="#i-trophy"/></svg></div>
         <div class="precio-name">Colaboración Científica Avanzada</div>
         <div class="precio-tag">Proyectos complejos y publicación internacional</div>
         <div class="precio-amount">Desde S/ 1750 <span>personalizada</span></div>
@@ -771,7 +903,8 @@
       <h2>¿Listo para llevar tu investigación al siguiente nivel?</h2>
       <p>Cuéntanos sobre tu proyecto y un especialista te responderá en menos de 24 horas.</p>
       <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com" -->
-      <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary">Solicitar asesoría →</a>
+      <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary js-perfil">Solicitar asesoría →</a>
+      <p class="cupos cupos-dark" data-cupos hidden></p>
     </div>
   </div>
 </section>
@@ -795,18 +928,22 @@
   </div>
 </section>
 
-<!-- PRIVACY -->
-<section class="privacy" id="privacidad">
-  <div class="section-label">Legal</div>
-  <h2>Política de Privacidad</h2>
-  <p style="color:var(--muted);font-size:.85rem;margin-bottom:2rem;">Última actualización: Mayo 2026 · DolphinStats, Lima, Perú</p>
+<!-- LEGAL (pestaña) -->
+<section class="privacy" aria-label="Legal">
+  <div class="acc-list" data-acc-group>
+    <details class="acc" id="privacidad">
+      <summary class="acc-q"><span class="acc-t">Legal · Política de Privacidad<small>Cómo tratamos tus datos y tus proyectos</small></span><span class="arrow" aria-hidden="true">▼</span></summary>
+      <div class="acc-body">
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.5rem;">Última actualización: Mayo 2026 · DolphinStats, Lima, Perú</p>
   <div class="privacy-block"><h3>1. Información que recopilamos</h3><p>A través de nuestro servicio de WhatsApp Business y formularios de contacto, recopilamos únicamente el número de teléfono, nombres y apellidos, especialidad, etc (si lo proporcionas voluntariamente) y el contenido de los mensajes que nos envías para prestarte el servicio de asesoría.</p></div>
   <div class="privacy-block"><h3>2. Uso de la información</h3><p>La información recopilada se utiliza exclusivamente para responder consultas sobre nuestros servicios, brindar asesoría contratada, y mejorar la calidad de nuestras respuestas automatizadas. No compartimos tu información con terceros ni la usamos con fines publicitarios.</p></div>
   <div class="privacy-block"><h3>3. Almacenamiento y seguridad</h3><p>Los datos de conversación se almacenan temporalmente en memoria durante la sesión activa y no se persisten en bases de datos externas. Tu número de teléfono puede guardarse para seguimiento de consultas activas y se elimina a tu solicitud.</p></div>
   <div class="privacy-block"><h3>4. Confidencialidad de proyectos</h3><p>Toda base de datos, protocolo o borrador compartido durante la asesoría es tratado con estricta confidencialidad. No publicamos ni compartimos información de proyectos de clientes sin autorización explícita y por escrito.</p></div>
   <div class="privacy-block"><h3>5. Tus derechos</h3><p>Tienes derecho a solicitar la eliminación de tus datos en cualquier momento. Escríbenos "Eliminar mis datos" por WhatsApp y procederemos en máximo 48 horas.</p></div>
-  <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com", texto "Bot en línea 24/7" -->
   <div class="privacy-block"><h3>6. Contacto</h3><p>Para consultas sobre esta política, contáctanos a través de nuestro <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" style="color:var(--aqua);text-decoration:none">WhatsApp</a>.</p></div>
+      </div>
+    </details>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1079,6 +1216,20 @@
   </svg>
 </a>
 
+<!-- SELECTOR DE PERFIL (abre WhatsApp con mensaje listo) -->
+<dialog id="perfil-dialog" class="perfil-dialog" aria-labelledby="perfil-title">
+  <button type="button" class="perfil-close" aria-label="Cerrar">&times;</button>
+  <h2 id="perfil-title">¿Cuál es tu perfil?</h2>
+  <p class="perfil-sub">Elígelo y te abrimos WhatsApp con el mensaje ya redactado.</p>
+  <div class="perfil-grid">
+    <a class="perfil-card" data-msg="Hola, soy tesista de ciencias de la salud y quiero solicitar una asesoría con DolphinStats. Mi carrera y tema de tesis es: " href="https://wa.me/51904106544" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg><b>Tesista</b><span>Pregrado o posgrado con tesis en curso</span></a>
+    <a class="perfil-card" data-msg="Hola, soy residente y quiero solicitar una asesoría con DolphinStats para mi proyecto de investigación. Mi especialidad es: " href="https://wa.me/51904106544" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg><b>Residente</b><span>Trabajo de investigación de residentado</span></a>
+    <a class="perfil-card" data-msg="Hola, soy docente universitario y quiero solicitar una asesoría con DolphinStats. Mi área y el proyecto que tengo en mente es: " href="https://wa.me/51904106544" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><b>Docente</b><span>Proyectos, artículos o asesoría de tesis</span></a>
+    <a class="perfil-card" data-msg="Hola, soy investigador y quiero solicitar una asesoría con DolphinStats para mi estudio o manuscrito. Mi área y etapa actual es: " href="https://wa.me/51904106544" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-micro"/></svg><b>Investigador</b><span>Estudio o manuscrito para publicar</span></a>
+  </div>
+</dialog>
+
+<script src="banco-preguntas.js" defer></script>
 <script src="app.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
