@@ -531,19 +531,47 @@ var DS_CUPOS = {
 })();
 
 // ── Fondo con paralaje: las manchas de color se desplazan más lento que el contenido ──
+// Las manchas se reparten según el alto real de la página y de la pantalla, de modo que
+// siempre haya al menos una a la vista (en móvil la página es mucho más larga que en escritorio).
+// Solo se transforman (translate3d): no afectan al layout ni al ancho de la página.
 (function () {
-  var blobs = document.querySelectorAll('.bg-blob');
-  if (!blobs.length) return;
+  var wrap = document.querySelector('.bg-blobs');
+  if (!wrap) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var S = 0.55;                       // fracción del scroll que acompaña la mancha (0 = fija al contenido)
+  var CLASES = ['a', 'b', 'c', 'd'];
+  var blobs = [];
   var ticking = false;
+
+  function build() {
+    var H = window.innerHeight, D = document.documentElement.scrollHeight;
+    var maxY = Math.max(D - H, 1), size = 520;
+    var ventana = (H + size) / (1 - S);          // tramo de scroll en que una mancha está a la vista
+    var n = Math.min(9, Math.max(3, Math.ceil(maxY / (ventana * 0.8)) + 1));
+    while (wrap.children.length < n) {
+      var d = document.createElement('div');
+      d.className = 'bg-blob ' + CLASES[wrap.children.length % CLASES.length];
+      wrap.appendChild(d);
+    }
+    while (wrap.children.length > n) wrap.removeChild(wrap.lastChild);
+    blobs = [].slice.call(wrap.children);
+    blobs.forEach(function (b, i) {
+      var c = maxY * i / (n - 1);                // scroll al que la mancha queda centrada en pantalla
+      b.style.top = Math.round(c * (1 - S) + (H - size) / 2) + 'px';
+    });
+    update();
+  }
   function update() {
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    blobs.forEach(function (b) {
-      b.style.transform = 'translate3d(0,' + Math.round(y * parseFloat(b.getAttribute('data-s'))) + 'px,0)';
-    });
+    var t = 'translate3d(0,' + Math.round(y * S) + 'px,0)';
+    blobs.forEach(function (b) { b.style.transform = t; });
     ticking = false;
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); });
+  window.addEventListener('load', build);       // el alto de la página se conoce mejor tras cargar imágenes
+  build();
 })();
