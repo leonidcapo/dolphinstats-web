@@ -404,6 +404,12 @@
   .acc-tool .arrow{background:#7b3ff2;color:#fff;width:2.6rem;height:2.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem}
   .acc-tool .acc-body{padding-top:.3rem}
   .acc-tool:not([open]) .acc-q:hover .acc-t{color:inherit}
+  .tool-soon{margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;border:2px dashed rgba(123,63,242,.45);border-radius:12px;padding:1.3rem 1.7rem;background:rgba(123,63,242,.04)}
+  .tool-badge.soon{background:#fff;color:#7b3ff2;border:1.5px solid #7b3ff2;margin-bottom:.7rem}
+  .tool-soon h3{font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:.3rem}
+  .tool-soon p{color:var(--muted);font-size:.92rem;max-width:46ch}
+  .tool-soon .btn-secondary{border-color:#7b3ff2;color:#7b3ff2;white-space:nowrap}
+  .tool-soon .btn-secondary:hover{background:#7b3ff2;color:#fff}
 
   @media(max-width:768px){
     .conoce{padding:4rem 1.25rem 1.5rem}
@@ -519,7 +525,6 @@
       <div class="hero-ctas">
         <!-- Bot temporalmente desactivado (reversible) — original: href="https://dolphinstats-bot.onrender.com" -->
         <a href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats." target="_blank" rel="noopener noreferrer" class="btn-primary js-perfil">Solicitar asesoría →</a>
-        <a href="#banco" class="btn-secondary">Pon a prueba tu investigación</a>
       </div>
       <p class="cupos" data-cupos hidden></p>
     </div>
@@ -639,6 +644,14 @@
       </div>
     </div>
   </details>
+  <div class="tool-soon">
+    <div class="tool-soon-txt">
+      <span class="tool-badge soon"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> Herramienta gratuita n.º 2 · Próximamente</span>
+      <h3>Calculadora de muestra</h3>
+      <p>Calcula cuántos participantes necesita tu estudio. Muy pronto en esta web.</p>
+    </div>
+    <a class="btn-secondary js-track-calc" href="https://wa.me/51904106544?text=Hola%2C%20quiero%20que%20me%20avisen%20cuando%20est%C3%A9%20lista%20la%20Calculadora%20de%20muestra%20de%20DolphinStats." target="_blank" rel="noopener noreferrer">Avísame cuando esté lista</a>
+  </div>
 </section>
 
 <!-- CONOCE DOLPHINSTATS (pestañas desplegables) -->
@@ -912,6 +925,7 @@
 
     </div>
     <p class="pricing-note"><b>Precios en soles, a partir de.</b> El precio final depende del diseño del estudio, la carga analítica, el estado de tus datos, tu nivel académico y el plazo; te lo confirmamos por proforma antes de empezar. Se requiere un adelanto del 50% para iniciar y el saldo se cancela contra la entrega final. Los gastos de publicación en revistas no están incluidos. La <b>publicación científica</b> (selección de revista, envío y respuesta a revisores) es un servicio aparte que se cotiza por separado.<span id="tc-note" hidden></span></p>
+    <p class="pricing-note">Atención a investigadores de toda Latinoamérica. Los precios están en soles; la forma de pago y el equivalente en tu moneda se coordinan por WhatsApp.</p>
     <p class="pricing-note">La co-autoría se evalúa exclusivamente bajo criterios internacionales de autoría científica (<a href="https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html" target="_blank" rel="noopener">ICMJE</a>). La participación en publicaciones implica contribución intelectual real y trazable al proceso de investigación.</p>
   </div>
 </section>
@@ -964,6 +978,15 @@
       </button>
       <div class="faq-a">
         <p>Depende del tamaño y complejidad de tu base de datos. Un análisis descriptivo e inferencial estándar toma entre 3 y 7 días hábiles. Proyectos con modelos multivariados o análisis de supervivencia pueden tomar entre 7 y 14 días. Se acuerda el plazo antes de comenzar.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cómo manejan la originalidad y el uso de inteligencia artificial?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        <p>Cada análisis y cada redacción parten de tus datos y de tu pregunta de investigación, no de plantillas ni de trabajos ajenos, y los scripts quedan reproducibles y auditables. Si se usan herramientas de IA (por ejemplo, para automatizar análisis repetitivos o revisar literatura), es bajo criterio experto y su uso se declara cuando tu institución o la revista lo exigen. En la asesoría de tesis, tú mantienes el rol protagónico: te orientamos, revisamos y corregimos.</p>
       </div>
     </div>
     <div class="faq-item">
@@ -1277,7 +1300,7 @@
   }
   #ds-wa-btn svg { width: 32px; height: 32px; fill: #ffffff; }
 </style>
-<a id="ds-wa-btn" href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats."
+<a id="ds-wa-btn" class="js-perfil" href="https://wa.me/51904106544?text=Hola%2C%20quiero%20solicitar%20una%20asesoria%20con%20DolphinStats."
    target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path fill="#ffffff" d="M16.001 3.5C9.373 3.5 4 8.873 4 15.5c0 2.26.622 4.373 1.703 6.183L3.5 28.5l7.02-2.155A11.94 11.94 0 0 0 16.001 27.5c6.628 0 12-5.373 12-12s-5.372-12-12-12Zm0 21.75a9.7 9.7 0 0 1-4.95-1.357l-.355-.21-3.687 1.132.986-3.596-.231-.369A9.71 9.71 0 0 1 6.25 15.5c0-5.38 4.372-9.75 9.751-9.75 5.38 0 9.75 4.37 9.75 9.75s-4.37 9.75-9.75 9.75Z"/>

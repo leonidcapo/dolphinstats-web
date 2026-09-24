@@ -1,3 +1,10 @@
+// ── Métricas: eventos personalizados de Vercel Web Analytics ─────────────
+// Requieren plan Pro; en Hobby se ignoran sin error. Nombres cortos y sin datos personales.
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+function dsTrack(name, data) {
+  try { window.va('event', data ? { name: name, data: data } : { name: name }); } catch (e) {}
+}
+
 (function () {
   // Scroll reveal animations
   if ('IntersectionObserver' in window) {
@@ -289,11 +296,15 @@ var DS_CUPOS = {
 
   document.querySelectorAll('.perfil-card').forEach(function (a) {
     a.href = 'https://wa.me/51904106544?text=' + encodeURIComponent(a.getAttribute('data-msg'));
-    a.addEventListener('click', function () { dlg.close(); });
+    a.addEventListener('click', function () {
+      dsTrack('perfil_elegido', { perfil: a.querySelector('b').textContent });
+      dlg.close();
+    });
   });
   document.querySelectorAll('.js-perfil').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
+      dsTrack('perfil_abierto', { origen: a.id === 'ds-wa-btn' ? 'flotante' : (a.closest('nav') ? 'menu' : (a.closest('.ctaband') ? 'banda_final' : 'portada')) });
       dlg.showModal();
     });
   });
@@ -411,6 +422,7 @@ var DS_CUPOS = {
     return 'Alcancé el rango ' + r.name + ' (' + state.ok.length + '/' + bank.length + ' aciertos) en el reto «Pon a prueba tu investigación» de DolphinStats. ¿Te animas? ' + SITE;
   }
   function share() {
+    dsTrack('reto_compartir', { rango: RANKS[rankFor(state.ok.length)].name });
     // Abre WhatsApp con el texto listo; la persona elige a quién enviarlo
     window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank', 'noopener');
   }
@@ -480,6 +492,8 @@ var DS_CUPOS = {
         save();
         var after = rankFor(state.ok.length);
         renderRank();
+        dsTrack('reto_respuesta', { correcta: chosen.ok ? 'si' : 'no' });
+        if (after > before) dsTrack('reto_rango', { rango: RANKS[after].name });
 
         var up = after > before
           ? '<div class="quiz-up">' + icon(RANKS[after].icon) + ' ¡Subiste a ' + esc(RANKS[after].name) + '!</div>' : '';
@@ -494,6 +508,7 @@ var DS_CUPOS = {
         fb.querySelector('.js-perfil-quiz').addEventListener('click', function (e) {
           e.preventDefault();
           var dlg = document.getElementById('perfil-dialog');
+          dsTrack('perfil_abierto', { origen: 'reto' });
           if (dlg && dlg.showModal) dlg.showModal();
           else window.open('https://wa.me/51904106544?text=' + encodeURIComponent('Hola, quiero solicitar una asesoria con DolphinStats.'), '_blank', 'noopener');
         });
@@ -574,4 +589,28 @@ var DS_CUPOS = {
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); });
   window.addEventListener('load', build);       // el alto de la página se conoce mejor tras cargar imágenes
   build();
+})();
+
+// ── Métricas: apertura del reto y clics a WhatsApp ───────────────────────
+(function () {
+  var reto = document.getElementById('banco');
+  var abierto = false;
+  if (reto) {
+    reto.addEventListener('toggle', function () {
+      if (reto.open && !abierto) { abierto = true; dsTrack('reto_abierto'); }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me"]');
+    if (!a) return;
+    var dlg = document.getElementById('perfil-dialog');
+    if (a.classList.contains('js-perfil') && dlg && dlg.showModal) return; // abre el selector, no WhatsApp todavía
+    var origen = 'otro';
+    if (a.closest('.precio-card')) origen = 'plan_' + a.closest('.precio-card').querySelector('.precio-name').textContent.trim();
+    else if (a.id === 'ds-wa-btn') origen = 'flotante';
+    else if (a.classList.contains('perfil-card')) origen = 'selector_perfil';
+    else if (a.classList.contains('js-track-calc')) origen = 'calculadora_aviso';
+    else if (a.closest('.cupos')) origen = 'lista_espera';
+    dsTrack('whatsapp_click', { origen: origen });
+  });
 })();
