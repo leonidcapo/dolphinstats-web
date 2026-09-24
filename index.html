@@ -335,6 +335,19 @@
   .quiz-actions .btn-primary{border:none}
   .quiz-nojs{color:var(--muted)}
 
+  /* RANGOS DEL RETO */
+  .quiz-rank{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
+  .quiz-rank-ico{width:2.8rem;height:2.8rem;border-radius:50%;background:rgba(0,117,198,.12);color:var(--aqua);display:flex;align-items:center;justify-content:center;font-size:1.45rem;flex-shrink:0}
+  .quiz-rank-info{flex:1;min-width:190px}
+  .quiz-rank-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem}
+  .quiz-rank-sub{font-size:.78rem;color:var(--muted);margin-top:.1rem}
+  .quiz-bar{height:6px;border-radius:99px;background:rgba(0,48,96,.1);overflow:hidden;margin-top:.5rem}
+  .quiz-bar i{display:block;height:100%;background:var(--aqua);border-radius:99px;transition:width .5s ease}
+  .quiz-share{font:inherit;font-size:.8rem;font-weight:700;color:var(--aqua);background:transparent;border:1px solid rgba(0,117,198,.35);border-radius:100px;padding:.45rem 1rem;cursor:pointer;transition:background .2s}
+  .quiz-share:hover{background:rgba(0,117,198,.08)}
+  .quiz-up{display:flex;align-items:center;gap:.6rem;background:rgba(26,155,91,.1);border:1px solid #1a9b5b;border-radius:12px;padding:.8rem 1rem;margin-bottom:1rem;font-family:'Syne',sans-serif;font-weight:700;color:#137a47;animation:fadeUp .5s ease both}
+  .quiz-up .ico{font-size:1.3rem}
+
   /* SELECTOR DE PERFIL */
   .perfil-dialog{border:none;border-radius:20px;padding:2rem;max-width:560px;width:calc(100vw - 2rem);margin:auto;box-shadow:0 30px 80px rgba(0,48,96,.35);color:var(--white);background:var(--ocean)}
   .perfil-dialog::backdrop{background:rgba(0,48,96,.55);backdrop-filter:blur(3px)}
@@ -578,11 +591,11 @@
 </div>
 
 <!-- BANCO DE PREGUNTAS -->
-<section class="banco" id="banco" aria-label="Banco de preguntas de investigación">
+<section class="banco" id="banco" aria-label="Pon a prueba tu investigación">
   <div class="banco-inner">
     <div class="section-label">Herramienta gratuita</div>
-    <h2 class="section-title">Banco de preguntas<br>de investigación</h2>
-    <p class="section-sub">Pon a prueba tu criterio metodológico con preguntas reales de tesis y publicación. Cada respuesta incluye la explicación y su referencia.</p>
+    <h2 class="section-title">Pon a prueba<br>tu investigación</h2>
+    <p class="section-sub">Responde preguntas reales de tesis y publicación, suma aciertos y sube de rango: de Explorador a Investigador Senior. Cada respuesta incluye la explicación y su referencia.</p>
     <div class="quiz" id="quiz" aria-live="polite">
       <noscript><p class="quiz-nojs">Activa JavaScript para usar el banco de preguntas.</p></noscript>
     </div>

@@ -326,16 +326,38 @@ var DS_CUPOS = {
   if (location.hash) setTimeout(function () { openTarget(location.hash.slice(1)); }, 0);
 })();
 
-// ── Banco de preguntas de investigación ─────────────────────────────────
+// ── Reto "Pon a prueba tu investigación" (banco de preguntas + rangos) ───
 (function () {
   var root = document.getElementById('quiz');
   var bank = window.DS_BANCO;
   if (!root || !bank || !bank.length) return;
 
   var LETTERS = ['A', 'B', 'C', 'D', 'E'];
-  var order = [];
-  var pos = -1;
+  var SITE = 'https://dolphinstats-web.vercel.app/#banco';
+  // Rangos por aciertos ÚNICOS (repetir una pregunta ya acertada no suma)
+  var RANKS = [
+    { name: 'Explorador', min: 0, icon: 'compass' },
+    { name: 'Analista', min: 3, icon: 'chart' },
+    { name: 'Metodólogo', min: 7, icon: 'flask' },
+    { name: 'Investigador Senior', min: 13, icon: 'trophy' }
+  ];
+  var STORE = 'ds_quiz_v1';
+  var state = { ok: [], answered: 0, streak: 0, best: 0 };
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (saved && Array.isArray(saved.ok)) {
+      state = { ok: saved.ok.filter(function (x) { return typeof x === 'string'; }), answered: +saved.answered || 0, streak: +saved.streak || 0, best: +saved.best || 0 };
+    }
+  } catch (e) {}
+  function save() {
+    try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {}
+  }
 
+  function rankFor(n) {
+    var idx = 0;
+    RANKS.forEach(function (r, i) { if (n >= r.min) idx = i; });
+    return idx;
+  }
   function esc(t) {
     return String(t).replace(/[&<>"]/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
@@ -348,11 +370,18 @@ var DS_CUPOS = {
     }
     return arr;
   }
+
+  // Orden: primero las preguntas aún no acertadas, para que el progreso avance
+  var order = [];
+  var pos = -1;
   function nextIndex() {
     pos++;
     if (pos >= order.length) {
       var last = order.length ? order[order.length - 1] : -1;
       order = shuffle(bank.map(function (_, i) { return i; }));
+      order.sort(function (a, b) {
+        return (state.ok.indexOf(bank[a].id) > -1 ? 1 : 0) - (state.ok.indexOf(bank[b].id) > -1 ? 1 : 0);
+      });
       if (order[0] === last && order.length > 1) { var t = order[0]; order[0] = order[1]; order[1] = t; }
       pos = 0;
     }
@@ -364,6 +393,59 @@ var DS_CUPOS = {
       : (r.pmid ? ' <a href="https://pubmed.ncbi.nlm.nih.gov/' + esc(r.pmid) + '/" target="_blank" rel="noopener noreferrer">PubMed</a>' : '');
     return '<p class="quiz-ref"><b>Referencia:</b> ' + esc(r.texto) + link + '</p>';
   }
+  function icon(name) {
+    return '<svg class="ico" aria-hidden="true"><use href="#i-' + name + '"/></svg>';
+  }
+
+  // ── Encabezado de rango ──
+  root.innerHTML = '<div class="quiz-rank" id="quiz-rank"></div><div id="quiz-body"></div>';
+  var rankEl = document.getElementById('quiz-rank');
+  var bodyEl = document.getElementById('quiz-body');
+
+  function shareText() {
+    var r = RANKS[rankFor(state.ok.length)];
+    return 'Alcancé el rango ' + r.name + ' (' + state.ok.length + '/' + bank.length + ' aciertos) en el reto «Pon a prueba tu investigación» de DolphinStats. ¿Te animas? ' + SITE;
+  }
+  function share(btn) {
+    var text = shareText();
+    function flash(msg) {
+      var old = btn.getAttribute('data-label') || btn.textContent;
+      btn.setAttribute('data-label', old);
+      btn.textContent = msg;
+      setTimeout(function () { btn.textContent = old; }, 2200);
+    }
+    if (navigator.share) {
+      navigator.share({ text: text }).catch(function () {});
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash('¡Texto copiado!'); }, function () { window.prompt('Copia tu resultado:', text); });
+    } else {
+      window.prompt('Copia tu resultado:', text);
+    }
+  }
+
+  function renderRank(upFrom) {
+    var n = state.ok.length;
+    var i = rankFor(n);
+    var cur = RANKS[i];
+    var nxt = RANKS[i + 1];
+    var pct, sub;
+    if (nxt) {
+      pct = Math.round(((n - cur.min) / (nxt.min - cur.min)) * 100);
+      var falta = nxt.min - n;
+      sub = n + ' ' + (n === 1 ? 'acierto' : 'aciertos') + ' · ' + falta + (falta === 1 ? ' más' : ' más') + ' para ' + nxt.name;
+    } else {
+      pct = 100;
+      sub = n + ' de ' + bank.length + ' aciertos · rango máximo';
+    }
+    rankEl.innerHTML =
+      '<span class="quiz-rank-ico">' + icon(cur.icon) + '</span>' +
+      '<div class="quiz-rank-info"><div class="quiz-rank-name">' + esc(cur.name) + '</div>' +
+      '<div class="quiz-rank-sub">' + esc(sub) + (state.streak > 1 ? ' · racha de ' + state.streak : '') + '</div>' +
+      '<div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Progreso al siguiente rango"><i style="width:' + pct + '%"></i></div></div>' +
+      (n > 0 ? '<button type="button" class="quiz-share">Comparte tu rango</button>' : '<span class="quiz-chip">Reto: ¿qué rango alcanzas?</span>');
+    var sb = rankEl.querySelector('.quiz-share');
+    if (sb) sb.addEventListener('click', function () { share(sb); });
+  }
 
   function render() {
     var q = bank[nextIndex()];
@@ -371,7 +453,7 @@ var DS_CUPOS = {
     var opts = shuffle(q.opciones.map(function (t, i) { return { t: t, ok: i === q.correcta }; }));
     var answered = false;
 
-    root.innerHTML =
+    bodyEl.innerHTML =
       '<div class="quiz-meta"><span class="quiz-chip">' + esc(q.tema) + '</span><span class="quiz-chip">' + esc(q.nivel) + '</span>' +
       '<span class="quiz-count">' + bank.length + ' preguntas en el banco</span></div>' +
       '<p class="quiz-q">' + esc(q.enunciado) + '</p>' +
@@ -380,8 +462,8 @@ var DS_CUPOS = {
         return '<button type="button" class="quiz-opt" data-i="' + i + '"><span class="k">' + LETTERS[i] + '.</span><span>' + esc(o.t) + '</span></button>';
       }).join('') + '</div><div class="quiz-fb" hidden></div>';
 
-    var fb = root.querySelector('.quiz-fb');
-    var btns = root.querySelectorAll('.quiz-opt');
+    var fb = bodyEl.querySelector('.quiz-fb');
+    var btns = bodyEl.querySelectorAll('.quiz-opt');
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
         if (answered) return;
@@ -392,11 +474,29 @@ var DS_CUPOS = {
           if (opts[i].ok) x.classList.add('ok');
         });
         if (!chosen.ok) b.classList.add('bad');
-        fb.innerHTML =
+
+        // Progreso
+        var before = rankFor(state.ok.length);
+        state.answered++;
+        if (chosen.ok) {
+          state.streak++;
+          if (state.streak > state.best) state.best = state.streak;
+          if (state.ok.indexOf(q.id) === -1) state.ok.push(q.id);
+        } else {
+          state.streak = 0;
+        }
+        save();
+        var after = rankFor(state.ok.length);
+        renderRank();
+
+        var up = after > before
+          ? '<div class="quiz-up">' + icon(RANKS[after].icon) + ' ¡Subiste a ' + esc(RANKS[after].name) + '!</div>' : '';
+        var ctaLabel = after >= 2 ? 'Aplícalo a tu tesis: escríbenos' : '¿Dudas con tu análisis? Escríbenos';
+        fb.innerHTML = up +
           '<div class="quiz-verdict ' + (chosen.ok ? 'ok' : 'bad') + '">' + (chosen.ok ? '¡Correcto!' : 'No es esa. La respuesta correcta está marcada en verde.') + '</div>' +
           '<p>' + esc(q.fundamento) + '</p>' + refHtml(q.ref) +
           '<div class="quiz-actions"><button type="button" class="btn-primary quiz-next">Otra pregunta →</button>' +
-          '<a class="btn-secondary js-perfil-quiz" href="#" role="button">¿Dudas con tu análisis? Escríbenos</a></div>';
+          '<a class="btn-secondary js-perfil-quiz" href="#" role="button">' + ctaLabel + '</a></div>';
         fb.hidden = false;
         fb.querySelector('.quiz-next').addEventListener('click', render);
         fb.querySelector('.js-perfil-quiz').addEventListener('click', function (e) {
@@ -409,5 +509,6 @@ var DS_CUPOS = {
       });
     });
   }
+  renderRank();
   render();
 })();
