@@ -255,11 +255,13 @@ function dsTrack(name, data) {
 
 // ── Cupos de análisis del mes ────────────────────────────────────────────
 // Cada mes empieza en "inicioMes" y baja 1 por semana (días 1-7: 5, 8-14: 4,
-// 15-21: 3, 22-28: 2, 29+: 1). Es un calendario de capacidad, no un conteo de
-// reservas reales: si los cupos se llenan antes (o sobran), fijar "manual"
-// para ese mes -- con 0 se muestra la lista de espera.
+// 15-21: 3, 22-28: 2, 29+: 1). En los últimos "diasAnticipo" días del mes ya
+// se muestra el mes siguiente (con inicioMes cupos). Es un calendario de
+// capacidad, no un conteo de reservas reales: si los cupos se llenan antes
+// (o sobran), fijar "manual" para ese mes -- con 0 se muestra la lista de espera.
 var DS_CUPOS = {
   inicioMes: 5,
+  diasAnticipo: 3,
   manual: null          // ej. { mes: '2026-09', disponibles: 2 }
 };
 
@@ -267,6 +269,10 @@ var DS_CUPOS = {
   var WA = 'https://wa.me/51904106544?text=';
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
   var now = new Date();
+  var diasDelMes = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+  if (diasDelMes - now.getDate() < DS_CUPOS.diasAnticipo) {
+    now = new Date(now.getFullYear(), now.getMonth() + 1, 1); // anticipa el mes siguiente
+  }
   var key = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2);
   var semana = Math.min(Math.ceil(now.getDate() / 7), 5);
   var n = Math.max(1, DS_CUPOS.inicioMes - (semana - 1));
