@@ -168,3 +168,6 @@ nav .nav-links>li>a:hover{color:#003060}
 .cupos b,.cupos .ico{color:#fbbf24}
 .cupos-dark,.ctaband-content .cupos-dark{background:#021a33;color:#fff;border:1px solid rgba(251,191,36,.5);box-shadow:0 10px 28px -6px rgba(0,0,0,.45)}
 .cupos-dark a,.ctaband-content .cupos-dark a{color:#fbbf24}
+
+/* Mobile: el aviso de la franja final usa el mismo tamaño que el del hero (2 líneas en vez de 3) */
+@media(max-width:480px){.ctaband-content .cupos-dark{font-size:.95rem}}
