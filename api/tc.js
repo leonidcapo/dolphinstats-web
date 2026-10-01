@@ -14,7 +14,9 @@ module.exports = async function handler(req, res) {
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.status(200).json({ venta: venta, compra: Number(d.compra) || null, fecha: d.fecha || null, fuente: 'SUNAT' });
   } catch (e) {
-    res.setHeader('Cache-Control', 'no-store');
-    res.status(502).json({ error: 'tipo de cambio no disponible' });
+    // Se responde 200 (la CDN no guarda 5xx) con cache corto para no re-consultar el
+    // servicio externo en cada visita; el cliente ignora la respuesta sin "venta".
+    res.setHeader('Cache-Control', 'public, s-maxage=60');
+    res.status(200).json({ error: 'tipo de cambio no disponible' });
   }
 };
